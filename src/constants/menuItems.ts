@@ -38,9 +38,10 @@ export const menuItems = [
     items: ["고세구 GOSEGU", "고세구의 좀 더", "밥친구 고세구"],
     color: "text-characterColor-gosegu",
   },
+
   {
-    name: "Vlichan",
-    items: ["비챤 VLICHAN", "비챤의 나랑놀아", "비챤의 다시보기"],
+    name: "VIichan",
+    items: ["비챤 VIICHAN", "비챤의 나랑놀아", "비챤의 다시보기"],
     color: "text-characterColor-vlichan",
   },
 ];

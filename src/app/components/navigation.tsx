@@ -6,10 +6,9 @@ import Menu from "./menu";
 export default function Navigation() {
   const [ismenuOpen, setIsmenuOpen] = useState<boolean>(false);
 
-  const handleMenuToggle = () => {
+  function handleMenuToggle() {
     setIsmenuOpen(!ismenuOpen);
-  };
-
+  }
   return (
     <>
       <nav className="sticky z-[9990] w-full p-5 text-3xl  font-bold text-white bg-bgColor-100">
@@ -27,7 +26,7 @@ export default function Navigation() {
           </div>
         </section>
       </nav>
-      <Menu ismenuOpen={ismenuOpen} />
+      <Menu handleMenuToggle={handleMenuToggle} ismenuOpen={ismenuOpen} />
     </>
   );
 }
