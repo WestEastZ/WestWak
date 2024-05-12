@@ -21,13 +21,13 @@
   src: url("/public/fonts/SpoqaHanSansNeo-Light.otf") format(".otf");
 }
 
-html {
-  background-color: white;
+html,
+body {
+  background-color: #1c1d1f;
   font-family: "SpoqaHanSansNeo";
 }
 
 body {
-  background-color: white;
   height: 100vh;
   margin: auto;
 }

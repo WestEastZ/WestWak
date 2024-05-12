@@ -21,7 +21,7 @@ module.exports = {
           lilpa: "#3330db",
           jururu: "#FF008C",
           gosegu: "#467EC6",
-          vlichan: "#95C100",
+          viichan: "#95C100",
         },
       },
       fontFamily: {

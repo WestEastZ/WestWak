@@ -42,6 +42,6 @@ export const menuItems = [
   {
     name: "VIichan",
     items: ["비챤 VIICHAN", "비챤의 나랑놀아", "비챤의 다시보기"],
-    color: "text-characterColor-vlichan",
+    color: "text-characterColor-viichan",
   },
 ];
