@@ -1,14 +1,14 @@
 import Image from "next/image";
 import bg from "../../../../public/image/waktaverse.png";
 
-export default function HomeIntro() {
+export default function HomeFirst() {
   const charactorName = [
-    { char: "이", name: "ine" },
-    { char: "세", name: "jingburger" },
-    { char: "계", name: "lilpa" },
-    { char: "아", name: "jururu" },
-    { char: "이", name: "gosegu" },
-    { char: "돌", name: "viichan" },
+    { char: "이", name: "#8A2BE2" },
+    { char: "세", name: "#F0A957" },
+    { char: "계", name: "#3330db" },
+    { char: "아", name: "#FF008C" },
+    { char: "이", name: "#467EC6" },
+    { char: "돌", name: "#95C100" },
   ];
   return (
     <div className="w-screen h-[100vh] flex justify-center items-center">
@@ -19,11 +19,11 @@ export default function HomeIntro() {
       <div className="absolute w-full h-full left-0 top-0 bg-black opacity-70"></div>
 
       {/* 메인 안내 문구 */}
-      <section className="z-[9990] flex flex-col items-start gap-3 w-ull text-6xl text-white font-bold">
-        <div className="text-characterColor-wak">우왁굳</div>
+      <section className="z-[9980] flex flex-col items-start gap-3 w-ull text-6xl text-white font-bold">
+        <div className="text-[#1CBC74]">우왁굳</div>
         <section className="flex">
           {charactorName.map((item) => (
-            <div id={item.name} className={`text-characterColor-${item.name}`}>
+            <div id={item.name} style={{ color: item.name }}>
               {item.char}
             </div>
           ))}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { menuItems } from "../../../constants/menuItems";
+import { MemberList } from "../../constants/MemberList";
 
 export default function MenuContainer({
   ismenuOpen,
@@ -11,20 +11,24 @@ export default function MenuContainer({
   return (
     <section
       onClick={handleMenuToggle}
-      className={`absolute z-[9999] left-0 right-0 flex p-5 bg-bgColor-100 transition duration-300 ease-in-out transform ${
+      className={`fixed z-[9990] left-0 right-0 flex p-5 bg-bgColor-100 transition duration-500 ease-in-out transform ${
         ismenuOpen
-          ? "translate-y-[0rem] opacity-100"
-          : "-translate-y-[10rem] opacity-100"
+          ? "translate-y-[5rem] opacity-100"
+          : "-translate-y-[10rem] opacity-0"
       }`}
     >
       <div className="w-[80rem] m-auto grid grid-cols-7 place-items-center gap-10">
-        {menuItems.map((menuItem) => (
-          <li key={menuItem.name} className={`nav-center w-full h-full`}>
-            <Link href={`/${menuItem.name}`}>
+        {MemberList.map((member) => (
+          <li key={member.name} className={`nav-center w-full h-full`}>
+            <Link href={`/${member.name}`}>
               <div
-                className={`text-2xl font-bold ${menuItem.color} transition-all duration-300 hover:scale-125`}
+                className={`text-2xl font-bold transition-all duration-300 hover:scale-125`}
+                style={{
+                  color:
+                    member.name === "Woowakgood" ? "#1CBC74" : member.color,
+                }}
               >
-                {menuItem.name}
+                {member.name}
               </div>
             </Link>
           </li>

@@ -1,10 +1,13 @@
-import HomeIntro from "./containers/home/homeIntro";
+import HomeSecond from "./containers/home/homeSecond";
+import HomeFirst from "./containers/home/homeFirst";
+import HomeThird from "./containers/home/homeThird";
 
 export default function Main() {
   return (
     <>
-      <HomeIntro />
-      <div>dddd</div>
+      <HomeFirst />
+      <HomeSecond />
+      <HomeThird />
     </>
   );
 }
