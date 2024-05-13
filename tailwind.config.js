@@ -15,7 +15,7 @@ module.exports = {
           100: "#1C1D1F",
         },
         characterColor: {
-          wak: "#1CBC74",
+          wak: "#164532",
           ine: "#8A2BE2",
           jingburger: "#F0A957",
           lilpa: "#3330db",
