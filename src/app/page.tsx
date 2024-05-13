@@ -1,3 +1,13 @@
+import HomeSecond from "./containers/home/homeSecond";
+import HomeFirst from "./containers/home/homeFirst";
+import HomeThird from "./containers/home/homeThird";
+
 export default function Main() {
-  return <h1 className="text-red-500">Hello world!</h1>;
+  return (
+    <>
+      <HomeFirst />
+      <HomeSecond />
+      <HomeThird />
+    </>
+  );
 }
