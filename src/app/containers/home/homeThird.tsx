@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MemberList } from "@/app/constants/MemberList";
 import CardCharacter from "@/app/components/CardCharacter";
+import ModalCharacter from "@/app/components/modal/ModalCharacter";
 
 export default function HomeThird() {
   return (

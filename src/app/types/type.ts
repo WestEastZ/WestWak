@@ -5,4 +5,5 @@ export interface MemberListType {
   items: string[];
   color: string;
   image: StaticImageData;
+  profile_image: StaticImageData;
 }

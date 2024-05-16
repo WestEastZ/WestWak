@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    // "./image/*.{webp, png, jpeg}",
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,21 +29,13 @@ module.exports = {
       fontFamily: {
         spoqa: ["SpoqaHanSansNeo", "sans-serif"],
       },
-      // keyframes: {
-      //   slideDown: {
-      //     "0%": { transform: "translateY(0)" },
-      //     "50%": { transform: "translateY(125%)" },
-      //     "70%": { transform: "translateY(120%)" },
-      //     "100%": { transform: "translateY(125%)" },
-      //   },
-      //   slideUp: {
-      //     "0%": { transform: "translateY(125%)" },
-      //     "100%": { transform: "translateY(0%)" },
-      //   },
-      // },
-      // animation: {
-      //   "slide-down": "slideDown 0.8s ease-in-out forwards",
-      //   "slide-up": "slideUp 0.3s ease-in-out forwards",
+      // backgroundImage: {
+      //   ine_profile: `url(/image/ine_profile.webp)`,
+      //   jing_profile: `url(/image/jing_profile.webp)`,
+      //   lilpa_profile: `url(/image/lilpa_profile.webp)`,
+      //   jururu_profile: `url(/image/jururu_profile.webp)`,
+      //   gosegu_profile: `url(/image/gosegu_profile.webp)`,
+      //   viichan_profile: `url(/image/viichan_profile.webp)`,
       // },
     },
   },

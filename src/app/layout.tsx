@@ -10,6 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navigation />
+        <div id="modal-portal"></div>
         {children}
       </body>
     </html>
