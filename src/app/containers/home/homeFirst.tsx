@@ -11,7 +11,7 @@ export default function HomeFirst() {
     { char: "돌", name: "#95C100" },
   ];
   return (
-    <div className="w-screen h-[100vh] flex justify-center items-center">
+    <div className="relative w-screen h-[100vh] flex justify-center items-center">
       {/* 메인 이미지 */}
       <Image src={bg} alt="" fill className="object-cover" />
 
