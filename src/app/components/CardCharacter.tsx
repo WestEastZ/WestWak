@@ -30,9 +30,10 @@ export default function CardCharacter({ member }: { member: MemberListType }) {
     setOpenCharacterModal(true);
     setClickAble(false);
 
-    setTimeout(() => {}, 1);
-    setHidden(false);
-    setClickAble(true);
+    setTimeout(() => {
+      setHidden(false);
+      setClickAble(true);
+    }, 1);
   };
 
   // Modal Close
