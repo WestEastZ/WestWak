@@ -73,3 +73,10 @@ body {
 .menuTrigger.active span:nth-of-type(3) {
   transform: translateY(-15px) rotate(45deg);
 }
+
+.cafeBackgroundImage {
+  background-image: url("/public/image/cafe.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
