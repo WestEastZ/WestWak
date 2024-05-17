@@ -5,7 +5,7 @@ import ModalCharacter from "@/app/components/modal/ModalCharacter";
 
 export default function HomeThird() {
   return (
-    <div className="p-10">
+    <div className="p-10 pb-28">
       <section className="w-[80rem] h-full m-auto flex flex-col gap-5">
         {/* 우왁굳, 아이네, 징버거 */}
         <section className="flex items-center gap-10 m-auto">

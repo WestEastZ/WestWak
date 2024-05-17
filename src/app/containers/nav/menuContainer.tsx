@@ -11,7 +11,7 @@ export default function MenuContainer({
   return (
     <section
       onClick={handleMenuToggle}
-      className={`fixed z-[9990] left-0 right-0 flex p-5 bg-bgColor-100 transition duration-500 ease-in-out transform ${
+      className={`fixed z-[9990] left-0 right-0 flex p-5 bg-bgColor-100 uppercase transition duration-500 ease-in-out transform ${
         ismenuOpen
           ? "translate-y-[5rem] opacity-100"
           : "-translate-y-[10rem] opacity-0"
