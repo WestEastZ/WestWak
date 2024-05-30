@@ -12,6 +12,7 @@ export default function Footer() {
             <div className="flex flex-col gap-1">
               {member.items.map((item) => (
                 <Link
+                  key={item[0]}
                   href={"/"}
                   className="font-medium transform duration-300 hover:scale-110 text-center"
                 >

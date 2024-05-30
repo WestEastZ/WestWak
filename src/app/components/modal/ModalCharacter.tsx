@@ -42,7 +42,7 @@ export default function CharacterModal({
             className={`flex flex-col justify-center items-center gap-2 text-xl `}
           >
             {member.items.map((item) => (
-              <div>{item}</div>
+              <div key={item[0]}>{item}</div>
             ))}
           </div>
         </section>

@@ -23,7 +23,7 @@ export default function HomeFirst() {
         <div className="text-[#1CBC74]">우왁굳</div>
         <section className="flex">
           {charactorName.map((item) => (
-            <div id={item.name} style={{ color: item.name }}>
+            <div key={item.name} id={item.name} style={{ color: item.name }}>
               {item.char}
             </div>
           ))}
