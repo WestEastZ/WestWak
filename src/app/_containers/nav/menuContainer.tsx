@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MemberList } from "../../constants/MemberList";
+import { MemberList } from "../../_constants/MemberList";
 
 export default function MenuContainer({
   ismenuOpen,

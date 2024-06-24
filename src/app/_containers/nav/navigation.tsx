@@ -12,8 +12,8 @@ export default function Navigation() {
   };
 
   return (
-    <>
-      <nav
+    <nav>
+      <section
         className={`fixed z-[9999] w-full p-5 bg-bgColor-100 transition duration-500 ease-in-out ${
           ismenuOpen ? "bg-opacity-100" : "bg-opacity-0"
         }`}
@@ -37,11 +37,11 @@ export default function Navigation() {
             <span></span>
           </div>
         </section>
-      </nav>
+      </section>
       <MenuContainer
         handleMenuToggle={handleMenuToggle}
         ismenuOpen={ismenuOpen}
       />
-    </>
+    </nav>
   );
 }

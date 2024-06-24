@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { MemberListType } from "../types/type";
+import { MemberListType } from "../../_types/type";
 import { useEffect, useState } from "react";
-import CharacterModal from "./modal/ModalCharacter";
+import CharacterModal from "../modal/ModalCharacter";
 import { createPortal } from "react-dom";
 
 export default function CardCharacter({ member }: { member: MemberListType }) {

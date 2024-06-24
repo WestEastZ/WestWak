@@ -1,6 +1,6 @@
 import "./global.css";
-import Navigation from "./containers/nav/navigation";
-import Footer from "./containers/footer/footer";
+import Navigation from "./_containers/nav/navigation";
+import Footer from "./_containers/footer/footer";
 
 export default function RootLayout({
   children,
@@ -10,8 +10,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigation />
         <div id="modal-portal"></div>
+        <Navigation />
         {children}
         <Footer />
       </body>

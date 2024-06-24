@@ -15,6 +15,8 @@ module.exports = {
       colors: {
         bgColor: {
           100: "#1C1D1F",
+          200: "#1A1A1A",
+          main: "#1CBC74",
         },
         characterColor: {
           wak: "#164532",

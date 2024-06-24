@@ -1,4 +1,4 @@
-import { MemberList } from "@/app/constants/MemberList";
+import { MemberList } from "@/app/_constants/MemberList";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="flex flex-col gap-1">
               {member.items.map((item) => (
                 <Link
-                  key={item[0]}
+                  key={item}
                   href={"/"}
                   className="font-medium transform duration-300 hover:scale-110 text-center"
                 >

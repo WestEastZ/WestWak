@@ -1,6 +1,6 @@
 "use client";
 
-import { MemberListType } from "@/app/types/type";
+import { MemberListType } from "@/app/_types/type";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -42,7 +42,7 @@ export default function CharacterModal({
             className={`flex flex-col justify-center items-center gap-2 text-xl `}
           >
             {member.items.map((item) => (
-              <div key={item[0]}>{item}</div>
+              <div key={item}>{item}</div>
             ))}
           </div>
         </section>

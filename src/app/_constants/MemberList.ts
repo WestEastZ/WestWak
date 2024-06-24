@@ -12,7 +12,7 @@ import gosegu_profile from "../../../public/image/gosegu_profile.webp";
 import viichan from "../../../public/image/viichan.webp";
 import viichan_profile from "../../../public/image/viichan_profile.webp";
 
-import { MemberListType } from "../types/type";
+import { MemberListType } from "../_types/type";
 
 export const MemberList: MemberListType[] = [
   {
