@@ -1,4 +1,4 @@
-import Title from "@/app/_components/header/title";
+import Title from "@/app/_components/header/Title";
 import CommentComponent_Developer from "./_clientComponents/CommentComponent_Developer";
 import IntroduceComponent_Developer from "./_serverComponents/IntroduceComponent_Developer";
 import SignComponent_Developer from "./_clientComponents/SignComponent_Developer";

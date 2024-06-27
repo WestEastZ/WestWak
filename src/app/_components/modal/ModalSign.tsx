@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Button from "../button/Button";
 import Input from "../input/Input";
+import { handleSignUp } from "@/app/_api/auth";
 
 export function ModalSign({
   modalText,
@@ -58,14 +59,22 @@ export function ModalSignUp() {
     setCheckPassoword(e.target.value);
   };
 
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      const response = await handleSignUp({ username, password });
+
+      console.log(response.username, response.message);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <form
       className="w-full h-full flex flex-col justify-between items-center text-xl text-white"
-      onSubmit={handleSignup}
+      onSubmit={onSubmitSignUp}
     >
       <Input
         type={"text"}
@@ -102,14 +111,21 @@ export function ModalSignIn() {
     setPassoword(e.target.value);
   };
 
-  const handleSignin = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      // const response = await handleSignIn({ username, password });
+      // console.log(JSON.stringify(response));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <form
       className="w-full h-full flex flex-col justify-around items-center text-xl text-white"
-      onSubmit={handleSignin}
+      onSubmit={onSubmitSignin}
     >
       <Input
         type={"text"}
