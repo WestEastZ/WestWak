@@ -14,7 +14,7 @@ export default function Input({
       placeholder={placeholder}
       onChange={onChange}
       autoComplete="off"
-      className="w-full h-14 p-2 bg-inherit border-b-2 focus:border-bgColor-main outline-none"
+      className="w-full h-12 p-2 bg-inherit border-b-2 focus:border-bgColor-main outline-none"
     />
   );
 }
