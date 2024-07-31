@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import westImage from "../../../../../public/image/westImage.webp";
+import westImage from "../../../../../../public/image/westImage.webp";
 import Link from "next/link";
 
 export default function IntroduceComponent_Developer() {
@@ -10,7 +10,7 @@ export default function IntroduceComponent_Developer() {
       className="transition-all duration-300 hover:scale-105"
     >
       <section
-        className="flex basis-2/3
+        className="flex
     items-center gap-20 p-10 font-semibold bg-bgColor-200 rounded-3xl border-white border-2"
       >
         <section>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F3F3F3]">
+    <footer className="mt-20 bg-[#F3F3F3]">
       <section className="w-[80rem] m-auto pt-10 flex justify-between text-base font-bold">
         {MemberList.map((member) => (
           <section key={member.name} className="flex flex-col gap-2">
@@ -57,7 +57,10 @@ export default function Footer() {
             />
           </Link>
         </div>
-        <Link href={"/developer"} className="text-base font-medium">
+        <Link
+          href={{ pathname: "/developer", query: { page: 1 } }}
+          className="text-base font-medium"
+        >
           {"개발자에게 한마디 하러 가기 >"}
         </Link>
       </section>

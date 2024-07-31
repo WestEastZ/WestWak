@@ -2,37 +2,32 @@
 
 import Button from "@/app/_components/button/Button";
 import Input from "@/app/_components/input/Input";
+import { useRouter } from "next/navigation";
+
 import React, { useState } from "react";
 
-export default function Signup() {
+export default function Signin() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassoword] = useState<string>("");
-  const [checkPassword, setCheckPassoword] = useState<string>("");
+  const router = useRouter();
 
   // username
-  const handleSignUpUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSignInUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
 
   // password
-  const handleSignUpPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSignInPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassoword(e.target.value);
   };
 
-  // check password
-  const handleSignUpCheckPassword = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setCheckPassoword(e.target.value);
-  };
-
-  // submit sign up
-  const onSubmitSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+  // submit sign in
+  const onSubmitSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/signup`,
+        `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/signin`,
         {
           method: "POST",
           headers: {
@@ -49,36 +44,36 @@ export default function Signup() {
         console.error("Server error response:", errorData);
         throw new Error(`Error ${response.status}: ${errorData.message}`);
       }
+
+      router.replace("/developer?page=1");
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className="w-full h-full p-24 flex flex-col items-center gap-8 border-2 bg-bgColor-200 rounded-3xl">
-      <div className="text-3xl font-bold">Sign Up</div>
+      <div className="text-3xl font-bold">Sign In</div>
       <form
         className="w-full h-full flex flex-col justify-between"
-        onSubmit={onSubmitSignUp}
+        onSubmit={onSubmitSignin}
       >
         <Input
           type="text"
           name="username"
           placeholder="Username"
-          onChange={handleSignUpUsername}
+          value={username}
+          onChange={handleSignInUsername}
         />
         <Input
           type="password"
           name="password"
           placeholder="Password"
-          onChange={handleSignUpPassword}
+          value={password}
+          onChange={handleSignInPassword}
         />
-        <Input
-          type="password"
-          name="check_password"
-          placeholder="Password"
-          onChange={handleSignUpCheckPassword}
-        />
-        <Button text="Sign Up" type="submit" />
+        <Button text="Sign In" type="submit" size="large" />
       </form>
     </div>
   );
