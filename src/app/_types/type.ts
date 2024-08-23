@@ -1,6 +1,6 @@
-import { createBoard } from "@/app/lip/board";
 import { StaticImageData } from "next/image";
 
+// Member
 export interface MemberListType {
   name: string;
   items: string[];
@@ -9,6 +9,7 @@ export interface MemberListType {
   profile_image: StaticImageData;
 }
 
+// Button
 export interface ButtonPropsType {
   text: string;
   type: "button" | "submit";
@@ -22,11 +23,21 @@ export type ButtonStyleType = {
 };
 
 export const ButtonStyle: ButtonStyleType = {
-  small: "w-1/5 h-10",
-  medium: "w-1/2 h-12",
-  large: "w-full h-12",
+  x_small: "w-1/12 h-8 text-base rounded-2xl",
+  small: "w-1/3 h-12 text-xl rounded-3xl",
+  medium: "w-1/2 h-12 text-xl rounded-3xl",
+  large: "w-full h-12 text-xl rounded-3xl",
 };
 
+export interface ButtonMoreType {
+  board: BoardType;
+  isModalOpen: boolean | null;
+  onToggle: () => void;
+  isUpdate: boolean;
+  setIsUpdate: (isUpdate: boolean) => void;
+}
+
+// Input
 export interface InputPropsType {
   type: string;
   name: string;
@@ -35,9 +46,11 @@ export interface InputPropsType {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
+// Board
 export interface BoardType {
   id: number;
   username: string;
+  userId: number;
   description: string;
   createdAt: null | string;
   status: BoardStatus;
@@ -46,6 +59,32 @@ export interface BoardType {
 
 export type BoardStatus = "PUBLIC" | "PRIVATE";
 
+// User
+export interface UserType {
+  id: number;
+  username: string;
+}
+
+export interface UserStore {
+  user: UserType | null;
+  setUser: (userData: UserType) => void;
+  clearUser: () => void;
+}
+
+// Params
 export interface searchParamsType {
   page: number;
+}
+
+// Video
+export interface VideoData {
+  [key: string]: any;
+}
+
+export interface ChannelVideos {
+  [channelName: string]: VideoInfo[];
+}
+
+export interface VideoInfo {
+  [key: string]: string;
 }
