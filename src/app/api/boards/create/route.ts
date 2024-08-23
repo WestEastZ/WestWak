@@ -33,6 +33,7 @@ export async function POST(request: NextRequest) {
         Authorization: access_token?.value ?? "",
       },
       body: JSON.stringify({ description, status }),
+      credentials: "include",
     });
 
     const data = await response.json();
