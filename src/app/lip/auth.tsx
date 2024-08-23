@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
+// 사용자 정보
 export const getUser = async () => {
   const cookieStore = cookies();
   const access_token = cookieStore.get("access_token");
@@ -15,6 +16,7 @@ export const getUser = async () => {
   return response.json();
 };
 
+// 토큰 인증
 export const authenticate = async () => {
   const cookieStore = cookies();
   const access_token = cookieStore.get("access_token");
@@ -31,6 +33,7 @@ export const authenticate = async () => {
   return { statusCode, data };
 };
 
+// 토큰 재발급
 export const getNewAccessToken = async () => {
   const cookieStore = cookies();
   const refresh_token = cookieStore.get("refresh_token");

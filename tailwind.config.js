@@ -31,15 +31,7 @@ module.exports = {
       fontFamily: {
         spoqa: ["SpoqaHanSansNeo", "sans-serif"],
       },
-      // backgroundImage: {
-      //   ine_profile: `url(/image/ine_profile.webp)`,
-      //   jing_profile: `url(/image/jing_profile.webp)`,
-      //   lilpa_profile: `url(/image/lilpa_profile.webp)`,
-      //   jururu_profile: `url(/image/jururu_profile.webp)`,
-      //   gosegu_profile: `url(/image/gosegu_profile.webp)`,
-      //   viichan_profile: `url(/image/viichan_profile.webp)`,
-      // },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };

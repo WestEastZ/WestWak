@@ -28,7 +28,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`${ButtonStyle[size]} rounded-3xl border-2 text-xl text-white hover:bg-bgColor-main hover:scale-105 hover:border-bgColor-main transition-all duration-300`}
+      className={`${ButtonStyle[size]} border-2 text-white hover:bg-bgColor-main hover:scale-105 hover:border-bgColor-main transition-all duration-300`}
       onClick={handler}
     >
       {text}

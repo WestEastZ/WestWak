@@ -4,19 +4,22 @@ import Button from "@/app/_components/button/Button";
 import CheckBoxLock from "@/app/_components/checkbox/CheckBoxLock";
 import { BoardStatus } from "@/app/_types/type";
 import { createBoard } from "@/app/lip/board";
+import { adjustHeight } from "@/app/util/textareaUtil";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function CommentWriteComponent_Developer() {
   const router = useRouter();
   const [description, setComment] = useState<string>("");
   const [status, setStatus] = useState<BoardStatus>("PUBLIC");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // description Change
   const handleChangeComment = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setComment(event.target.value);
+    adjustHeight(textareaRef);
   };
 
   // Board Status Check
@@ -38,10 +41,14 @@ export default function CommentWriteComponent_Developer() {
     }
   };
 
+  useEffect(() => {
+    adjustHeight(textareaRef);
+  }, []);
+
   return (
     <div>
       {/* 댓글 */}
-      <section className="w-full border-t-2 p-10">
+      <section className="w-full p-10">
         {/* 댓글 추가 */}
         <form
           className="w-4/5 m-auto flex flex-col justify-center items-center"
@@ -49,14 +56,20 @@ export default function CommentWriteComponent_Developer() {
         >
           <section className="flex w-full justify-center items-center gap-2">
             {/* input */}
-            <CheckBoxLock onClick={handleCheckBoardStatus} status={status} />
+            <CheckBoxLock
+              onClick={handleCheckBoardStatus}
+              status={status}
+              size={30}
+            />
             <textarea
+              ref={textareaRef}
               name="input_comment"
               id="input_comment"
               placeholder="개발자에게 한마디 하기"
-              className="resize-none w-full h-12 leading-[3rem] pl-2 text-white text-base bg-inherit border-b-2 focus:border-bgColor-main outline-none"
+              rows={1}
+              className="resize-none w-full h-12 min-h-[3rem] pl-4 py-2 leading-6 text-white bg-inherit border-b-2 focus:border-bgColor-main outline-none overflow-hidden"
               onChange={handleChangeComment}
-            ></textarea>
+            />
 
             {/* button */}
             <Button text="Comment" type="submit" size="small" />
