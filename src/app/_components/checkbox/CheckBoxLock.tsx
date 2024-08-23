@@ -7,21 +7,23 @@ import LockOpen from "../../../../public/icon/lock_open.svg";
 
 export default function CheckBoxLock({
   status,
+  size,
   onClick,
 }: {
   status: BoardStatus;
-  onClick: () => void;
+  size: number;
+  onClick?: () => void;
 }) {
   return (
     <div onClick={onClick}>
       {status === "PRIVATE" ? (
         <Lock
-          width={38}
-          height={38}
+          width={size}
+          height={size}
           className={`cursor-pointer fill-bgColor-main`}
         />
       ) : (
-        <LockOpen width={38} height={38} className={"cursor-pointer"} />
+        <LockOpen width={size} height={size} className={"cursor-pointer"} />
       )}
     </div>
   );
