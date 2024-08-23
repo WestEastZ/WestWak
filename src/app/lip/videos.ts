@@ -14,7 +14,13 @@ async function getThumbnail({ channelId }: { channelId: string }) {
 
     const data = await response.json();
 
-    return data.items[0]?.snippet.thumbnails.default.url;
+    const channelThumbnail = data.items[0]?.snippet.thumbnails.default.url;
+    const channelUrl = data.items[0]?.snippet.customUrl;
+
+    return {
+      channelThumbnail,
+      channelUrl,
+    };
   } catch (error) {
     console.error(`Failed to fetch channel thumbnail: ${error}`);
   }
@@ -44,7 +50,7 @@ export async function getVideos(groupName: string) {
       const channelTitle = playListData.items[0]?.snippet.channelTitle;
       const channelId = playListData.items[0]?.snippet.channelId;
 
-      const channelThumbnail = await getThumbnail({ channelId });
+      const channelData = await getThumbnail({ channelId });
 
       const videoPromises = playListData.items.map(async (item: any) => {
         const videoId = item.snippet.resourceId.videoId;
@@ -76,7 +82,7 @@ export async function getVideos(groupName: string) {
       const videos = await Promise.all(videoPromises);
 
       result[channelTitle] = {
-        channelThumbnail,
+        channelData,
         videos,
       };
     } catch (error) {
