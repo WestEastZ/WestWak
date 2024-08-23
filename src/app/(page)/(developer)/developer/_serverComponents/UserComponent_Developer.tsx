@@ -1,3 +1,4 @@
+import ButtonLogout from "@/app/_components/button/ButtonLogout";
 import { getUser } from "@/app/lip/auth";
 import Link from "next/link";
 import React from "react";
@@ -6,7 +7,7 @@ export default async function UserComponent_Developer() {
   const userResponse = await getUser();
 
   return (
-    <div className="basis-1/3 h-full flex justify-center items-center text-center">
+    <div className="w-full px-10">
       {userResponse.statusCode === 401 ? (
         <section className="flex flex-col gap-10">
           <div className="font-bold text-lg">
@@ -20,9 +21,9 @@ export default async function UserComponent_Developer() {
           </Link>
         </section>
       ) : (
-        <section>
-          <div>안녕하세요!</div>
-          <div>{userResponse.username}님</div>
+        <section className="w-4/5 m-auto flex justify-end items-center gap-3">
+          <div>{userResponse.username}</div>
+          <ButtonLogout text="Logout" type="button" size="small" />
         </section>
       )}
     </div>

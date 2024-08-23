@@ -63,7 +63,7 @@ export default function Signup() {
     }
   };
   return (
-    <div className="w-full h-full p-24 flex flex-col items-center gap-2 border-2 bg-bgColor-200 rounded-3xl">
+    <div className="w-full h-[34rem] p-24 flex flex-col items-center gap-2 border-2 bg-bgColor-200 rounded-3xl">
       <div className="text-3xl font-bold">Sign Up</div>
       <form
         className="w-full h-full flex flex-col justify-between"

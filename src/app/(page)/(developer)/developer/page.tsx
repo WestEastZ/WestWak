@@ -13,11 +13,15 @@ export default function Developer({
   return (
     <div>
       <Title title={"Talk To Developer"} />
-      <section className="flex justify-center items-center gap-20 p-10">
+
+      <section className="flex p-10">
         <IntroduceComponent_Developer />
-        <UserComponent_Developer />
+
+        <section className="flex-grow">
+          <UserComponent_Developer />
+          <CommentComponent_Developer searchParams={searchParams} />
+        </section>
       </section>
-      <CommentComponent_Developer searchParams={searchParams} />
     </div>
   );
 }
