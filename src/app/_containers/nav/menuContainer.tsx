@@ -20,12 +20,12 @@ export default function MenuContainer({
       <div className="w-[80rem] m-auto grid grid-cols-7 place-items-center gap-10">
         {MemberList.map((member) => (
           <li key={member.name} className={`nav-center w-full h-full`}>
-            <Link href={`/${member.name}`}>
+            <Link href={`/video/${member.name}`}>
               <div
                 className={`text-2xl font-bold transition-all duration-300 hover:scale-125`}
                 style={{
                   color:
-                    member.name === "Woowakgood" ? "#1CBC74" : member.color,
+                    member.name === "woowakgood" ? "#1CBC74" : member.color,
                 }}
               >
                 {member.name}
