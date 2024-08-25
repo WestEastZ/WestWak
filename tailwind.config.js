@@ -19,7 +19,7 @@ module.exports = {
           main: "#1CBC74",
         },
         characterColor: {
-          wak: "#164532",
+          woowakgood: "#1CBC74",
           ine: "#8A2BE2",
           jingburger: "#F0A957",
           lilpa: "#3330db",

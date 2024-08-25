@@ -1,5 +1,5 @@
-import Title from "@/app/_components/header/Title";
-import ChannelList from "@/app/_containers/video/ChannelList";
+import Title from "@/app/_components/common/header/Title";
+import ChannelList from "@/app/_components/layout/video/ChannelList";
 import { getVideos } from "@/app/lip/videos";
 import React from "react";
 
