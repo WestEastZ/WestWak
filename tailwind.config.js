@@ -13,10 +13,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bgColor: {
-          100: "#1C1D1F",
-          200: "#1A1A1A",
+        customColor: {
+          background: "#1B1B1B",
+          container: "#202020",
+          box: "#2C2C2C",
+          border: "#373737",
           main: "#1CBC74",
+          text: "#9ca3af",
+          light_box: "#A9A9A9",
         },
         characterColor: {
           woowakgood: "#1CBC74",
