@@ -21,7 +21,7 @@ export default function CharacterModal({
       onClick={handleCloseCharacterModal}
     >
       <section
-        className={`w-[60rem] h-[30rem] flex border-2 rounded-[3rem] transform duration-500 overflow-hidden ${
+        className={`w-[60rem] h-[30rem] flex border rounded-[3rem] transform duration-500 overflow-hidden ${
           hidden ? "scale-0" : "scale-100"
         }`}
       >
