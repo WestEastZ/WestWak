@@ -45,7 +45,7 @@ function VideoList({ videos }: { videos: VideoInfo[] }) {
           {/* info */}
           <section className="flex flex-col gap-1 mt-2">
             <h3 className="font-semibold">{video.title}</h3>
-            <div className="flex gap-2 text-sm text-gray-400">
+            <div className="flex gap-2 text-sm text-customColor-text">
               <div className="flex gap-1">
                 <ViewIcon width={18} height={18} fill="currentColor" />
                 {video.viewCount}
