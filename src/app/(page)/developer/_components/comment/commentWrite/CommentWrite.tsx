@@ -15,36 +15,35 @@ export default function CommentWrite() {
   } = useCommentCreate();
 
   return (
-    <div>
-      {/* 댓글 */}
-      <section className="w-full p-10">
-        {/* 댓글 추가 */}
-        <form
-          className="w-4/5 m-auto flex flex-col justify-center items-center"
-          onSubmit={handleOnsubmitComment}
-        >
-          <section className="flex w-full justify-center items-center gap-2">
-            {/* input */}
-            <CheckBoxLock
-              onClick={handleCheckBoardStatus}
-              status={status}
-              size={30}
-            />
-            <textarea
-              ref={textareaRef}
-              name="input_comment"
-              id="input_comment"
-              placeholder="개발자에게 한마디 하기"
-              rows={1}
-              className="resize-none w-full h-12 min-h-[3rem] pl-4 py-2 leading-6 text-white bg-inherit border-b-2 focus:border-bgColor-main outline-none overflow-hidden"
-              onChange={handleChangeComment}
-            />
+    <div className="w-full">
+      {/* 댓글 추가 */}
+      <form
+        className="flex flex-col justify-center items-center"
+        onSubmit={handleOnsubmitComment}
+      >
+        <section className="flex w-full justify-center items-center gap-2">
+          {/* <div className="flex w-full items-center gap-2"> */}
+          {/* input */}
+          <CheckBoxLock
+            onClick={handleCheckBoardStatus}
+            status={status}
+            size={30}
+          />
+          <textarea
+            ref={textareaRef}
+            name="input_comment"
+            id="input_comment"
+            placeholder="개발자에게 한마디 하기"
+            rows={1}
+            className="resize-none w-full h-12 min-h-[3rem] pl-4 py-2 leading-6 text-white bg-inherit border-b border-customColor-border focus:border-customColor-main outline-none overflow-hidden"
+            onChange={handleChangeComment}
+          />
+          {/* </div> */}
 
-            {/* button */}
-            <Button text="Comment" type="submit" size="small" />
-          </section>
-        </form>
-      </section>
+          {/* button */}
+          <Button text="댓글" type="submit" size="x_small" />
+        </section>
+      </form>
     </div>
   );
 }

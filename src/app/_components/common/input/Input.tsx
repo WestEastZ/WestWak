@@ -1,22 +1,31 @@
-import { InputPropsType } from "@/app/_types/type";
+import { InputPropsType } from "@/app/_types/input.type";
 import React from "react";
 
 export default function Input({
+  id,
   type,
-  name,
   placeholder,
-  value,
-  onChange,
+  name,
+  register,
+  rules,
+  error,
 }: InputPropsType) {
   return (
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      autoComplete="off"
-      className="w-full h-12 p-2 bg-inherit border-b-2 focus:border-bgColor-main outline-none"
-    />
+    <div className="w-full flex flex-col gap-2">
+      <label htmlFor={`${id}`} className="pl-2">
+        {placeholder}
+      </label>
+      <input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        {...register(name, rules)}
+        autoComplete="off"
+        className="w-full h-12 p-4 bg-inherit border-2 rounded-2xl border-customColor-border focus:border-customColor-main outline-none"
+      />
+      {error && (
+        <span className="text-red-500 text-sm pl-2">{error.message}</span>
+      )}
+    </div>
   );
 }

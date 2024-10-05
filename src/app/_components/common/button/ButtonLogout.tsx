@@ -18,7 +18,7 @@ export default function ButtonLogout({ text }: ButtonPropsType) {
 
   return (
     <div
-      className={`text-base text-gray-500 hover:text-bgColor-main hover:scale-105 transition-all duration-300 cursor-pointer`}
+      className={`text-base text-customColor-text hover:text-customColor-main transition-all duration-300 cursor-pointer`}
       onClick={clearToken}
     >
       {text}

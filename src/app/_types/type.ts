@@ -24,9 +24,9 @@ export type ButtonStyleType = {
 
 export const ButtonStyle: ButtonStyleType = {
   x_small: "w-1/12 h-8 text-base rounded-2xl",
-  small: "w-1/3 h-12 text-xl rounded-3xl",
-  medium: "w-1/2 h-12 text-xl rounded-3xl",
-  large: "w-full h-12 text-xl rounded-3xl",
+  small: "w-1/3 h-12 text-lg rounded-3xl",
+  medium: "w-1/2 h-12 text-lg rounded-3xl",
+  large: "w-full h-12 text-lg rounded-3xl",
 };
 
 export interface ButtonMoreType {
@@ -38,13 +38,13 @@ export interface ButtonMoreType {
 }
 
 // Input
-export interface InputPropsType {
-  type: string;
-  name: string;
-  placeholder: string;
-  value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-}
+// export interface InputPropsType {
+//   type: string;
+//   name: string;
+//   placeholder: string;
+//   value: string;
+//   onChange: React.ChangeEventHandler<HTMLInputElement>;
+// }
 
 // Board
 export interface BoardType {
@@ -87,4 +87,30 @@ export interface ChannelVideos {
 
 export interface VideoInfo {
   [key: string]: string;
+}
+
+// Iconexport
+export type SVGComponent = React.FC<React.SVGProps<SVGSVGElement>>;
+export type IconType = SVGComponent | StaticImageData;
+
+// information
+export interface InformationType {
+  id: number;
+  title: string;
+  artist: string;
+  album: string;
+  date: string;
+  length: string;
+  Youtube: string;
+  Genie: string;
+  Melon: string;
+  Bugs: string;
+  Flo: string;
+  Spotify: string;
+}
+
+// chart data
+export interface ChartData {
+  x: string;
+  y: number;
 }

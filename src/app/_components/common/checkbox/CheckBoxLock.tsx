@@ -20,7 +20,7 @@ export default function CheckBoxLock({
         <Lock
           width={size}
           height={size}
-          className={`cursor-pointer fill-bgColor-main`}
+          className={`cursor-pointer fill-customColor-main`}
         />
       ) : (
         <LockOpen width={size} height={size} className={"cursor-pointer"} />

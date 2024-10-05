@@ -1,44 +1,55 @@
+import { SignFormType } from "../_types/input.type";
+
 // 로그인
-export const signin = async ({
-  username,
-  password,
-}: {
-  username: string;
-  password: string;
-}) => {
+export const signin = async (data: SignFormType) => {
   const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/signin`;
+  const { username, password } = data;
 
-  const response = await fetch(apiURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-    cache: "no-store",
-    credentials: "include",
-  });
+  try {
+    const response = await fetch(apiURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+      credentials: "include",
+    });
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.error("Server error response:", errorData);
-    throw new Error(`Error ${response.status}: ${errorData.message}`);
+    return response.json();
+  } catch (error) {
+    console.error(`Failed to Sign In:`, error);
   }
+};
 
-  return response.json();
+// 회원가입
+export const signup = async (data: SignFormType) => {
+  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/signup`;
+  const { username, password } = data;
+
+  try {
+    const response = await fetch(apiURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+      cache: "no-store",
+      credentials: "include",
+    });
+    return response.json();
+  } catch (error) {}
 };
 
 // 로그아웃
 export const logout = async () => {
   const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/logout`;
 
-  const response = await fetch(apiURL, {
-    method: "POST",
-    credentials: "include",
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.error("Server error response:", errorData);
-    throw new Error(`Error ${response.status}: ${errorData.message}`);
+  try {
+    const response = await fetch(apiURL, {
+      method: "POST",
+      credentials: "include",
+    });
+  } catch (error) {
+    console.error(`Failed to Logout:`, error);
   }
 };

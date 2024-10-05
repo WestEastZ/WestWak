@@ -60,7 +60,7 @@ export default function TextareaComment({
       ) : (
         <div>
           {board.status === "PRIVATE" ? (
-            <div className="text-gray-400">비밀 댓글입니다.</div>
+            <div className="text-customColor-text">비밀 댓글입니다.</div>
           ) : (
             <div>{description}</div>
           )}

@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { BoardStatus } from "../_types/type";
-import { adjustHeight } from "../util/textareaUtil";
+import { adjustHeight } from "../util/adjustHeight";
 import { createBoard } from "../lip/board";
 
 export default function useCommentCreate() {
@@ -32,6 +32,10 @@ export default function useCommentCreate() {
     event.preventDefault();
 
     try {
+      if (description.length === 0) {
+        return;
+      }
+
       await createBoard({ description, status });
       setComment("");
       setStatus("PUBLIC");

@@ -29,13 +29,13 @@ export default async function CommentList({
   }
 
   return (
-    <div className="flex flex-col justify-center items-center gap-10">
+    <div className="flex flex-col items-center gap-10">
       <Comment boards={boards} />
 
       {/* button */}
       <section className="w-1/4 flex">
         {pageGroup > 1 && <ButtonBack page={startPage - 5} />}
-        <div className="flex justify-around grow">{pageButton}</div>
+        <div className="flex justify-around flex-grow">{pageButton}</div>
         {pageGroup < lastPageGroup && <ButtonNext page={endPage + 1} />}
       </section>
     </div>
