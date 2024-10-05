@@ -14,6 +14,7 @@ import viichan from "../../../public/image/viichan.webp";
 import viichan_profile from "../../../public/image/viichan_profile.webp";
 
 import { MemberListType } from "../_types/type";
+import { ChannelGroup } from "../_types/channelGrop.type";
 
 export const MemberList: MemberListType[] = [
   {
@@ -21,7 +22,7 @@ export const MemberList: MemberListType[] = [
     items: [
       "우왁굳의 게임방송",
       "왁타버스",
-      "왁타버스 제로",
+      "우왁굳의 풀업로드",
       "우왁굳의 반찬가게",
     ],
     color: "#164532",
@@ -77,11 +78,11 @@ export const MemberList: MemberListType[] = [
   },
 ];
 
-export const channelGroup = {
+export const channelGroup: ChannelGroup = {
   woowakgood: {
     wak: process.env.WOOWAKGOOD_GAME_API_KEY,
     wakta: process.env.WAKTAVERSE_API_KEY,
-    zero: process.env.WAKTAVERSE_ZERO_API_KEY,
+    full: process.env.WOOWAKGOOD_FULL_API_KEY,
     side: process.env.WOOWAKGOOD_SIDE_API_KEY,
   },
   ine: {
@@ -115,3 +116,78 @@ export const channelGroup = {
     dowon: process.env.VIICHAN_DOWON_API_KEY,
   },
 };
+
+export const categories = [
+  { value: "woowakgood", label: "우왁굳" },
+  { value: "ine", label: "아이네" },
+  { value: "jingburger", label: "징버거" },
+  { value: "lilpa", label: "릴파" },
+  { value: "jururu", label: "주르르" },
+  { value: "gosegu", label: "고세구" },
+  { value: "viichan", label: "비챤" },
+];
+
+export const subCategories = {
+  woowakgood: [
+    { value: "wak", label: "우왁굳" },
+    { value: "side", label: "우왁굳의 반찬가게" },
+    { value: "full", label: "우왁굳z" },
+    { value: "wakta", label: "왁타버스" },
+  ],
+  ine: [
+    { value: "ine", label: "아이네 INE" },
+    { value: "boil", label: "데친 숙주나물" },
+    { value: "replay", label: "아이네 다시보기" },
+  ],
+  jingburger: [
+    { value: "jing", label: "징버거 JINGBURGER" },
+    { value: "zzang", label: "징버거가 ZZANG센 주제에 너무 신중하다" },
+    { value: "infinity", label: "징버거의 무한 츠쿠요미" },
+  ],
+  lilpa: [
+    { value: "lilpa", label: "릴파 lilpa" },
+    { value: "koko", label: "릴파의 순간들" },
+    { value: "replay", label: "릴파 다시보기" },
+  ],
+  jururu: [
+    { value: "jururu", label: "주르르 JURURU" },
+    { value: "seal", label: "봉인 풀린 주르르" },
+    { value: "replay", label: "주르르 다시보기" },
+  ],
+  gosegu: [
+    { value: "gosegu", label: "고세구 GOSEGU" },
+    { value: "more", label: "고세구의 짧은거" },
+    { value: "food", label: "밥친구 고세구" },
+  ],
+  viichan: [
+    { value: "viichan", label: "비챤 VIichan" },
+    { value: "with", label: "비챤의 나랑놀아" },
+    { value: "dowon", label: "비챤의 무릉도원" },
+  ],
+};
+
+// export const rewind = [
+//   { x: "20211217", y: 80 },
+//   { x: "20220313", y: 85 },
+//   { x: "20220314", y: 92 },
+//   { x: "20230623", y: 95 },
+//   { x: "20230624", y: 95 },
+//   { x: "20230625", y: 65 },
+//   { x: "20230626", y: 60 },
+//   { x: "20230627", y: 79 },
+//   { x: "20230722", y: 92 },
+//   { x: "20230723", y: 100 },
+//   { x: "20230818", y: 66 },
+//   { x: "20230819", y: 47 },
+//   { x: "20230820", y: 43 },
+//   { x: "20230821", y: 40 },
+//   { x: "20230822", y: 50 },
+//   { x: "20230823", y: 69 },
+//   { x: "20230824", y: 76 },
+//   { x: "20230825", y: 84 },
+//   { x: "20230826", y: 97 },
+//   { x: "20230827", y: 82 },
+//   { x: "20230828", y: 97 },
+//   { x: "20230924", y: 94 },
+//   { x: "20230925", y: 77 },
+// ];
