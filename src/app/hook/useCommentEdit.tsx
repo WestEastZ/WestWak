@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BoardStatus, BoardType } from "../_types/type";
-import { adjustHeight } from "../util/textareaUtil";
+import { adjustHeight } from "../util/adjustHeight";
 import { useRouter } from "next/navigation";
 import { updateBoard } from "../lip/board";
 
