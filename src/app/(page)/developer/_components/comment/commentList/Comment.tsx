@@ -12,7 +12,7 @@ export default function Comment({ boards }: { boards: BoardType[] }) {
   };
 
   return (
-    <div className="w-full pl-10 pr-10 flex flex-col gap-12">
+    <div className="w-full flex flex-col gap-10">
       {boards.map((board: BoardType) => (
         <CardComment
           key={board.id}
