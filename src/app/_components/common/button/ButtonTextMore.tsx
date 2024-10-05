@@ -18,7 +18,7 @@ export default function ButtonTextMore({
       {text.length > 100 && (
         <button
           onClick={toggleExpand}
-          className="text-gray-400 hover:underline mt-1 text-sm"
+          className="text-customColor-text hover:underline mt-1 text-sm"
         >
           {isExpanded ? "접기" : "더보기"}
         </button>

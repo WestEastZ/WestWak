@@ -11,7 +11,7 @@ export default function ButtonNext({ page }: { page: number }) {
         width="20px"
         fill="#e8eaed"
         className={
-          "flex-grow-5 cursor-pointer hover:fill-bgColor-main hover:scale-125 transition-all duration-200"
+          "flex-grow-5 cursor-pointer hover:fill-customColor-main transition-all duration-200"
         }
       >
         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />

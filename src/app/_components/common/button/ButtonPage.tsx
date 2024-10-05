@@ -17,7 +17,7 @@ export default function ButtonPage({
       className={`text-lg ${
         isCurrentPage
           ? "text-bgColor-main"
-          : "text-white hover:text-bgColor-main hover:scale-125 transition-all duration-200"
+          : "text-white hover:text-customColor-main transition-all duration-200"
       }`}
     >
       {page}
