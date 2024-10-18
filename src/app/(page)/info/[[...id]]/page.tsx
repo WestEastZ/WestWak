@@ -14,16 +14,16 @@ export default async function page({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      <Title title="음원 정보" />
+      <Title title="Music Info" />
 
       <div className="flex gap-4">
-        <section className="flex flex-col gap-4  w-1/3">
+        <section className="flex w-1/3 flex-col gap-4">
           <MusicContainer data={responseInfomation} />
           <LinkContainer data={responseInfomation} />
           <YoutubeMusicContainer data={responseInfomation} />
         </section>
 
-        <section className="flex flex-col gap-4 w-2/3">
+        <section className="flex w-2/3 flex-col gap-4">
           {responseChart && <ChartContainer data={responseChart} />}
         </section>
       </div>

@@ -10,30 +10,28 @@ export default function MenuContainer({
   return (
     <section
       onClick={handleMenuToggle}
-      className={`fixed z-[9990] left-0 right-0 flex p-5 bg-customColor-background opacity-90 transition duration-500 ease-in-out transform ${
-        ismenuOpen
-          ? "translate-y-[4.75rem] opacity-100"
-          : "-translate-y-[10rem] opacity-0"
+      className={`absolute z-[9999] h-full top-0 left-0 right-0 flex transition duration-500 ease-in-out transform ${
+        ismenuOpen ? "" : "-translate-y-[10rem]"
       }`}
     >
-      <div className="w-[40rem] m-auto flex justify-around text-white text-2xl font-semibold">
+      <div className="w-[40rem] m-auto flex justify-around text-white text-lg font-semibold">
         <Link
           href={"/info"}
           className="hover:scale-105 hover:text-customColor-main transition-all duration-200"
         >
-          음원 정보
+          Music Info
         </Link>
         <Link
           href={"/recomended"}
           className="hover:scale-105 hover:text-customColor-main transition-all duration-200"
         >
-          추천 & Live
+          Recent & Live
         </Link>
         <Link
           href={"/waktaface"}
           className="hover:scale-105 hover:text-customColor-main transition-all duration-200"
         >
-          WAKTAFACE
+          WaktaFace
         </Link>
       </div>
     </section>

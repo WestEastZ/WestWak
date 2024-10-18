@@ -14,13 +14,13 @@ export default function ContentsTitle({
 }) {
   return (
     <div className="flex items-center gap-3 font-bold">
-      <div className="p-1.5 bg-customColor-box rounded-md">
+      <div className="rounded-md bg-customColor-box p-1.5">
         {typeof Icon === "function" ? (
           // SVG 컴포넌트인 경우
           <Icon width={24} height={24} fill="#1CBC74" />
         ) : (
           // StaticImageData인 경우
-          <div className="w-[24px] h-[24px] overflow-hidden">
+          <div className="h-[24px] w-[24px] overflow-hidden">
             <Image
               src={Icon}
               width={24}

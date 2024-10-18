@@ -12,17 +12,15 @@ export default function Navigation() {
   };
 
   return (
-    <nav>
+    <nav className="relative">
       <section
-        className={`fixed z-[9999] w-full p-5 bg-customColor-background transition duration-500 ease-in-out ${
-          ismenuOpen ? "bg-opacity-90" : "bg-opacity-0"
-        }`}
+        className={`sticky z-[9999] flex w-full items-center justify-start p-4 transition duration-500 ease-in-out`}
       >
         {/* text */}
-        <section className="flex justify-between items-center max-w-[80rem] m-auto text-3xl font-bold text-white">
+        <section className="m-auto flex w-full max-w-[80rem] items-center justify-between text-3xl font-bold text-white">
           <Link
             href={"/"}
-            className="flex justify-center items-center text-3xl cursor-pointer text-characterColor-woowakgood"
+            className="flex cursor-pointer items-center justify-center text-3xl text-characterColor-woowakgood"
           >
             WAKVIDEO
           </Link>

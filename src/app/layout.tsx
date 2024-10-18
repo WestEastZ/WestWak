@@ -9,10 +9,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex min-h-screen flex-col">
         <div id="modal-portal"></div>
         <Navigation />
-        {children}
+        <main className="flex flex-grow flex-col">{children}</main>
         <Footer />
       </body>
     </html>

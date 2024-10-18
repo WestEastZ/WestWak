@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function LoadingSnail() {
   return (
-    <div className="w-full flex flex-col gap-10 items-center justify-center">
+    <div className="w-full h-full flex flex-col gap-10 items-center justify-center">
       <Image src={Snail} alt="loading" width={250} height={250} />
-      <div>
+      {/* <div>
         {"분석중...".split("").map((char, index) => (
           <span
             key={index}
@@ -16,7 +16,7 @@ export default function LoadingSnail() {
             {char}
           </span>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

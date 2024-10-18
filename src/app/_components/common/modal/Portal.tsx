@@ -77,7 +77,7 @@ export default function Portal({
       {/* middle modal */}
       {type === "middle" && (
         <div
-          className={`fixed z-[9999] w-[40rem] h-[40rem] m-auto p-4 flex flex-col justify-between gap-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-customColor-container rounded-2xl`}
+          className={`fixed z-[9999] w-[45rem] h-[45rem] m-auto p-4 flex flex-col justify-between gap-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-customColor-container rounded-2xl`}
           onClick={(e) => e.stopPropagation()}
         >
           {children}
