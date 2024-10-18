@@ -1,18 +1,27 @@
+import React from "react";
+
 export default function HomeSecond() {
+  const charactorName = [
+    { char: "이", name: "#8A2BE2" },
+    { char: "세", name: "#F0A957" },
+    { char: "계", name: "#3330db" },
+    { char: "아", name: "#FF008C" },
+    { char: "이", name: "#467EC6" },
+    { char: "돌", name: "#95C100" },
+  ];
+
   return (
-    <div className="h-[60vh] flex flex-col justify-center items-center gap-10">
-      {/* 메인 안내 문구 */}
-      <section className="flex flex-col justify-center items-center gap-5 text-4xl text-white font-bold">
-        <div>왁타버스를</div>
-        <div>쉽고 빠르게 볼 수 있는</div>
-        <div>
-          <span className="text-[#1CBC74]">왁비디오</span>입니다
-        </div>
-      </section>
-      {/* 서브 안내 문구 */}
-      <section className="flex flex-col justify-center items-center gap-2 text-xl text-white font-normal">
-        <p>왁비디오는 수많은 왁타버스 채널을 돌아다니는게</p>
-        <p>귀찮아서 만든 유용한 웹사이트입니다</p>
+    <div className="flex h-[100vh] flex-col items-center justify-center gap-10 border">
+      <section className="w-ull z-[9980] flex flex-col items-start gap-3 text-6xl font-bold text-white">
+        <div className="text-[#1CBC74]">우왁굳</div>
+        <section className="flex">
+          {charactorName.map((item) => (
+            <div key={item.name} id={item.name} style={{ color: item.name }}>
+              {item.char}
+            </div>
+          ))}
+        </section>
+        <p>최신 영상을 한눈에</p>
       </section>
     </div>
   );
