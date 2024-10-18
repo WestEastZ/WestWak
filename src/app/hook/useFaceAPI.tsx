@@ -15,6 +15,9 @@ export default function useFaceAPI(data: string[]) {
   const [blobs, setBlobs] = useState<BlobImg[]>([]);
 
   const [result, setResult] = useState<ResultType | undefined>(undefined);
+  const [resultArr, setResultArr] = useState<ResultType[] | undefined>(
+    undefined
+  );
   const [isResultOpen, setIsResultOpen] = useState<boolean>(false);
 
   // face-api.js 모델 로드
@@ -42,6 +45,10 @@ export default function useFaceAPI(data: string[]) {
     }
 
     fetchBlobs();
+    return () => {
+      // 생성된 모든 Blob URL 해제
+      blobs.forEach((value) => URL.revokeObjectURL(value.blob));
+    };
   }, [data]);
 
   // Compare Img
@@ -67,14 +74,19 @@ export default function useFaceAPI(data: string[]) {
         detectionImages
       );
 
-      console.log(distance);
-
       if (distance) {
+        const sortDistance = distance.sort((a, b) => {
+          return b.distance - a.distance;
+        });
+
         const closestMatch = distance.reduce((prev, current) =>
           prev.distance > current.distance ? prev : current
         );
 
         setResult(closestMatch);
+
+        const topThree = sortDistance.slice(0, 3);
+        setResultArr(topThree);
       }
     } catch (error) {
       console.log(error);
@@ -124,8 +136,10 @@ export default function useFaceAPI(data: string[]) {
           file.detection.descriptor
         );
 
+        const percent = (1 - distance) * 100;
+
         return {
-          distance: 1 - distance,
+          distance: percent,
           fileName: file.fileName,
           blob: file.blob,
         };
@@ -138,5 +152,12 @@ export default function useFaceAPI(data: string[]) {
     }
   };
 
-  return { compare, result, isResultOpen, setIsResultOpen };
+  return {
+    compare,
+    result,
+    resultArr,
+    setResultArr,
+    isResultOpen,
+    setIsResultOpen,
+  };
 }
