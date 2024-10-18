@@ -15,8 +15,8 @@ function LinkIcon({
       <Image
         src={img}
         alt={alt}
-        width={36}
-        height={36}
+        width={28}
+        height={28}
         className="transform duration-300 hover:scale-110"
       />
     </Link>
@@ -25,38 +25,40 @@ function LinkIcon({
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F3F3F3] bottom-0 right-0 w-full mt-10">
-      <section className="w-[80rem] m-auto py-8 flex flex-col gap-1 font-bold text-left">
-        <div className="text-3xl">WAKVIDEO</div>
-        <div className="relative font-medium">
-          왁비디오와 함께 최신 영상을 만나보세요
+    <footer className="w-full bg-customColor-background_black text-customColor-text">
+      <section className="m-auto flex w-[80rem] flex-col gap-4 py-4 text-left font-bold">
+        <div className="flex flex-col">
+          <span className="text-3xl text-customColor-main">WAKVIDEO</span>
+          <span className="relative font-medium">
+            왁비디오와 함께 최신 영상을 만나보세요
+          </span>
         </div>
-        <div className="flex gap-2 justify-start items-center">
+        <div className="flex items-center justify-start gap-4">
           <LinkIcon
             url={"https://cafe.naver.com/steamindiegame"}
             alt={"cafe"}
-            img={"/image/cafe.webp"}
+            img={"/icon/naver.png"}
           />
           <LinkIcon
             url={"https://www.instagram.com/instawakgood/?hl=ko"}
             alt={"insta"}
-            img={"/image/instagram.png"}
+            img={"/icon/insta.svg"}
           />
           <LinkIcon
             url={"https://bj.afreecatv.com/ecvhao"}
             alt={"afreecatv"}
-            img={"/image/tv.png"}
+            img={"/icon/afreeaca.png"}
           />
         </div>
         <Link
           href={{ pathname: "/developer", query: { page: 1 } }}
-          className="text-base font-medium"
+          className="w-fit transform text-base font-medium duration-300 hover:scale-105"
         >
           {"개발자에게 한마디 하러 가기 >"}
         </Link>
       </section>
-      <section className="p-3 bg-customColor-background text-white">
-        <div className="w-[80rem] m-auto font-medium text-sm">
+      <section className="bg-customColor-background_black p-1 text-customColor-text">
+        <div className="m-auto w-[80rem] text-sm font-medium">
           COPYRIGHT ⓒ WAKVIDEO. ALL RIGHT RESERVED
         </div>
       </section>

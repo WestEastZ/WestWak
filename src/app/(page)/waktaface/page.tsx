@@ -5,7 +5,7 @@ import CompareFace from "./_components/CompareFace";
 export default function page() {
   return (
     <div>
-      <Title title="WAKTAFACE" />
+      <Title title="WaktaFace" />
       <CompareFace />
     </div>
   );

@@ -1,4 +1,4 @@
-import wak from "../../../public/image/wak.webp";
+import wak from "../../../public/image/woowak.webp";
 import wak_profile from "../../../public/image/wak_profile.webp";
 import ine from "../../../public/image/ine.webp";
 import ine_profile from "../../../public/image/ine_profile.webp";

@@ -7,7 +7,7 @@ import RecentVideo from "./_components/RecentVideo";
 export default function page() {
   return (
     <div>
-      <Title title="추천 & Live" />
+      <Title title="Recent & Live" />
 
       <div className="flex flex-col gap-4">
         <section className="flex">

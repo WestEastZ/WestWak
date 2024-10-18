@@ -22,7 +22,14 @@ export default function Camera({ data }: { data: string[] }) {
   const [imgSrc, setImgSrc] = useState<string | null | undefined>(undefined);
   const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
 
-  const { compare, result, isResultOpen, setIsResultOpen } = useFaceAPI(data);
+  const {
+    compare,
+    result,
+    resultArr,
+    setResultArr,
+    isResultOpen,
+    setIsResultOpen,
+  } = useFaceAPI(data);
 
   const handleCompare = async () => {
     await compare(imgSrc);
@@ -41,9 +48,8 @@ export default function Camera({ data }: { data: string[] }) {
     setCHoseMethod(false);
     setImgSrc(undefined);
     setMethodFile(undefined);
+    setResultArr(undefined);
   };
-
-  console.log(result);
 
   return (
     <div className="flex gap-4">
@@ -148,7 +154,7 @@ export default function Camera({ data }: { data: string[] }) {
         type="middle"
       >
         <ContentsTitle title="결과" Icon={Ai} />
-        <ModalWakfaceResult result={result} />
+        <ModalWakfaceResult result={result} resultArr={resultArr} />
       </Portal>
     </div>
   );

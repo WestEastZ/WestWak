@@ -1,35 +1,19 @@
 import Image from "next/image";
-import bg from "../../../../../public/image/waktaverse.png";
+import bg from "../../../../../public/image/waktaverse.webp";
+import SwiperComponent from "../../common/Swiper/SwiperCompoenent";
 
 export default function HomeFirst() {
-  const charactorName = [
-    { char: "이", name: "#8A2BE2" },
-    { char: "세", name: "#F0A957" },
-    { char: "계", name: "#3330db" },
-    { char: "아", name: "#FF008C" },
-    { char: "이", name: "#467EC6" },
-    { char: "돌", name: "#95C100" },
-  ];
   return (
-    <div className="relative w-screen h-[100vh] flex justify-center items-center">
-      {/* 메인 이미지 */}
-      <Image src={bg} alt="" fill className="object-cover" />
+    <div className="vh-minus-2rem flex flex-col items-center">
+      <Image src={bg} alt="bg" fill className="object-cover" />
 
-      {/* 불투명 배경화면 */}
-      <div className="absolute w-full h-full left-0 top-0 bg-black opacity-70"></div>
+      <div className="absolute left-0 top-0 h-full w-full bg-black opacity-80"></div>
 
-      {/* 메인 안내 문구 */}
-      <section className="z-[9980] flex flex-col items-start gap-3 w-ull text-6xl text-white font-bold">
-        <div className="text-[#1CBC74]">우왁굳</div>
-        <section className="flex">
-          {charactorName.map((item) => (
-            <div key={item.name} id={item.name} style={{ color: item.name }}>
-              {item.char}
-            </div>
-          ))}
-        </section>
-        <p>최신 영상을 한눈에</p>
-      </section>
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <span className="typingEffect" data-text="WAKVIDEO">
+          {"WAKVIDEO"}
+        </span>
+      </div>
     </div>
   );
 }

@@ -37,10 +37,10 @@ export default function UploadImg({
       setPreviewImg(URL.createObjectURL(file));
     }
 
-    console.log(watchImg);
+    return () => {};
   }, [watchImg]);
 
-  const onSubmitImg = async (data: IFormInput) => {
+  const onSubmitImg = async () => {
     // const formData = new FormData();
     // const upLoadImg = data.image[0];
     // formData.append("image", upLoadImg);
@@ -52,10 +52,10 @@ export default function UploadImg({
     // const text = await response.text();
     // return text;
     try {
-      const upLoadImg = data.image[0];
+      const file = watchImg[0];
 
-      if (upLoadImg) {
-        const base64Img = await convertBase64(upLoadImg);
+      if (file) {
+        const base64Img = await convertBase64(file);
         setImgSrc(base64Img);
       }
     } catch (error) {

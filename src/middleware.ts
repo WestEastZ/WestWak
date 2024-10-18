@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
     const refreshResponse = await getNewAccessToken();
 
     if (refreshResponse.statusCode === 401) {
-      return NextResponse.redirect("http://localhost:3000/developer/login");
+      return NextResponse.redirect("http://localhost:3000/developer/sign");
     }
 
     // 응답 헤더 교체

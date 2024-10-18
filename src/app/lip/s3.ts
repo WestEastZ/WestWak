@@ -22,7 +22,9 @@ export async function changeBlobImg(imgs: string[]): Promise<BlobImg[]> {
         const fileNameMatch = url.match(/gomem\/(.+)\.webp/);
         const fileName = fileNameMatch ? fileNameMatch[1] : null;
 
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          mode: "cors",
+        });
         const blob = await response.blob();
         const webpBlob = new Blob([blob], { type: "image/webp" });
         const blobUrl = URL.createObjectURL(webpBlob);
