@@ -3,7 +3,7 @@
 import Button from "@/app/_components/common/button/Button";
 import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
 import Input from "@/app/_components/common/input/Input";
-import { UserType } from "@/app/_types/type";
+import { UserStore, UserType } from "@/app/_types/type";
 import { signin } from "@/app/lip/sign";
 import { useUserStore } from "@/app/stores/useStores";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ interface UserState {
 
 export default function Login() {
   const router = useRouter();
-  const setUser = useUserStore((state: UserState) => state.setUser);
+  const setUser = useUserStore((state: UserStore) => state.setUser);
 
   const {
     register,
@@ -57,11 +57,11 @@ export default function Login() {
   };
 
   return (
-    <div className="w-[32rem] h-[38rem] m-auto flex flex-col gap-5 container-style">
+    <div className="container-style m-auto flex h-[38rem] w-[32rem] flex-col gap-5">
       <ContentsTitle title="로그인" Icon={Person} />
       <form
         onSubmit={handleSubmit(onSubmitSignin)}
-        className="w-full h-max flex flex-col items-center gap-5"
+        className="flex h-max w-full flex-col items-center gap-5"
       >
         <Input
           id="username"
@@ -90,13 +90,13 @@ export default function Login() {
           error={errors.password}
         />
 
-        <section className="w-full flex flex-col gap-3">
+        <section className="flex w-full flex-col gap-3">
           <Button text="로그인" type="submit" size="large" />
         </section>
       </form>
 
-      <div className="w-full h-px bg-customColor-border"></div>
-      <section className="flex items-center justify-center flex-grow">
+      <div className="h-px w-full bg-customColor-border"></div>
+      <section className="flex flex-grow items-center justify-center">
         소셜로그인
       </section>
     </div>
