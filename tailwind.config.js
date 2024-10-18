@@ -14,9 +14,11 @@ module.exports = {
     extend: {
       colors: {
         customColor: {
+          background_black: "#0A0A0A",
           background: "#1B1B1B",
           container: "#202020",
           box: "#2C2C2C",
+          dark_box: "#181818",
           border: "#373737",
           main: "#1CBC74",
           text: "#9ca3af",
