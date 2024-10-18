@@ -21,6 +21,7 @@ const nextConfig = {
     domains: [
       "profile.img.afreecatv.com",
       "wakvideo.s3.ap-northeast-2.amazonaws.com",
+      "yt3.ggpht.com",
     ],
   },
 };

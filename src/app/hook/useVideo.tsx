@@ -12,7 +12,7 @@ export default function useVideo({
   subCategory: string;
 }) {
   const [videos, setVideos] = useState<VideoInfo[] | undefined>([]);
-  const [thumbnail, setThumbnail] = useState<string | undefined>("");
+  const [thumbnail, setThumbnail] = useState<string>("");
   const [channelUrl, setChannelUrl] = useState<string | undefined>("");
   const [channelTitle, setChannelTitle] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);

@@ -5,9 +5,7 @@ import React, { useRef, useState } from "react";
 
 import Youtube from "../../../../../public/icon/youtube.svg";
 import Arrow from "../../../../../public/icon/arrow_down.svg";
-import View from "../../../../../public/icon/view.svg";
-import Like from "../../../../../public/icon/like.svg";
-import Comment from "../../../../../public/icon/comment.svg";
+
 import { Controller, useForm } from "react-hook-form";
 import { SelectFormType } from "@/app/_types/input.type";
 import { categories, subCategories } from "@/app/_constants/MemberList";
