@@ -1,7 +1,4 @@
-import { MemberList } from "@/app/_constants/MemberList";
-import CardCharacter from "../../common/card/CardCharacter";
 import SwiperComponent from "../../common/Swiper/SwiperCompoenent";
-import Image from "next/image";
 
 export default function HomeThird() {
   const swiperImage = [
