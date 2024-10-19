@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,5 +18,10 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify({ image1, image2 }),
     });
-  } catch (error) {}
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
+  }
 }
