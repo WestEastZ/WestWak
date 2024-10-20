@@ -127,6 +127,10 @@ export default function SwiperComponent<T extends string | SlideType>({
     ...containerStyle,
   };
 
+  if (!slides || slides.length === 0) {
+    return <div>No slides</div>;
+  }
+
   return (
     <div
       className="relative flex flex-col items-center gap-4"

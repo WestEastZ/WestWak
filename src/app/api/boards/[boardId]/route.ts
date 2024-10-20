@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { boardId: string } }
+  { params }: { params: { boardId: string } },
 ) {
   try {
     const cookieStore = cookies();
@@ -16,7 +16,7 @@ export async function PATCH(
 
     const { description, status } = await request.json();
     const { boardId } = params;
-    const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/boards/${boardId}`;
+    const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/boards/${boardId}`;
 
     const response = await fetch(apiURL, {
       method: "PATCH",
@@ -32,14 +32,14 @@ export async function PATCH(
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { boardId: string } }
+  { params }: { params: { boardId: string } },
 ) {
   try {
     const cookieStore = cookies();
@@ -49,7 +49,7 @@ export async function DELETE(
     const access_token = cookieStore.get("access_token");
 
     const { boardId } = params;
-    const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/boards/${boardId}`;
+    const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/boards/${boardId}`;
 
     const response = await fetch(apiURL, {
       method: "DELETE",
@@ -65,7 +65,7 @@ export async function DELETE(
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
