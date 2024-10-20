@@ -18,7 +18,7 @@ export async function getBroadCastInfo(names: string[]) {
       const url = getUrl(name);
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_LOCAL_URL}/scraping/onair/?url=https://bj.afreecatv.com/${url}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/scraping/onair/?url=https://bj.afreecatv.com/${url}`,
         // { next: { revalidate: 3600 } }
         // { cache: "no-store" }
       );
