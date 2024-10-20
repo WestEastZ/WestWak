@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     await checkToken();
 
     const access_token = cookieStore.get("access_token");
-    const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/boards/create`;
+    const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/boards/create`;
 
     const { description, status } = await request.json();
 
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -24,7 +24,7 @@ export async function createBoard({
 export async function getBoards(page: number) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_URL}/boards?page=${page}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/boards?page=${page}`,
     );
 
     return response.json();

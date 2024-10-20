@@ -3,7 +3,7 @@ import { ChartData } from "../_types/type";
 
 export async function getInformation(id: number) {
   try {
-    const url = `${process.env.NEXT_PUBLIC_LOCAL_URL}/information/get?id=${id}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/information/get?id=${id}`;
 
     const response = await fetch(url, { cache: "no-store" });
 
@@ -13,7 +13,7 @@ export async function getInformation(id: number) {
 
 export async function getChartTop100(id: number) {
   try {
-    const url = `${process.env.NEXT_PUBLIC_LOCAL_URL}/top100/get?id=${id}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/top100/get?id=${id}`;
 
     const response = await fetch(url, { cache: "no-store" });
     const responseData = await response.json();

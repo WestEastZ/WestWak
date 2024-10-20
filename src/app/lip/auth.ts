@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 export const getUser = async () => {
   const cookieStore = cookies();
   const access_token = cookieStore.get("access_token");
-  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/user`;
+  const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/user`;
 
   const response = await fetch(apiURL, {
     headers: {
@@ -20,7 +20,7 @@ export const getUser = async () => {
 export const authenticate = async () => {
   const cookieStore = cookies();
   const access_token = cookieStore.get("access_token");
-  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/authenticate`;
+  const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/authenticate`;
 
   const response = await fetch(apiURL, {
     headers: {
@@ -37,7 +37,7 @@ export const authenticate = async () => {
 export const getNewAccessToken = async () => {
   const cookieStore = cookies();
   const refresh_token = cookieStore.get("refresh_token");
-  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/refresh`;
+  const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/refresh`;
 
   const response = await fetch(apiURL, {
     method: "POST",
@@ -64,7 +64,7 @@ export function setResponseHeader(response: NextResponse, token: string) {
 export function setRequestHeader(
   request: NextRequest,
   response: NextResponse,
-  newToken?: string
+  newToken?: string,
 ) {
   const token = newToken || request.cookies.get("access_token")?.value;
 

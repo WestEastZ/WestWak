@@ -4,8 +4,8 @@ import { BlobImg } from "../_types/faceAPI.type";
 export async function getS3Image(param: string) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_URL}/awss3?directory=gomem`,
-      { cache: "no-store" }
+      `${process.env.NEXT_PUBLIC_BASE_URL}/awss3?directory=gomem`,
+      { cache: "no-store" },
     );
 
     return response.json();
@@ -34,7 +34,7 @@ export async function changeBlobImg(imgs: string[]): Promise<BlobImg[]> {
         console.log(error);
         return null;
       }
-    })
+    }),
   );
 
   return blobPromise.filter((item): item is BlobImg => item !== null);

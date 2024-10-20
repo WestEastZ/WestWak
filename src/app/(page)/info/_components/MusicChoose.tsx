@@ -21,7 +21,7 @@ export default function MusicChoose() {
       try {
         const fetchPromise = [...Array(2)].map(async (_, index) => {
           const url = `${
-            process.env.NEXT_PUBLIC_LOCAL_URL
+            process.env.NEXT_PUBLIC_BASE_URL
           }/information/get?id=${index + 1}`;
           const response = await fetch(url);
           return response.json();
@@ -59,24 +59,24 @@ export default function MusicChoose() {
     return musicDatas.filter(
       (music) =>
         music.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-        music.artist.toLowerCase().includes(searchKeyword.toLowerCase())
+        music.artist.toLowerCase().includes(searchKeyword.toLowerCase()),
     );
   }, [musicDatas, searchKeyword]);
 
   return (
-    <div className="h-full flex flex-col gap-5 text-white">
+    <div className="flex h-full flex-col gap-5 text-white">
       <section className="relative">
         <div className="absolute inset-y-1 left-2">
           <Search width={24} height={24} />
         </div>
         <input
           placeholder="곡 검색하기"
-          className="w-full bg-customColor-box rounded-full p-1 pl-10 border border-customColor-border focus:outline-none"
+          className="w-full rounded-full border border-customColor-border bg-customColor-box p-1 pl-10 focus:outline-none"
           onChange={(e) => setSearchKeyword(e.target.value)}
         />
       </section>
 
-      <section className="m-auto text-customColor-text text-sm font-semibold">
+      <section className="m-auto text-sm font-semibold text-customColor-text">
         왁비디오는 음원사이트에 등록된 음원 정보만 제공합니다.
       </section>
 
@@ -86,7 +86,7 @@ export default function MusicChoose() {
             <div
               key={music.id}
               onClick={() => handleMusic(music.id)}
-              className=" flex justify-between items-center border-b border-customColor-border p-3 cursor-pointer hover:border-b-customColor-main transition-all duration-200"
+              className="flex cursor-pointer items-center justify-between border-b border-customColor-border p-3 transition-all duration-200 hover:border-b-customColor-main"
             >
               <div className="flex items-center gap-2">
                 <Image
@@ -94,7 +94,7 @@ export default function MusicChoose() {
                   alt="cover"
                   width={50}
                   height={50}
-                  className="rounded-full overflow-hidden"
+                  className="overflow-hidden rounded-full"
                 />
                 <div className="flex flex-col">
                   <span className="text-lg">{music.title}</span>
@@ -113,7 +113,7 @@ export default function MusicChoose() {
             </div>
           ))
         ) : (
-          <div className="flex items-center justify-center w-full min-h-full">
+          <div className="flex min-h-full w-full items-center justify-center">
             <span>검색 결과가 없습니다.</span>
           </div>
         )}

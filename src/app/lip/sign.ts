@@ -2,7 +2,7 @@ import { SignFormType } from "../_types/input.type";
 
 // 로그인
 export const signin = async (data: SignFormType) => {
-  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/signin`;
+  const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin`;
   const { username, password } = data;
 
   try {
@@ -23,7 +23,7 @@ export const signin = async (data: SignFormType) => {
 
 // 회원가입
 export const signup = async (data: SignFormType) => {
-  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/signup`;
+  const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`;
   const { username, password } = data;
 
   try {
@@ -42,7 +42,7 @@ export const signup = async (data: SignFormType) => {
 
 // 로그아웃
 export const logout = async () => {
-  const apiURL = `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/logout`;
+  const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/logout`;
 
   try {
     const response = await fetch(apiURL, {
