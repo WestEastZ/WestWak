@@ -10,34 +10,32 @@ import Comment from "../../../../../public/icon/comment.svg";
 export default async function MusicVideo({ data }: { data: InformationType }) {
   const response = await getMusicVideo(data.Youtube);
 
-  console.log(response);
-
   return (
-    <div className="bg-customColor-box rounded-lg flex justify-between items-center p-4">
-      <div className="w-full flex flex-col gap-4">
+    <div className="flex items-center justify-between rounded-lg bg-customColor-box p-4">
+      <div className="flex w-full flex-col gap-4">
         {/* video */}
-        <section className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+        <section className="aspect-h-9 aspect-w-16 overflow-hidden rounded-xl">
           <iframe
             src={`https://www.youtube.com/embed/${data.Youtube}`}
-            className="w-full h-full"
+            className="h-full w-full"
           />
         </section>
         <section className="flex w-full justify-between px-5 text-lg">
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col items-center justify-center">
             <View width={22} heigth={22} />
             <span>{response?.viewCount}</span>
           </div>
 
-          <div className="w-[1px] min-h-full bg-white"></div>
+          <div className="min-h-full w-[1px] bg-white"></div>
 
-          <div className="flex flex-col justify-center items-center gap-2">
+          <div className="flex flex-col items-center justify-center gap-2">
             <Like width={22} heigth={22} />
             <div>{response?.likeCount}</div>
           </div>
 
-          <div className="w-[1px] min-h-full bg-white"></div>
+          <div className="min-h-full w-[1px] bg-white"></div>
 
-          <div className="flex flex-col justify-center items-center gap-2">
+          <div className="flex flex-col items-center justify-center gap-2">
             <Comment width={22} heigth={22} />
             <div>{response?.commentCount}</div>
           </div>

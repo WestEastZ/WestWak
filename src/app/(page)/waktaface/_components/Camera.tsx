@@ -1,20 +1,19 @@
 "use client";
 
-import useFaceAPI from "@/app/hook/useFaceAPI";
-import React, { useState } from "react";
-import Capture from "./Capture";
-import Button from "@/app/_components/common/button/Button";
-import UploadImg from "./UploadImg";
 import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
-import Album from "../../../../../public/icon/album.svg";
-import Info from "../../../../../public/icon/info.svg";
-import ArrowBack from "../../../../../public/icon/arrow_back.svg";
-import CameraIcon from "../../../../../public/icon/camera.svg";
-import Ai from "../../../../../public/icon/ai.svg";
-import UploadIcon from "../../../../../public/icon/upload.svg";
-import Portal from "@/app/_components/common/modal/Portal";
 import ModalWakFaceInfo from "@/app/_components/common/modal/ModalWakFaceInfo";
 import ModalWakfaceResult from "@/app/_components/common/modal/ModalWakfaceResult";
+import Portal from "@/app/_components/common/modal/Portal";
+import useFaceAPI from "@/app/hook/useFaceAPI";
+import { useState } from "react";
+import Ai from "../../../../../public/icon/ai.svg";
+import Album from "../../../../../public/icon/album.svg";
+import ArrowBack from "../../../../../public/icon/arrow_back.svg";
+import CameraIcon from "../../../../../public/icon/camera.svg";
+import Info from "../../../../../public/icon/info.svg";
+import UploadIcon from "../../../../../public/icon/upload.svg";
+import Capture from "./Capture";
+import UploadImg from "./UploadImg";
 
 export default function Camera({ data }: { data: string[] }) {
   const [methodFile, setMethodFile] = useState<boolean | undefined>(true);
@@ -54,7 +53,7 @@ export default function Camera({ data }: { data: string[] }) {
   return (
     <div className="flex gap-4">
       {choseMethod ? (
-        <section className="w-2/3 m-auto container-style flex flex-col gap-4">
+        <section className="container-style m-auto flex w-2/3 flex-col gap-4">
           {methodFile ? (
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
@@ -86,8 +85,8 @@ export default function Camera({ data }: { data: string[] }) {
           )}
         </section>
       ) : (
-        <section className="container-style w-2/3 h-[490px] m-auto flex flex-col justify-center items-center gap-36 text-center">
-          <div className="w-full flex justify-evenly items-center">
+        <section className="container-style m-auto flex h-[490px] w-2/3 flex-col items-center justify-center gap-36 text-center">
+          <div className="flex w-full items-center justify-evenly">
             <button
               onClick={handleMetodCamera}
               className="box-style rounded-3xl p-20"
@@ -104,9 +103,9 @@ export default function Camera({ data }: { data: string[] }) {
         </section>
       )}
 
-      <section className="container-style flex flex-col flex-grow gap-4 text-center">
+      <section className="container-style flex flex-grow flex-col gap-4 text-center">
         <ContentsTitle title="정보" Icon={Info} />
-        <div className="flex flex-col gap-8 h-full">
+        <div className="flex h-full flex-col gap-8">
           <div className="flex flex-col gap-4">
             <span className="text-2xl font-bold text-customColor-main">
               나와 닮은 왁타버스 멤버는 누구?
@@ -117,21 +116,21 @@ export default function Camera({ data }: { data: string[] }) {
             </span>
           </div>
 
-          <div className="flex flex-col flex-grow justify-evenly box-style p-4 text-left gap-4">
-            <span className="font-bold text-lg text-customColor-main">
+          <div className="box-style flex flex-grow flex-col justify-evenly gap-4 p-4 text-left">
+            <span className="text-lg font-bold text-customColor-main">
               왜 WaktaFace인가요?
             </span>
             <ul className="flex flex-col gap-2">
               <li>1. 정확한 얼굴 인식 기술로 높은 정확도를 제공합니다</li>
               <li>2. 친구들과 결과를 공유하며 즐거운 시간을 보내세요.</li>
               <li>3. 좋아하는 멤버와의 유사성을 발견하는 특별한 경험!</li>
-              <li className="text-sm text-customColor-text text-center">
+              <li className="text-center text-sm text-customColor-text">
                 얼굴 인식이 안될 경우가 생길 수 있습니다!
               </li>
             </ul>
           </div>
 
-          <div className="text-customColor-text text-sm">
+          <div className="text-sm text-customColor-text">
             <button onClick={() => setIsInfoOpen(true)}>
               {"사용 방법 | 자주 묻는 질문 >"}
             </button>
