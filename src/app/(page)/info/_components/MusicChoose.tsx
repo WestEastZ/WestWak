@@ -23,11 +23,23 @@ export default function MusicChoose() {
           const url = `${
             process.env.NEXT_PUBLIC_BASE_URL
           }/information/get?id=${index + 1}`;
-          const response = await fetch(url);
+
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
           return response.json();
         });
 
         const result = await Promise.all(fetchPromise);
+
         setMusicData(result);
       } catch (error) {
         console.log(error);
@@ -39,7 +51,6 @@ export default function MusicChoose() {
 
   useEffect(() => {
     const path = pathname.split("/").pop();
-    console.log(path);
 
     if (path === "info") {
       setPathId(1);
