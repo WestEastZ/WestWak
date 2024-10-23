@@ -5,17 +5,20 @@ export async function getInformation(id: number) {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/information/get?id=${id}`;
 
-    const response = await fetch(url, { cache: "no-store" });
+    const response = await fetch(url, { cache: "force-cache" });
 
     return response.json();
-  } catch (error) {}
+  } catch (error) {
+    console.error("Failed to fetch information:", error);
+    throw error;
+  }
 }
 
 export async function getChartTop100(id: number) {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/top100/get?id=${id}`;
 
-    const response = await fetch(url, { cache: "no-store" });
+    const response = await fetch(url, { cache: "force-cache" });
     const responseData = await response.json();
 
     const chartData = [
@@ -27,7 +30,10 @@ export async function getChartTop100(id: number) {
     ];
 
     return chartData;
-  } catch (error) {}
+  } catch (error) {
+    console.error("Failed to fetch top100:", error);
+    throw error;
+  }
 }
 
 export function getChartTick(chartData: chartType[]) {
@@ -53,7 +59,10 @@ export function getChartTick(chartData: chartType[]) {
     result.push(allData[dataLength - 1].x);
 
     return result;
-  } catch (error) {}
+  } catch (error) {
+    console.error("Failed to fetch chart:", error);
+    throw error;
+  }
 }
 
 // export async function createTop100(data: ChartData[]) {
