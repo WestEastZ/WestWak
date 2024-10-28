@@ -1,3 +1,4 @@
+import SWRProvider from "@/app/swr-provider";
 import React from "react";
 
 export default function Recomendedlayout({
@@ -7,8 +8,8 @@ export default function Recomendedlayout({
 }) {
   return (
     <div className="w-full text-white">
-      <section className="w-[80rem] h-full m-auto flex flex-col gap-10">
-        {children}
+      <section className="m-auto flex h-full w-[80rem] flex-col gap-10">
+        <SWRProvider>{children}</SWRProvider>
       </section>
     </div>
   );

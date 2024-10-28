@@ -19,7 +19,7 @@ const nextConfig = {
   },
   images: {
     domains: [
-      "profile.img.afreecatv.com",
+      "profile.img.sooplive.co.kr",
       "wakvideo.s3.ap-northeast-2.amazonaws.com",
       "yt3.ggpht.com",
     ],
