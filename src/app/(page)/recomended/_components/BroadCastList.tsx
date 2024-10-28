@@ -1,35 +1,45 @@
+"use client";
+
 import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
-import { bradCastInfoType } from "@/app/_types/broadCast.type";
-import { getBroadCastInfo } from "@/app/lip/broadCast";
+import { BroadCastInfoType } from "@/app/_types/broadCast.type";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import useSWR from "swr";
 
 import Afeeca from "../../../../../public/icon/afreeaca.png";
 
-export async function BroadCastList() {
-  const response = await getBroadCastInfo([
-    "woowakgood",
-    "ine",
-    "jingburger",
-    "lilpa",
-    "jururu",
-    "gosegu",
-    "viichan",
-  ]);
+export function BroadCastList() {
+  const streamerIds = [
+    "ecvhao",
+    "inehine",
+    "jingburger1",
+    "lilpa0309",
+    "cotton1217",
+    "gosegu2",
+    "viichan6",
+  ].join(",");
+
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/scraping/onair/?ids=${streamerIds}`,
+  );
 
   return (
-    <div className="container-style flex flex-col flex-shrink gap-4">
+    <div className="container-style flex flex-shrink flex-col gap-4">
       <ContentsTitle title="생방송" Icon={Afeeca} />
 
       <section className="grid grid-cols-2 gap-2">
-        {response?.map((info) => (
-          <BroadCast
-            key={info.name}
-            name={info.nickname}
-            broadCastInfo={info}
-          />
-        ))}
+        {!data ? (
+          <BroadCastSkeletonUI />
+        ) : (
+          data?.map((info: BroadCastInfoType) => (
+            <BroadCast
+              key={info.id}
+              name={info.nickname}
+              broadCastInfo={info}
+            />
+          ))
+        )}
       </section>
     </div>
   );
@@ -40,16 +50,16 @@ export function BroadCast({
   broadCastInfo,
 }: {
   name: string;
-  broadCastInfo: bradCastInfoType;
+  broadCastInfo: BroadCastInfoType;
 }) {
   return (
     <Link
-      href={`https://bj.afreecatv.com/${broadCastInfo.url}`}
-      className={`bg-customColor-box rounded-lg flex justify-between items-center p-3 gap-8 border border-transparent hover:border-customColor-main hover:scale-105 transition-all duration-200`}
+      href={`https://ch.sooplive.co.kr/${broadCastInfo.id}`}
+      className={`flex items-center justify-between gap-8 rounded-lg border border-transparent bg-customColor-box p-3 transition-all duration-200 hover:scale-105 hover:border-customColor-main`}
     >
       <div className="flex gap-3">
         <div
-          className={`relative border rounded-full overflow-hidden ${
+          className={`relative overflow-hidden rounded-full border ${
             broadCastInfo.isLive ? null : "grayscale"
           }`}
         >
@@ -85,13 +95,13 @@ export function BroadCastSkeletonUI() {
       {[...Array(7)].map((_, index) => (
         <div
           key={index}
-          className="bg-customColor-box rounded-lg flex justify-between items-center p-3 gap-8 border border-transparent animate-pulse"
+          className="flex animate-pulse items-center justify-between gap-8 rounded-lg border border-transparent bg-customColor-box p-3"
         >
-          <div className="flex gap-3 items-center">
-            <div className="w-[22px] h-[22px] bg-gray-300 rounded-full"></div>
-            <div className="w-12 h-4 bg-gray-300 rounded"></div>
+          <div className="flex items-center gap-3">
+            <div className="h-[22px] w-[22px] rounded-full bg-gray-300"></div>
+            <div className="h-4 w-12 rounded bg-gray-300"></div>
           </div>
-          <div className="w-12 h-4 bg-gray-300 rounded"></div>
+          <div className="h-4 w-12 rounded bg-gray-300"></div>
         </div>
       ))}
     </>
