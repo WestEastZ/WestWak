@@ -20,7 +20,7 @@ export function BroadCastList() {
     "viichan6",
   ].join(",");
 
-  const { data } = useSWR(
+  const { data } = useSWR<BroadCastInfoType[]>(
     `${process.env.NEXT_PUBLIC_BASE_URL}/scraping/onair/?ids=${streamerIds}`,
   );
 
@@ -29,10 +29,10 @@ export function BroadCastList() {
       <ContentsTitle title="생방송" Icon={Afeeca} />
 
       <section className="grid grid-cols-2 gap-2">
-        {!data ? (
+        {!data || !Array.isArray(data) ? (
           <BroadCastSkeletonUI />
         ) : (
-          data?.map((info: BroadCastInfoType) => (
+          data.map((info: BroadCastInfoType) => (
             <BroadCast
               key={info.id}
               name={info.nickname}
