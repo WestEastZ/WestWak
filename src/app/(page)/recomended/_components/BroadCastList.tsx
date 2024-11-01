@@ -52,6 +52,8 @@ export function BroadCast({
   name: string;
   broadCastInfo: BroadCastInfoType;
 }) {
+  const defaultImage = "/image/woowakgood_logo.webp";
+
   return (
     <Link
       href={`https://ch.sooplive.co.kr/${broadCastInfo.id}`}
@@ -64,7 +66,7 @@ export function BroadCast({
           }`}
         >
           <Image
-            src={broadCastInfo.broadCastThumb}
+            src={broadCastInfo.broadCastThumb || defaultImage}
             width={22}
             height={22}
             alt="title"
