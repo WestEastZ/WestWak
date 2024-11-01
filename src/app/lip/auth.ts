@@ -53,6 +53,8 @@ export const getNewAccessToken = async () => {
 export function setResponseHeader(response: NextResponse, token: string) {
   response.cookies.set("access_token", `${token}`, {
     httpOnly: true,
+    secure: true,
+    sameSite: "none" as const,
     maxAge: 10000,
     path: "/",
   });
@@ -109,7 +111,9 @@ export const setToken = (token: string) => {
 
   cookieStore.set("access_token", token, {
     httpOnly: true,
-    maxAge: 6000000,
+    secure: true,
+    sameSite: "none" as const,
+    maxAge: 10000,
     path: "/",
   });
 };
