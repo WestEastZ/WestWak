@@ -12,5 +12,5 @@ export interface BroadCastInfoType {
   isLive: boolean;
   status: string;
   nickname: string;
-  broadCastThumb: string;
+  broadCastThumb: string | null;
 }
