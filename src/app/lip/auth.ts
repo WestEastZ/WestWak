@@ -56,6 +56,7 @@ export function setResponseHeader(response: NextResponse, token: string) {
     secure: true,
     sameSite: "none" as const,
     maxAge: 10000,
+    domain: process.env.NODE_ENV === "development" ? "" : ".wakvideo.shop",
     path: "/",
   });
 
@@ -105,104 +106,3 @@ export function setRequestHeader(
 
   return response;
 }
-
-export const setToken = (token: string) => {
-  const cookieStore = cookies();
-
-  cookieStore.set("access_token", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none" as const,
-    maxAge: 10000,
-    path: "/",
-  });
-};
-
-// 사용자 정보 불러오기
-// export const getUser = async (accessToken: string | undefined) => {
-//   try {
-//     const response = await api.get("/auth/user");
-//     return response;
-//   } catch (error) {
-//     console.error("Failed to New Access Token:", error);
-//     throw error;
-//   }
-// };
-
-// 사용자 인증
-// export async function authenticate(cookie: string) {
-//   const response = await fetch(
-//     `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/authenticate`,
-//     {
-//       method: "GET",
-//       headers: {
-//         Cookie: cookie || "",
-//       },
-//       credentials: "include",
-//       cache: "no-store",
-//     }
-//   );
-//   return response.json();
-// }
-
-// access 토큰 재발급
-// export async function getNewAccessToken(cookie: string) {
-//   const response = await fetch(
-//     `${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/refresh`,
-//     {
-//       method: "POST",
-//       headers: {
-//         Cookie: cookie || "",
-//       },
-//       credentials: "include",
-//       cache: "no-store",
-//     }
-//   );
-//   return response.json();
-// }
-
-// 토큰 인가 및 재발급
-// export async function authenticateNewAccessToken({
-//   request,
-//   response,
-// }: {
-//   request: NextRequest;
-//   response: NextResponse<unknown>;
-// }) {
-//   const cookies = request.cookies
-//     .getAll()
-//     .map((cookie) => `${cookie.name}=${cookie.value}`)
-//     .join("; ");
-
-//   try {
-//     const authResponse = await authenticate(cookies);
-//     // 토큰 미보유
-//     if (authResponse.message === "Invalid access token") {
-//       return NextResponse.redirect("http://localhost:3000/developer/sign");
-//     }
-
-//     // 토큰 인가
-//     if (authResponse.message === "authenticate") {
-//       setRequestHeader(request, response);
-//       return NextResponse.next();
-//     }
-
-//     // 토큰 만료
-//     if (authResponse.message === "Access token expired") {
-//       const refreshToken = request.cookies.get("refresh_token");
-
-//       if (!refreshToken) {
-//         throw new Error("Refresh token not found");
-//       }
-
-//       // access 토큰 재발급
-//       const newAccessToken = await getNewAccessToken(cookies);
-//       response = setResponseHeader(response, newAccessToken.access_token);
-//       return setRequestHeader(request, response, newAccessToken.access_token);
-//     }
-//   } catch (error) {
-//     console.error("Authentication error:", error);
-//     return NextResponse.redirect("http://localhost:3000/developer/sign");
-//   }
-//   return response;
-// }

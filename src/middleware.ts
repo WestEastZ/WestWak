@@ -15,7 +15,9 @@ export async function middleware(request: NextRequest) {
 
     if (refreshResponse.statusCode === 401) {
       return NextResponse.redirect(
-        "https://wakvideo.vercel.app/developer/sign",
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:3000/developer/sign"
+          : "https://wakvideo.shop/developer/sign",
       );
     }
 
