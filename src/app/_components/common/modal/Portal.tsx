@@ -47,11 +47,24 @@ export default function Portal({
     }
   }, [isMounted]);
 
+  // scroll
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isMounted || !portalElement) return null;
 
   return createPortal(
     <div
-      className={`fixed z-[9998] inset-0 bg-white bg-opacity-10 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[9998] bg-white bg-opacity-10 transition-opacity duration-300 ${
         isAnimating ? "opacity-100" : "opacity-0"
       }`}
       onClick={onClose}
@@ -59,14 +72,14 @@ export default function Portal({
       {/* bottom modal */}
       {type === "bottom" && (
         <div
-          className={`fixed z-[9999] w-[40rem] h-[40rem] m-auto p-4 flex flex-col justify-between gap-5 bottom-0 left-0 right-0 bg-customColor-container rounded-t-2xl transition-transform duration-300 ease-out ${
+          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-[40rem] w-[40rem] flex-col justify-between gap-5 rounded-t-2xl bg-customColor-container p-4 transition-transform duration-300 ease-out ${
             isAnimating ? "translate-y-0" : "translate-y-full"
           }`}
           onClick={(e) => e.stopPropagation()}
         >
           {children}
           <button
-            className="block w-full p-2 rounded-full button-style"
+            className="button-style block w-full rounded-full p-2"
             onClick={onClose}
           >
             닫기
@@ -77,12 +90,12 @@ export default function Portal({
       {/* middle modal */}
       {type === "middle" && (
         <div
-          className={`fixed z-[9999] w-[45rem] h-[45rem] m-auto p-4 flex flex-col justify-between gap-5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-customColor-container rounded-2xl`}
+          className={`fixed left-1/2 top-1/2 z-[9999] m-auto flex h-[45rem] w-[45rem] -translate-x-1/2 -translate-y-1/2 transform flex-col justify-between gap-5 rounded-2xl bg-customColor-container p-4`}
           onClick={(e) => e.stopPropagation()}
         >
           {children}
           <button
-            className="block w-full p-2 rounded-full button-style"
+            className="button-style block w-full rounded-full p-2"
             onClick={onClose}
           >
             닫기
@@ -90,6 +103,6 @@ export default function Portal({
         </div>
       )}
     </div>,
-    portalElement
+    portalElement,
   );
 }
