@@ -1,15 +1,16 @@
 "use client";
 
-import { InformationType } from "@/app/_types/type";
+import { InformationSelectType } from "@/app/_types/type";
 import React, { useEffect, useMemo, useState } from "react";
 
 import CircleCheck from "../../../../../public/icon/circleCheck.svg";
 import Search from "../../../../../public/icon/search.svg";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import { ALBUM_COVERS } from "@/app/_constants/AlbumList";
 
 export default function MusicChoose() {
-  const [musicDatas, setMusicData] = useState<InformationType[]>([]);
+  const [musicDatas, setMusicData] = useState<InformationSelectType[]>([]);
   const [pathId, setPathId] = useState<number>();
   const [searchKeyword, setSearchKeyword] = useState<string>("");
 
@@ -18,32 +19,11 @@ export default function MusicChoose() {
 
   useEffect(() => {
     const fetchMusicData = async () => {
-      try {
-        const fetchPromise = [...Array(2)].map(async (_, index) => {
-          const url = `${
-            process.env.NEXT_PUBLIC_BASE_URL
-          }/information/get?id=${index + 1}`;
-
-          const response = await fetch(url, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-
-          return response.json();
-        });
-
-        const result = await Promise.all(fetchPromise);
-
-        setMusicData(result);
-      } catch (error) {
-        console.log(error);
-      }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/information/all`,
+      );
+      const data = await response.json();
+      setMusicData(data);
     };
 
     fetchMusicData();
@@ -91,38 +71,43 @@ export default function MusicChoose() {
         왁비디오는 음원사이트에 등록된 음원 정보만 제공합니다.
       </section>
 
-      <section className="h-full">
+      <section className="mb-14 h-full overflow-y-auto">
         {filterMusic.length > 0 ? (
-          filterMusic.map((music) => (
-            <div
-              key={music.id}
-              onClick={() => handleMusic(music.id)}
-              className="flex cursor-pointer items-center justify-between border-b border-customColor-border p-3 transition-all duration-200 hover:border-b-customColor-main"
-            >
-              <div className="flex items-center gap-2">
-                <Image
-                  src={`/image/${music.title}.jpg`}
-                  alt="cover"
-                  width={50}
-                  height={50}
-                  className="overflow-hidden rounded-full"
-                />
-                <div className="flex flex-col">
-                  <span className="text-lg">{music.title}</span>
-                  <span className="text-sm text-customColor-text">
-                    {music.artist}
-                  </span>
+          filterMusic.map((music) => {
+            const key = music.title as keyof typeof ALBUM_COVERS;
+            const albumCover = ALBUM_COVERS[key] || ALBUM_COVERS.DEFAULT;
+
+            return (
+              <div
+                key={music.id}
+                onClick={() => handleMusic(music.id)}
+                className="flex cursor-pointer items-center justify-between border-b border-customColor-border p-3 transition-all duration-200 hover:border-b-customColor-main"
+              >
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={albumCover}
+                    alt="cover"
+                    width={50}
+                    height={50}
+                    className="overflow-hidden rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <span className="text-lg">{music.title}</span>
+                    <span className="text-sm text-customColor-text">
+                      {music.artist}
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <CircleCheck
+                    width={28}
+                    height={28}
+                    fill={pathId == music.id ? "#1CBC74" : "#373737"}
+                  />
                 </div>
               </div>
-              <div>
-                <CircleCheck
-                  width={28}
-                  height={28}
-                  fill={pathId == music.id ? "#1CBC74" : "#373737"}
-                />
-              </div>
-            </div>
-          ))
+            );
+          })
         ) : (
           <div className="flex min-h-full w-full items-center justify-center">
             <span>검색 결과가 없습니다.</span>

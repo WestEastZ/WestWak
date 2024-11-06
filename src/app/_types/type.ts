@@ -107,6 +107,13 @@ export interface InformationType {
   Spotify: string;
 }
 
+// information select
+export interface InformationSelectType {
+  id: number;
+  title: string;
+  artist: string;
+}
+
 // chart data
 export interface ChartData {
   x: string;
