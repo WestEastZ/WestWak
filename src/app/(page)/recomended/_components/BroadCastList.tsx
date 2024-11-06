@@ -1,15 +1,13 @@
-"use client";
-
 import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
 import { BroadCastInfoType } from "@/app/_types/broadCast.type";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import useSWR from "swr";
 
 import Afeeca from "../../../../../public/icon/afreeaca.png";
+import { getBroadCastInfo } from "@/app/lip/broadCast";
 
-export function BroadCastList() {
+export async function BroadCastList() {
   const streamerIds = [
     "ecvhao",
     "inehine",
@@ -20,19 +18,17 @@ export function BroadCastList() {
     "viichan6",
   ].join(",");
 
-  const { data } = useSWR<BroadCastInfoType[]>(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/scraping/onair/?ids=${streamerIds}`,
-  );
+  const response = await getBroadCastInfo(streamerIds);
 
   return (
     <div className="container-style flex flex-shrink flex-col gap-4">
       <ContentsTitle title="생방송" Icon={Afeeca} />
 
       <section className="grid grid-cols-2 gap-2">
-        {!data || !Array.isArray(data) ? (
+        {!response || !Array.isArray(response) ? (
           <BroadCastSkeletonUI />
         ) : (
-          data.map((info: BroadCastInfoType) => (
+          response.map((info: BroadCastInfoType) => (
             <BroadCast
               key={info.id}
               name={info.nickname}
