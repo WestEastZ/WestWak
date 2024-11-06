@@ -1,10 +1,11 @@
 "use client";
 
+import { ALBUM_COVERS } from "@/app/_constants/AlbumList";
 import { getChartTick } from "@/app/lip/chart";
 import { ResponsiveLine } from "@nivo/line";
 import { TicksSpec } from "@nivo/scales";
 import Image from "next/image";
-import React from "react";
+import React, { useMemo } from "react";
 
 export interface chartType {
   id: string;
@@ -14,6 +15,11 @@ export interface chartType {
 
 export default function Chart({ chartData }: { chartData: chartType[] }) {
   const tickData = getChartTick(chartData);
+
+  const key = chartData[0].id as keyof typeof ALBUM_COVERS;
+  const albumCover = ALBUM_COVERS[key] || ALBUM_COVERS.DEFAULT;
+
+  console.log(chartData);
 
   return (
     <ResponsiveLine
@@ -56,19 +62,19 @@ export default function Chart({ chartData }: { chartData: chartType[] }) {
         const day = xFormattedData.slice(6, 8);
 
         return (
-          <div className="w-72 flex flex-col justify-start gap-2 button-style border-customColor-border rounded-xl p-5">
-            <section className="flex gap-2 items-center">
+          <div className="button-style flex w-72 flex-col justify-start gap-2 rounded-xl border-customColor-border p-5">
+            <section className="flex items-center gap-2">
               <div>{`${year}년 ${month}월 ${day}일`}</div>
-              <div className="h-px bg-customColor-border flex-grow"></div>
+              <div className="h-px flex-grow bg-customColor-border"></div>
             </section>
 
             <section className="flex gap-2">
               <Image
-                src={`/image/${chartData[0].id}.jpg`}
+                src={albumCover}
                 alt="chart"
                 width={50}
                 height={50}
-                className="rounded-full overflow-hidden"
+                className="overflow-hidden rounded-full"
               />
               <div className="flex flex-col">
                 <span>{chartData[0].id}</span>
