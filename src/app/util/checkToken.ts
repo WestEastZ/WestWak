@@ -12,7 +12,11 @@ export async function checkToken() {
 
     // refresh 토큰 미보유
     if (refreshResponse.statusCode === 401) {
-      return NextResponse.redirect("http://localhost:3000/developer/login");
+      return NextResponse.redirect(
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:3000/developer/sign"
+          : "https://wakvideo.shop/developer/sign",
+      );
     }
 
     // 토큰 변경
