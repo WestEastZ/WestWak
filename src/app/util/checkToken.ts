@@ -20,6 +20,6 @@ export async function checkToken() {
     }
 
     // 토큰 변경
-    cookieStore.set("access_token", refreshResponse.data.access_token);
+    cookieStore.set("access_token", refreshResponse.access_token);
   }
 }

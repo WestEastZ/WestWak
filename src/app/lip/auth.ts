@@ -29,7 +29,7 @@ export const authenticate = async () => {
   });
 
   const statusCode = response.status;
-  const data = await response.json();
+  const data = response.json();
   return { statusCode, data };
 };
 
@@ -46,9 +46,7 @@ export const getNewAccessToken = async () => {
     },
   });
 
-  const statusCode = response.status;
-  const data = await response.json();
-  return { statusCode, data };
+  return response.json();
 };
 
 // response header access 토큰 설정
