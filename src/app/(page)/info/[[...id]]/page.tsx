@@ -5,6 +5,22 @@ import MusicContainer from "../_container/MusicContainer";
 import ChartContainer from "../_container/ChartContainer";
 import LinkContainer from "../_container/LinkContainer";
 import YoutubeMusicContainer from "../_container/YoutubeMusicContainer";
+import { Metadata } from "next";
+import { createMetadata } from "@/app/util/createMetaData";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const musicId = parseInt(params.id?.[0]) || 1;
+  const musicInfo = await getInformation(musicId);
+
+  return createMetadata({
+    title: musicInfo.title,
+    description: `${musicInfo.title}의 음원 정보입니다!`,
+  });
+}
 
 export default async function page({ params }: { params: { id: string } }) {
   const musicId = parseInt(params.id?.[0]) || 1;

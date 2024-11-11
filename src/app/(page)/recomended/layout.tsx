@@ -1,5 +1,17 @@
 import SWRProvider from "@/app/swr-provider";
+import { openGraphDefault } from "@/app/util/createMetaData";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Recomended",
+  description: "실시간 왁타버스 영상과 방송 정보를 확인해보세요!",
+  openGraph: {
+    ...openGraphDefault,
+    title: "Recomended",
+    description: "실시간 왁타버스 영상과 방송 정보를 확인해보세요!",
+  },
+};
 
 export default function Recomendedlayout({
   children,
