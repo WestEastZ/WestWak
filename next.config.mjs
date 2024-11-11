@@ -27,3 +27,9 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// const analyzeBundleEnabled = process.env.ANALYZE === 'true';
+// export default withBundleAnalyzer({
+//   enabled: analyzeBundleEnabled,
+//   openAnalyzer: analyzeBundleEnabled,
+// })(nextConfig);
