@@ -1,3 +1,5 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack(config, { isServer }) {
@@ -28,7 +30,7 @@ const nextConfig = {
 
 export default nextConfig;
 
-// const analyzeBundleEnabled = process.env.ANALYZE === 'true';
+// const analyzeBundleEnabled = process.env.ANALYZE === "true";
 // export default withBundleAnalyzer({
 //   enabled: analyzeBundleEnabled,
 //   openAnalyzer: analyzeBundleEnabled,
