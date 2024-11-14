@@ -1,11 +1,10 @@
 import { chartType } from "../(page)/info/_components/Chart";
-import { ChartData } from "../_types/type";
 
 export async function getInformation(id: number) {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/information/get?id=${id}`;
 
-    const response = await fetch(url, { cache: "force-cache" });
+    const response = await fetch(url);
 
     return response.json();
   } catch (error) {
@@ -18,7 +17,7 @@ export async function getChartTop100(id: number) {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/top100/get?id=${id}`;
 
-    const response = await fetch(url, { cache: "force-cache" });
+    const response = await fetch(url);
     const responseData = await response.json();
 
     const chartData = [
