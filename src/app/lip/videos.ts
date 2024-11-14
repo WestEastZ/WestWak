@@ -32,12 +32,12 @@ export async function getTodayMusic() {
 
     do {
       const response = await fetch(
-        `${playListUrl}${pageToken ? "&pageToken=" + pageToken : ""}`
+        `${playListUrl}${pageToken ? "&pageToken=" + pageToken : ""}`,
       );
       let playListData: VideoData = await response.json();
 
       videosId.push(
-        playListData.items.map((item: any) => item.snippet.resourceId.videoId)
+        playListData.items.map((item: any) => item.snippet.resourceId.videoId),
       );
 
       pageToken = playListData.nextPageToken;
@@ -105,8 +105,6 @@ async function getVideoData({ videosData }: { videosData: VideoData }) {
 
     try {
       const statistics = await fetchVideoStatistics(videoId);
-
-      console.log(statistics);
 
       return {
         id: videoId,

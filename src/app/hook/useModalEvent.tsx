@@ -21,8 +21,6 @@ export default function useModalEvent({
     const modal = modalRef.current;
     const dragHandle = dragRef.current;
 
-    console.log("sdsd", modal);
-
     if (!modal || !dragHandle) return;
 
     let animationId: number;

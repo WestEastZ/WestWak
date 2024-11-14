@@ -19,8 +19,6 @@ export default function Chart({ chartData }: { chartData: chartType[] }) {
   const key = chartData[0].id as keyof typeof ALBUM_COVERS;
   const albumCover = ALBUM_COVERS[key] || ALBUM_COVERS.DEFAULT;
 
-  console.log(chartData);
-
   return (
     <ResponsiveLine
       data={chartData}

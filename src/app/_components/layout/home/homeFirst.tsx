@@ -1,6 +1,5 @@
 import Image from "next/image";
 import bg from "../../../../../public/image/waktaverse.webp";
-import SwiperComponent from "../../common/Swiper/SwiperCompoenent";
 
 export default function HomeFirst() {
   return (
