@@ -1,15 +1,13 @@
 "use client";
 
-import { ResultType } from "@/app/_types/faceAPI.type";
+import { DistanceType, ResultType } from "@/app/_types/faceAPI.type";
 import React, { useEffect, useState } from "react";
 import LoadingSnail from "../loading/LoadingSnail";
 
 export default function ModalWakfaceResult({
-  result,
   resultArr,
 }: {
-  result: ResultType | undefined;
-  resultArr: ResultType[] | undefined;
+  resultArr: DistanceType[] | undefined;
 }) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,15 +22,15 @@ export default function ModalWakfaceResult({
     : [];
 
   return (
-    <div className="flex items-center justify-center h-full">
+    <div className="flex h-full items-center justify-center">
       {isLoading || !resultArr ? (
         <LoadingSnail />
       ) : (
-        <div className="flex justify-evenly w-full h-full p-4 gap-4 text-center box-style">
+        <div className="box-style flex h-full w-full justify-evenly gap-4 p-4 text-center">
           {reorderedResults.map((item, index) => (
             <React.Fragment key={item.fileName}>
               {index !== 0 && (
-                <div className="w-px h-full bg-customColor-border my-2"></div>
+                <div className="my-2 h-full w-px bg-customColor-border"></div>
               )}
               <WakfaceResultItem
                 key={item.fileName}
@@ -77,17 +75,17 @@ function WakfaceResultItem({
   }, [result.distance]);
 
   return (
-    <div className="relative flex flex-col gap-2 justify-center items-center text-white">
+    <div className="relative flex flex-col items-center justify-center gap-2 text-white">
       {/* chart */}
-      <section className="flex justify-center items-end w-8 h-full rounded-full bg-customColor-border">
+      <section className="flex h-full w-8 items-end justify-center rounded-full bg-customColor-border">
         <div
-          className={`relative w-full rounded-full transition-all duration-2000 ${
+          className={`duration-2000 relative w-full rounded-full transition-all ${
             index === 1 ? "bg-customColor-main" : "bg-customColor-light_box"
           }`}
           style={{ height: `${height + 5}%` }}
         >
           <div
-            className={`absolute -top-4 right-1/2  w-12 h-12 transform translate-x-1/2  rounded-full border-4 ${
+            className={`absolute -top-4 right-1/2 h-12 w-12 translate-x-1/2 transform rounded-full border-4 ${
               index === 1 ? "bg-customColor-main" : "bg-customColor-light_box"
             }`}
             style={{
@@ -95,7 +93,7 @@ function WakfaceResultItem({
               transition: "all 2000ms ease-out",
             }}
           >
-            <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg font-bold">
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-lg font-bold">
               <span>{`${count.toFixed(0)}`}</span>
               <span className="text-sm">{`%`}</span>
             </span>
@@ -104,10 +102,10 @@ function WakfaceResultItem({
       </section>
 
       {/* imgae */}
-      <section className="w-[100px] h-[100px] flex-shrink-0">
+      <section className="h-[100px] w-[100px] flex-shrink-0">
         <img
-          src={result.blob}
-          className="w-full h-full bg-customColor-dark_box rounded-2xl object-cover transition-transform duration-2000"
+          src={result.url}
+          className="duration-2000 h-full w-full rounded-2xl bg-customColor-dark_box object-cover transition-transform"
         />
       </section>
     </div>
