@@ -20,7 +20,7 @@ export default function HomeThird() {
   ];
 
   return (
-    <div className="relative m-auto flex h-screen items-center justify-center">
+    <div className="relative m-auto flex h-screen items-center justify-center overflow-hidden">
       <div className="gradient-overlay"></div>
       <section className="absolute -left-24 w-fit">
         <SwiperComponent
