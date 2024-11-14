@@ -1,8 +1,6 @@
 "use client";
 
 import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
-import ModalWakFaceInfo from "@/app/_components/common/modal/ModalWakFaceInfo";
-import ModalWakfaceResult from "@/app/_components/common/modal/ModalWakfaceResult";
 import Portal from "@/app/_components/common/modal/Portal";
 import useFaceAPI from "@/app/hook/useFaceAPI";
 import { useState } from "react";
@@ -15,20 +13,26 @@ import UploadIcon from "../../../../../public/icon/upload.svg";
 import Capture from "./Capture";
 import UploadImg from "./UploadImg";
 
+import dynamic from "next/dynamic";
+import LoadingSnail from "@/app/_components/common/loading/LoadingSnail";
+
+const DynamicModalWakFaceInfo = dynamic(
+  () => import("@/app/_components/common/modal/ModalWakFaceInfo"),
+  { loading: () => <LoadingSnail />, ssr: false },
+);
+const DynamicModalWakfaceResult = dynamic(
+  () => import("@/app/_components/common/modal/ModalWakfaceResult"),
+  { loading: () => <LoadingSnail />, ssr: false },
+);
+
 export default function Camera({ data }: { data: string[] }) {
   const [methodFile, setMethodFile] = useState<boolean | undefined>(true);
   const [choseMethod, setCHoseMethod] = useState<boolean>(false);
   const [imgSrc, setImgSrc] = useState<string | null | undefined>(undefined);
   const [isInfoOpen, setIsInfoOpen] = useState<boolean>(false);
 
-  const {
-    compare,
-    result,
-    resultArr,
-    setResultArr,
-    isResultOpen,
-    setIsResultOpen,
-  } = useFaceAPI(data);
+  const { compare, resultArr, setResultArr, isResultOpen, setIsResultOpen } =
+    useFaceAPI(data);
 
   const handleCompare = async () => {
     await compare(imgSrc);
@@ -144,7 +148,7 @@ export default function Camera({ data }: { data: string[] }) {
         type="bottom"
       >
         <ContentsTitle title="사용 방법 | 자주 묻는 질문" Icon={Info} />
-        <ModalWakFaceInfo />
+        <DynamicModalWakFaceInfo />
       </Portal>
 
       <Portal
@@ -153,22 +157,8 @@ export default function Camera({ data }: { data: string[] }) {
         type="middle"
       >
         <ContentsTitle title="결과" Icon={Ai} />
-        <ModalWakfaceResult result={result} resultArr={resultArr} />
+        <DynamicModalWakfaceResult resultArr={resultArr} />
       </Portal>
     </div>
   );
-}
-
-{
-  /* <section className="container-style flex flex-col flex-2 gap-4">
-          <ContentsTitle title="당신과 닮은 고정멤버" Icon={Ai} />
-          <div className="w-full h-[340px] box-style">
-            {result ? (
-              <img
-                src={result?.blob}
-                className="w-full h-full object-contain"
-              />
-            ) : null}
-          </div>
-        </section> */
 }
