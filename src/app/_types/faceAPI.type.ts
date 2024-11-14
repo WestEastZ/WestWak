@@ -28,5 +28,17 @@ export interface BlobImg {
 export interface ResultType {
   distance: number;
   fileName: string;
-  blob: string;
+  url: string;
+}
+
+export interface DescriptorType {
+  detection: Float32Array;
+  fileName: string;
+  url: string;
+}
+
+export interface DistanceType {
+  distance: number;
+  fileName: string;
+  url: string;
 }

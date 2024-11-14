@@ -23,7 +23,6 @@ export async function middleware(request: NextRequest) {
     // token
     const newAccessToken = refreshResponse.access_token; // 재발급 access_token
 
-    console.log(newAccessToken);
     const refresh_token = request.cookies.get("refresh_token"); // refresh_token
     const cookieString = `${refresh_token?.name}=${refresh_token?.value}; access_token=${newAccessToken}`;
 
@@ -57,5 +56,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/developer"],
+  matcher: ["/developer", "/developer\\?page=:page*"],
 };

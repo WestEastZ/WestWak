@@ -5,15 +5,14 @@ import React, { useRef } from "react";
 import { InformationType } from "@/app/_types/type";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Scrollbar } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper/types";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/scrollbar";
-import dynamic from "next/dynamic";
 
-type IconName = "Youtube" | "Genie" | "Melon" | "Bugs" | "Flo" | "Spotify";
+import dynamic from "next/dynamic";
+import { IconName, streamingSite } from "@/app/_constants/StreamingSite";
 
 const IconComponents: Record<IconName, React.ComponentType<any>> = {
   Youtube: dynamic(() => import("../../../../../public/icon/youtube.svg")),
@@ -24,23 +23,11 @@ const IconComponents: Record<IconName, React.ComponentType<any>> = {
   Spotify: dynamic(() => import("../../../../../public/icon/spotify.svg")),
 };
 
-const streamingSite: { name: IconName; url: string }[] = [
-  { name: "Youtube", url: "https://www.youtube.com/watch?v=" },
-  { name: "Genie", url: "https://www.genie.co.kr/detail/songInfo?xgnm=" },
-  { name: "Melon", url: "https://www.melon.com/song/detail.htm?songId=" },
-  { name: "Bugs", url: "https://music.bugs.co.kr/track/" },
-  { name: "Flo", url: "https://www.music-flo.com/detail/track/" },
-  {
-    name: "Spotify",
-    url: "https://open.spotify.com/track/",
-  },
-];
-
 export default function LinkStreamingSite({ data }: { data: InformationType }) {
   const swiperRef = useRef<SwiperType>();
 
   const swiperOption = {
-    modules: [Navigation, Scrollbar],
+    modules: [Navigation],
     spaceBetween: 10,
     slidesPerView: 5,
     centeredSlides: true,
@@ -52,10 +39,10 @@ export default function LinkStreamingSite({ data }: { data: InformationType }) {
   };
 
   return (
-    <div className="w-full flex gap-3 item-center">
+    <div className="item-center flex w-full gap-3">
       <button
         onClick={() => swiperRef.current?.slidePrev()}
-        className="p-1 bg-customColor-border bg-opacity-10"
+        className="bg-customColor-border bg-opacity-10 p-1"
       >
         {"<"}
       </button>
@@ -66,11 +53,11 @@ export default function LinkStreamingSite({ data }: { data: InformationType }) {
           return (
             <SwiperSlide
               key={site.name}
-              className="bg-customColor-box rounded-lg p-2"
+              className="rounded-lg bg-customColor-box p-2"
             >
               <Link
                 href={`${site.url}${code}`}
-                className="flex justify-center items-center transition-all duration-300 hover:scale-110"
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
                 <IconComponent width={50} height={50} />
               </Link>
@@ -80,7 +67,7 @@ export default function LinkStreamingSite({ data }: { data: InformationType }) {
       </Swiper>
       <button
         onClick={() => swiperRef.current?.slideNext()}
-        className="p-1 bg-customColor-border bg-opacity-10"
+        className="bg-customColor-border bg-opacity-10 p-1"
       >
         {">"}
       </button>

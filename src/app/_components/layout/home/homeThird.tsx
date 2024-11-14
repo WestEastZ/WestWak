@@ -19,7 +19,6 @@ export default function HomeThird() {
     },
   ];
 
-  const woowakgood = "/image/woowakgood_tong.webp";
   return (
     <div className="relative m-auto flex h-screen items-center justify-center">
       <div className="gradient-overlay"></div>

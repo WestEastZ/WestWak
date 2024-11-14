@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "secure": "node server.js"
+    "secure": "node server.js",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@nivo/core": "^0.87.0",
@@ -15,20 +16,16 @@
     "@nivo/scales": "^0.87.0",
     "@svgr/webpack": "^8.1.0",
     "@types/lodash": "^4.17.10",
-    "axios": "^1.7.2",
-    "cookies-next": "^4.2.1",
     "encoding": "^0.1.13",
     "face-api.js": "^0.22.2",
     "lodash": "^4.17.21",
     "next": "14.2.3",
-    "next-client-cookies": "^1.1.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
     "react-webcam": "^7.2.0",
     "swiper": "^11.1.12",
     "swr": "^2.2.5",
-    "universal-cookie": "^7.1.4",
     "zustand": "^4.5.4"
   },
   "devDependencies": {

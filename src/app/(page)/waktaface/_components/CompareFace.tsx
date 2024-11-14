@@ -1,7 +1,6 @@
 import { getS3Image } from "@/app/lip/s3";
 import React from "react";
 import Camera from "./Camera";
-import Image from "next/image";
 import SwiperComponent from "@/app/_components/common/Swiper/SwiperCompoenent";
 
 export default async function CompareFace() {

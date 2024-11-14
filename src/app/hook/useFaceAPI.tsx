@@ -1,23 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import * as faceapi from "face-api.js";
-import { changeBlobImg } from "../lip/s3";
-import {
-  BlobImg,
-  FaceDetectionResult,
-  FaceDetectionResultsArray,
-  ResultType,
-} from "../_types/faceAPI.type";
+import { DescriptorType, DistanceType } from "../_types/faceAPI.type";
 
 export default function useFaceAPI(data: string[]) {
   const [isModelLoaded, setIsModelLoaded] = useState<boolean>(false);
-  const [blobs, setBlobs] = useState<BlobImg[]>([]);
 
-  const [result, setResult] = useState<ResultType | undefined>(undefined);
-  const [resultArr, setResultArr] = useState<ResultType[] | undefined>(
-    undefined
-  );
+  const [cachedDescriptors, setCachedDescriptors] =
+    useState<DescriptorType[]>();
+
+  const [resultArr, setResultArr] = useState<DistanceType[] | undefined>();
   const [isResultOpen, setIsResultOpen] = useState<boolean>(false);
 
   // face-api.js 모델 로드
@@ -25,9 +18,8 @@ export default function useFaceAPI(data: string[]) {
     const loadModels = async () => {
       const MODEL_URL = "/models";
       try {
-        await faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL);
-        await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
-        await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
+        await faceapi.loadTinyFaceDetectorModel(MODEL_URL);
+        await faceapi.loadFaceRecognitionModel(MODEL_URL);
         setIsModelLoaded(true);
       } catch (error) {
         console.error("Error loading face-api models:", error);
@@ -37,19 +29,23 @@ export default function useFaceAPI(data: string[]) {
     loadModels();
   }, []);
 
-  // Convert Blob Img
+  // Fetch Images (비교 대상 이미지들)
   useEffect(() => {
-    async function fetchBlobs() {
-      const blobResult = await changeBlobImg(data);
-      setBlobs(blobResult);
-    }
+    if (!isModelLoaded) return;
 
-    fetchBlobs();
-    return () => {
-      // 생성된 모든 Blob URL 해제
-      blobs.forEach((value) => URL.revokeObjectURL(value.blob));
+    const fetchDescriptors = async () => {
+      if (cachedDescriptors) return cachedDescriptors;
+
+      try {
+        const result = await descriptorImages();
+        setCachedDescriptors(result);
+      } catch (error) {
+        return [];
+      }
     };
-  }, [data]);
+
+    fetchDescriptors();
+  }, [data, cachedDescriptors, isModelLoaded]);
 
   // Compare Img
   const compare = async (img1: any) => {
@@ -60,33 +56,22 @@ export default function useFaceAPI(data: string[]) {
 
     try {
       setIsResultOpen(true);
+
       const image1 = await faceapi.fetchImage(img1);
+      const descriptor = await faceapi.computeFaceDescriptor(image1);
 
-      const detectionImage1: FaceDetectionResult = await faceapi
-        .detectSingleFace(image1)
-        .withFaceLandmarks()
-        .withFaceDescriptor();
-      const detectionImages: FaceDetectionResultsArray =
-        await promiseFaceApiFetchImage(blobs);
+      if (descriptor instanceof Float32Array) {
+        const distance = await distanceImage(descriptor, cachedDescriptors);
+        console.log(distance);
 
-      const distance = await promiseFaceApiDistance(
-        detectionImage1,
-        detectionImages
-      );
+        if (distance) {
+          const sortDistacne = distance.sort((a, b) => {
+            return b.distance - a.distance;
+          });
 
-      if (distance) {
-        const sortDistance = distance.sort((a, b) => {
-          return b.distance - a.distance;
-        });
-
-        const closestMatch = distance.reduce((prev, current) =>
-          prev.distance > current.distance ? prev : current
-        );
-
-        setResult(closestMatch);
-
-        const topThree = sortDistance.slice(0, 3);
-        setResultArr(topThree);
+          const topThree = sortDistacne.slice(0, 3);
+          setResultArr(topThree);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -94,18 +79,19 @@ export default function useFaceAPI(data: string[]) {
   };
 
   // Promise Fetch Img
-  const promiseFaceApiFetchImage = async (blobs: BlobImg[]) => {
+  const descriptorImages = async (): Promise<DescriptorType[]> => {
     try {
-      const promise = blobs.map(async (image) => {
-        const fetchImage = await faceapi.fetchImage(image.blob);
-        const detectionImage = await faceapi
-          .detectSingleFace(fetchImage)
-          .withFaceLandmarks()
-          .withFaceDescriptor();
+      const promise = data.map(async (image) => {
+        const fetchImage = await faceapi.fetchImage(image);
+        const descriptor = await faceapi.computeFaceDescriptor(fetchImage);
+
+        const fileNameMatch = image.match(/gomem\/(.+)\.webp/);
+        const fileName = fileNameMatch ? fileNameMatch[1] : "";
+
         return {
-          detection: detectionImage,
-          fileName: image.fileName,
-          blob: image.blob,
+          detection: descriptor as Float32Array,
+          fileName,
+          url: image,
         };
       });
 
@@ -114,47 +100,40 @@ export default function useFaceAPI(data: string[]) {
       return result;
     } catch (error) {
       console.log(error);
+      return [];
     }
   };
 
-  // Promise Distance Img
-  const promiseFaceApiDistance = async (
-    detectionImage1: FaceDetectionResult,
-    detectionImages: FaceDetectionResultsArray
-  ): Promise<ResultType[] | null> => {
-    if (!detectionImages || !detectionImage1) {
+  // Distance Image
+  const distanceImage = async (
+    descriptor: Float32Array,
+    descriptors: DescriptorType[] | undefined,
+  ) => {
+    if (!descriptor || !descriptors) {
       return null;
     }
 
     try {
-      const results = detectionImages.map((file) => {
-        if (!file.detection) {
-          return null;
-        }
-        const distance = faceapi.euclideanDistance(
-          detectionImage1.descriptor,
-          file.detection.descriptor
-        );
+      const results = descriptors.map((image) => {
+        const distance = faceapi.euclideanDistance(descriptor, image.detection);
 
         const percent = (1 - distance) * 100;
 
         return {
           distance: percent,
-          fileName: file.fileName,
-          blob: file.blob,
+          fileName: image.fileName,
+          url: image.url,
         };
       });
 
-      return results.filter((result): result is ResultType => result !== null);
-    } catch (error) {
-      console.error("Error calculating face distances:", error);
-      return null;
-    }
+      return results.filter(
+        (result): result is DistanceType => result !== null,
+      );
+    } catch (error) {}
   };
 
   return {
     compare,
-    result,
     resultArr,
     setResultArr,
     isResultOpen,

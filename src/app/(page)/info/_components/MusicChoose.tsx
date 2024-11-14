@@ -19,9 +19,7 @@ export default function MusicChoose() {
 
   useEffect(() => {
     const fetchMusicData = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/information/all`,
-      );
+      const response = await fetch("/api/information");
       const data = await response.json();
       setMusicData(data);
     };
