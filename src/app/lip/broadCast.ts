@@ -1,7 +1,7 @@
 export async function getBroadCastInfo(streamerIds: string) {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/broadcast?ids=${streamerIds}`;
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-store" });
 
     return response.json();
   } catch (error) {
