@@ -2,7 +2,7 @@
 
 ## 1. 📺 서비스 소개
 
-<figure><img src="https://private-user-images.githubusercontent.com/85664676/386093231-3f7dcc9c-c2e1-48c4-91b0-7784aa4871b0.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE1NzA3NzMsIm5iZiI6MTczMTU3MDQ3MywicGF0aCI6Ii84NTY2NDY3Ni8zODYwOTMyMzEtM2Y3ZGNjOWMtYzJlMS00OGM0LTkxYjAtNzc4NGFhNDg3MWIwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE0VDA3NDc1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlNjVlNWRiZDhhODdmZmUzMjMwNmYwNjZjNjM5ZmViODFhNGMzODIxMjI3ZDQzMzQ3M2I3ZDFlMjJmYWRlYzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.n6-yQjl9g0lpRcBmNlydO1GAUs_03s85sdHMRDDUy-E" alt=""><figcaption></figcaption></figure>
+![main](https://github.com/user-attachments/assets/89d2646d-a123-400f-ab20-b936f2ab5cb6)
 
 &#x20;Wakvideo는 NextJs, NestJs를 활용한 풀스택 프로젝트입니다.
 
@@ -18,7 +18,7 @@ PW : test3000
 
 ## 2. 🛠️ 서비스 아키텍처
 
-<figure><img src="https://private-user-images.githubusercontent.com/85664676/386093887-7b11be51-52c3-4d0a-9fbd-e7e32c115a7c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE1NzA4OTcsIm5iZiI6MTczMTU3MDU5NywicGF0aCI6Ii84NTY2NDY3Ni8zODYwOTM4ODctN2IxMWJlNTEtNTJjMy00ZDBhLTlmYmQtZTdlMzJjMTE1YTdjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE0VDA3NDk1N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEyNWVlNzg3MjA5NTRiYzhhMTEyODI4YzBhZDZlNTJiNzNkYzYwMGQ5ZGViYzc5MDQ3Mzk2Yjc4NDkzYzExNjUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.0_mrS-XKlAi0zZu13QMDGijObsJ7PYpxkimyAl2Y_hY" alt=""><figcaption></figcaption></figure>
+![service](https://github.com/user-attachments/assets/146cd6b3-95d8-4cd8-bf71-8d0f3caf887d)
 
 ## 3. 🔧 기술
 
