@@ -1,6 +1,6 @@
 export default function HomeFirst() {
   return (
-    <div className="vh-minus-2rem flex flex-col items-center">
+    <div className="vh-minus-2rem m-auto flex w-full max-w-[80rem] flex-col items-center overflow-hidden">
       {/* <Image src={bg} alt="bg" fill className="object-cover" /> */}
 
       {/* <div className="absolute left-0 top-0 h-full w-full bg-black opacity-80"></div> */}

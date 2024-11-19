@@ -17,7 +17,7 @@ export default function Navigation() {
         className={`sticky z-[9999] flex w-full items-center justify-start p-4 transition duration-500 ease-in-out`}
       >
         {/* text */}
-        <section className="m-auto flex w-full max-w-[80rem] items-center justify-between text-3xl font-bold text-white">
+        <section className="m-auto flex w-full max-w-[80rem] items-center justify-between overflow-hidden text-3xl font-bold text-white">
           <Link
             href={"/"}
             className="flex cursor-pointer items-center justify-center text-3xl text-characterColor-woowakgood"

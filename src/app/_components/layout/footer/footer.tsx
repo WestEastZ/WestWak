@@ -25,8 +25,8 @@ function LinkIcon({
 
 export default function Footer() {
   return (
-    <footer className="mt-10 w-full bg-customColor-background_black text-customColor-text">
-      <section className="m-auto flex w-[80rem] flex-col gap-4 py-4 text-left font-bold">
+    <footer className="mt-10 w-full bg-customColor-background_black p-4 text-customColor-text">
+      <section className="m-auto flex w-full max-w-[80rem] flex-col gap-4 overflow-hidden py-4 text-left font-bold">
         <div className="flex flex-col">
           <span className="text-3xl text-customColor-main">WAKVIDEO</span>
           <span className="relative font-medium">
@@ -58,7 +58,7 @@ export default function Footer() {
         </Link>
       </section>
       <section className="bg-customColor-background_black p-1 text-customColor-text">
-        <div className="m-auto w-[80rem] text-sm font-medium">
+        <div className="m-auto w-[80rem] overflow-hidden text-sm font-medium">
           COPYRIGHT ⓒ WAKVIDEO. ALL RIGHT RESERVED
         </div>
       </section>
