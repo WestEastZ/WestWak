@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import Youtube from "../../../../../../public/icon/youtube_white.svg";
 import Melon from "../../../../../../public/icon/melon.svg";
-import Afreeca from "../../../../../../public/icon/afreeaca.png";
+import Soop from "../../../../../../public/icon/soop.svg";
 import Naver from "../../../../../../public/icon/naver.png";
 
 import React, { useEffect, useState } from "react";
@@ -37,37 +37,8 @@ export function HomeScrollFirst({ isVisible }: HomeScrollFirstProps) {
     <div
       className={`absolute inset-0 flex h-full w-full rounded-3xl text-center transition-all duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
     >
-      <section className="absolute h-full w-full">
-        <div className="animate-jump-up absolute left-20 top-32 w-fit max-md:-left-20">
-          <div className="-rotate-12">
-            <Youtube width={60} height={60} />
-          </div>
-        </div>
-
-        <div className="animate-jump-down absolute -top-8 left-[30%] w-fit max-md:left-[10%]">
-          <Melon width={60} height={60} />
-        </div>
-
-        <div className="animate-jump-up absolute -top-8 left-[60%] h-fit w-fit max-md:left-[80%]">
-          <div className="rotate-12">
-            <Image
-              src={Afreeca}
-              alt="afreeca"
-              width={60}
-              height={60}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className="animate-jump-down absolute left-[70%] top-48 h-20 w-20 max-md:left-[100%]">
-          <div className="rotate-12">
-            <Image src={Naver} alt="Naver" width={60} height={60} priority />
-          </div>
-        </div>
-      </section>
-
       <section className="relative flex h-full w-full flex-col items-center justify-center gap-10">
+        {/* 채널 아이콘 */}
         <div className="grid grid-cols-2 content-center gap-5">
           {channelLogos.map((logo, index) => (
             <div
@@ -92,12 +63,42 @@ export function HomeScrollFirst({ isVisible }: HomeScrollFirstProps) {
           ))}
         </div>
 
+        {/* 텍스트 */}
         <section className="flex flex-col gap-2 text-2xl font-bold text-customColor-main">
           <span className="">왁타버스 콘텐츠를</span>
           <span> 놓치고 싶지 않다면?</span>
         </section>
+
+        {/* 로고 아이콘 */}
+        <div className="animate-jump-up absolute -left-10 max-md:-left-[30%] max-md:-top-10">
+          <div className="-rotate-12">
+            <Youtube width={70} height={70} />
+          </div>
+        </div>
+
+        <div className="animate-jump-down absolute -top-10 left-[20%]">
+          <Melon width={70} height={70} />
+        </div>
+
+        <div className="animate-jump-up absolute -top-10 left-[60%]">
+          <div className="rotate-12">
+            <Soop width={70} height={70} />
+          </div>
+        </div>
+
+        <div className="animate-jump-down absolute -right-10 z-[10] max-md:-right-[30%] max-md:-top-10">
+          <div className="h-[70px] w-[70px] rotate-12">
+            <Image
+              src={Naver}
+              alt="Naver"
+              sizes="70px"
+              className="object-contain"
+            />
+          </div>
+        </div>
       </section>
 
+      {/* 이미지 */}
       <section className="absolute left-96 h-full w-full rounded-r-3xl opacity-20 max-md:hidden">
         <Image
           src={woowakgood}
