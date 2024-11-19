@@ -15,14 +15,14 @@ export async function GET(request: NextRequest) {
 
     const playlistUrl = `${process.env.YOUTUBE_PLATLISTITEM_URL}&playlistId=${playListId}&maxResults=5&key=${process.env.YOUTUBE_API_KEY}`;
 
-    const response = await fetch(playlistUrl);
+    const response = await fetch(playlistUrl, { cache: "no-store" });
     const data = await response.json();
 
     return NextResponse.json(data, { status: response.status });
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
