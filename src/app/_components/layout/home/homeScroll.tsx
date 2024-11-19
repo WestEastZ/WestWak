@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { debounce } from "lodash";
+import { debounce, throttle } from "lodash";
 
 import {
   HomeScrollFirst,
@@ -19,57 +19,37 @@ export default function HomeScroll() {
   const elementHeightRef = useRef<number>(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const { boundingClientRect } = entry;
+    console.log(window.scrollY);
+    const handleScroll = () => {
+      const scrollPercentage =
+        (window.scrollY /
+          (document.documentElement.scrollHeight - window.innerHeight)) *
+        100;
 
-        const absoluteElementTop = boundingClientRect.top + window.scrollY;
+      console.log(scrollPercentage);
 
-        elementTopRef.current = absoluteElementTop;
-        elementHeightRef.current = boundingClientRect.height;
-      },
-      {
-        // threshold: Array.from({ length: 301 }, (_, i) => i / 300),
-        threshold: [0, 1],
-      },
-    );
+      if (scrollPercentage <= 45) {
+        setCurrentItem(0);
+      } else {
+        setCurrentItem(1);
+      }
+    };
 
-    const handleScroll = debounce(() => {
-      const currentViewportTop = window.scrollY;
+    const throttledScroll = throttle(handleScroll, 10);
 
-      const viewportPositionInElement =
-        currentViewportTop - elementTopRef.current;
-
-      const percentage = parseInt(
-        ((viewportPositionInElement / elementHeightRef.current) * 100).toFixed(
-          0,
-        ),
-      );
-
-      const newCurrentItem = Math.floor(percentage / (100 / 2));
-
-      setCurrentItem(Math.max(0, Math.min(newCurrentItem, 2 - 1)));
-    }, 10);
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", throttledScroll);
+    handleScroll();
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", throttledScroll);
+      throttledScroll.cancel();
     };
   }, []);
 
   return (
     <div
       ref={sectionRef}
-      className="relative h-[400vh] bg-customColor-dark_box"
+      className="relative h-[300vh] bg-customColor-dark_box"
     >
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         <div className="relative h-1/2 w-1/2 p-0">
@@ -80,32 +60,3 @@ export default function HomeScroll() {
     </div>
   );
 }
-
-// absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-
-// (
-//   <div
-//     key={index}
-//     className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${
-//       index === currentItem ? "opacity-100" : "opacity-0"
-//     }`}
-//   >
-//     {Component}
-//   </div>
-// )
-
-/* {homeScrollComponents.map((Component, index) => {
-          const isVisible = index === currentItem;
-          return (
-            <div
-              key={index}
-              className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${
-                index === currentItem ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {React.isValidElement(Component)
-                ? React.cloneElement(Component, { isVisible })
-                : Component}
-            </div>
-          );
-        })} */

@@ -22,7 +22,7 @@ export default function HomeThird() {
   return (
     <div className="relative m-auto flex h-screen items-center justify-center overflow-hidden">
       <div className="gradient-overlay"></div>
-      <section className="absolute -left-24 w-fit">
+      <section className="absolute -left-24 w-fit max-xl:hidden">
         <SwiperComponent
           slides={swiperImage}
           swiperOptions={{
@@ -39,13 +39,12 @@ export default function HomeThird() {
         />
       </section>
 
-      <section className="relative flex h-2/3 w-1/3 flex-col items-center justify-center gap-4 overflow-hidden rounded-3xl text-3xl font-bold text-customColor-main">
-        <span>짭치 탈출은</span>
-
-        <span>왁비디오와 함께</span>
+      <section className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-3xl text-3xl font-bold text-customColor-main">
+        <span className="whitespace-nowrap">짭치 탈출은</span>
+        <span className="whitespace-nowrap">왁비디오와 함께</span>
       </section>
 
-      <section className="absolute -right-24 w-fit">
+      <section className="absolute -right-24 w-fit max-xl:hidden">
         <SwiperComponent
           slides={swiperImage}
           swiperOptions={{

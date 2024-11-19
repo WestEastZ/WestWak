@@ -28,11 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col">
+    <html lang="en" className="">
+      <body className="flex min-h-screen w-full flex-col">
         <div id="modal-portal"></div>
         <Navigation />
-        <main className="flex flex-grow flex-col">{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>
