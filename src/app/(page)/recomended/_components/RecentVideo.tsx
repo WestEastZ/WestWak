@@ -57,8 +57,23 @@ function VideoList({
   const swiperRef = useRef<SwiperType>();
   const swiperOption = {
     module: [Navigation, Scrollbar],
-    spaceBetween: 20,
-    slidesPerView: 3,
+    breakpoints: {
+      // 320px 이상일 때
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      // 768px 이상일 때
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+      },
+      // 1024px 이상일 때
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    },
     loop: false,
     touchRatio: 0,
     onSwiper: (swiper: SwiperType) => {
@@ -149,64 +164,67 @@ function RecentVideoForm({
     <div className="flex flex-col gap-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex items-center gap-5"
+        className="flex items-center gap-5 max-md:flex-col"
       >
-        <Controller
-          name="category"
-          control={control}
-          defaultValue=""
-          rules={{ required: "Please select a category" }}
-          render={({ field, fieldState: { error } }) => (
-            <div className="relative text-white">
-              <select
-                {...field}
-                className="w-48 cursor-pointer appearance-none rounded-xl bg-customColor-box p-2 px-4"
-              >
-                <option value="">채널 보기</option>
-                {categories.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-2 right-2">
-                <Arrow width={24} height={24} />
-              </div>
-            </div>
-          )}
-        />
-
-        <Controller
-          name="subCategory"
-          control={control}
-          defaultValue=""
-          rules={{ required: "Please select a category" }}
-          render={({ field, fieldState: { error } }) => (
-            <div className="relative text-white">
-              <select
-                {...field}
-                disabled={!seletedCategory}
-                className="w-48 cursor-pointer appearance-none rounded-xl bg-customColor-box p-2 px-4"
-              >
-                <option>세부 채널 보기</option>
-                {seletedCategory &&
-                  subCategories[
-                    seletedCategory as keyof typeof subCategories
-                  ].map((option) => (
-                    <option key={option.label} value={option.value}>
+        <div className="flex items-center gap-5 max-md:w-full max-md:justify-between">
+          <Controller
+            name="category"
+            control={control}
+            defaultValue=""
+            rules={{ required: "Please select a category" }}
+            render={({ field, fieldState: { error } }) => (
+              <div className="relative text-white max-md:w-full">
+                <select
+                  {...field}
+                  className="w-48 cursor-pointer appearance-none rounded-xl bg-customColor-box p-2 px-4 max-md:w-full"
+                >
+                  <option value="">채널 보기</option>
+                  {categories.map((option) => (
+                    <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
                   ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-2 right-2">
-                <Arrow width={24} height={24} />
+                </select>
+                <div className="pointer-events-none absolute inset-y-2 right-2">
+                  <Arrow width={24} height={24} />
+                </div>
               </div>
-            </div>
-          )}
-        />
+            )}
+          />
+
+          <Controller
+            name="subCategory"
+            control={control}
+            defaultValue=""
+            rules={{ required: "Please select a category" }}
+            render={({ field, fieldState: { error } }) => (
+              <div className="relative text-white max-md:w-full">
+                <select
+                  {...field}
+                  disabled={!seletedCategory}
+                  className="w-48 cursor-pointer appearance-none rounded-xl bg-customColor-box p-2 px-4 max-md:w-full"
+                >
+                  <option>세부 채널 보기</option>
+                  {seletedCategory &&
+                    subCategories[
+                      seletedCategory as keyof typeof subCategories
+                    ].map((option) => (
+                      <option key={option.label} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-2 right-2">
+                  <Arrow width={24} height={24} />
+                </div>
+              </div>
+            )}
+          />
+        </div>
+
         <button
           type="submit"
-          className="button-style h-max rounded-2xl px-5 py-1 text-base"
+          className="button-style h-max rounded-2xl px-5 py-1 text-base max-md:w-full"
         >
           검색
         </button>
