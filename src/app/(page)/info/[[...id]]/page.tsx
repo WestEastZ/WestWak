@@ -29,17 +29,17 @@ export default async function page({ params }: { params: { id: string } }) {
   const responseInfomation = await getInformation(musicId);
 
   return (
-    <div>
+    <div className="">
       <Title title="Music Info" />
 
-      <div className="flex gap-4">
-        <section className="flex w-1/3 flex-col gap-4">
+      <div className="flex w-full gap-4 max-md:flex-col max-md:px-4">
+        <section className="flex w-1/3 flex-col gap-4 max-md:w-full">
           <MusicContainer data={responseInfomation} />
           <LinkContainer data={responseInfomation} />
           <YoutubeMusicContainer data={responseInfomation} />
         </section>
 
-        <section className="flex w-2/3 flex-col gap-4">
+        <section className="flex w-2/3 flex-col gap-4 max-md:w-full">
           {responseChart && <ChartContainer data={responseChart} />}
         </section>
       </div>

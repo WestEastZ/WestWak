@@ -9,7 +9,7 @@ export default function Infolayout({
 }) {
   return (
     <div className="w-full flex-grow text-white">
-      <section className="m-auto flex h-full w-[80rem] flex-grow flex-col gap-10">
+      <section className="m-auto flex h-full w-full max-w-[80rem] flex-grow flex-col gap-10">
         <Suspense
           fallback={
             <div className="flex h-full items-center justify-center">
