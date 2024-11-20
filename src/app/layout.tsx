@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className="flex min-h-screen w-full flex-col">
         <div id="modal-portal"></div>
         <Navigation />
-        <main className="">{children}</main>
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>

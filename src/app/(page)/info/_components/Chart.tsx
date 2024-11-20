@@ -3,9 +3,8 @@
 import { ALBUM_COVERS } from "@/app/_constants/AlbumList";
 import { getChartTick } from "@/app/lip/chart";
 import { ResponsiveLine } from "@nivo/line";
-import { TicksSpec } from "@nivo/scales";
 import Image from "next/image";
-import React, { useMemo } from "react";
+import React from "react";
 
 export interface chartType {
   id: string;

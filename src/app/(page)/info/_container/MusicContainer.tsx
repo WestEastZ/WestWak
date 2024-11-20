@@ -18,11 +18,11 @@ export default function MusicContainer({ data }: { data: InformationType }) {
 
   return (
     <section className="container-style flex flex-col gap-4">
-      <section className="flex justify-between items-center">
+      <section className="flex items-center justify-between">
         <ContentsTitle title="노래" Icon={Music} />
         <button
           onClick={() => setIsOpen(true)}
-          className="button-style h-max text-xs rounded-full p-2 leading-none"
+          className="button-style h-max rounded-full p-2 text-xs leading-none"
         >
           {"곡 선택 > "}
         </button>
