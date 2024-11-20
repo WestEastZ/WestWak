@@ -6,11 +6,13 @@ import { getMusicVideo, getTodayMusic } from "@/app/lip/videos";
 
 export default function TodayVideo() {
   return (
-    <div className="container-style flex flex-col gap-4 flex-grow">
+    <div className="container-style flex flex-grow flex-col gap-4">
       <ContentsTitle title="실시간 추천 노래" Icon={Like} />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 max-xl:grid-cols-1">
         <Video />
-        <Video />
+        <div className="max-xl:hidden">
+          <Video />
+        </div>
       </div>
     </div>
   );
@@ -22,10 +24,10 @@ async function Video() {
   return (
     <div>
       <div>
-        <section className="rounded-xl overflow-hidden aspect-w-16 aspect-h-9">
+        <section className="aspect-h-9 aspect-w-16 overflow-hidden rounded-xl">
           <iframe
             src={`https://www.youtube.com/embed/${randomvideoId}`}
-            className="w-full h-full"
+            className="h-full w-full"
           />
         </section>
       </div>

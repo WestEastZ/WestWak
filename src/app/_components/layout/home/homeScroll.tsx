@@ -19,7 +19,6 @@ export default function HomeScroll() {
   const elementHeightRef = useRef<number>(0);
 
   useEffect(() => {
-    console.log(window.scrollY);
     const handleScroll = () => {
       const scrollPercentage =
         (window.scrollY /

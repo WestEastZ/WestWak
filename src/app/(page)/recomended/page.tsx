@@ -9,11 +9,11 @@ export default function page() {
     <div>
       <Title title="Recent & Live" />
 
-      <div className="flex flex-col gap-4">
-        <section className="flex">
+      <div className="flex flex-col gap-4 max-md:flex-col max-md:px-4">
+        <section className="">
           <RecentVideo />
         </section>
-        <section className="flex gap-4">
+        <section className="flex gap-4 max-md:flex-col">
           <TodayMusic />
           <BroadCastList />
         </section>
