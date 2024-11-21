@@ -6,22 +6,22 @@ import Person from "../../../../../public/icon/person.svg";
 
 export default function Introduce() {
   return (
-    <section className="flex flex-col gap-2 font-semibold container-style">
+    <section className="container-style flex w-full flex-grow flex-col gap-2 font-semibold max-md:w-2/3">
       <ContentsTitle title="Developer" Icon={Person} />
 
-      <section className="flex flex-col justify-center item-center gap-10">
+      <section className="item-center flex flex-col items-center justify-center gap-10">
         <Image
           src={westImage}
           alt="west"
           width={250}
           priority
-          className="border border-customColor-border rounded-full"
+          className="rounded-full border border-customColor-border"
         />
 
         <section className="flex flex-col text-left text-base">
           <div>🧑🏻 서동주</div>
           <div>🎂 1997.08.20</div>
-          <div>📧 westeaststate@gmail.com</div>
+          <div className="whitespace-nowrap">📧 westeaststate@gmail.com</div>
         </section>
       </section>
     </section>

@@ -10,7 +10,7 @@ export default function CommentContainer({
   searchParams: searchParamsType;
 }) {
   return (
-    <section className="flex flex-col gap-10 min-h-0">
+    <section className="flex h-full min-h-0 flex-col gap-10">
       <CommentWrite />
       <CommentList searchParams={searchParams} />
     </section>

@@ -9,26 +9,26 @@ import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
 
 export default function Links() {
   return (
-    <div className="flex flex-col flex-shrink-0 gap-4 container-style">
+    <div className="container-style flex flex-col gap-4 max-md:w-1/3">
       <ContentsTitle title="Link" Icon={Laptop} />
 
-      <section className="flex justify-between items-center">
+      <section className="flex items-center justify-between max-md:h-full max-md:flex-col">
         <Link
           href={"https://github.com/WestEastZ"}
-          className="flex flex-col items-center gap-2 p-4 rounded-lg bg-customColor-box transition-all duration-300 hover:scale-105"
+          className="flex flex-col items-center gap-2 rounded-lg bg-customColor-box p-4 transition-all duration-300 hover:scale-105"
         >
           <Github width={36} height={36} />
         </Link>
 
         <Link
           href={"https://velog.io/@westeastz/posts"}
-          className="flex flex-col items-center gap-2 p-4 rounded-lg bg-customColor-box transition-all duration-300 hover:scale-105"
+          className="flex flex-col items-center gap-2 rounded-lg bg-customColor-box p-4 transition-all duration-300 hover:scale-105"
         >
           <Velog width={36} height={36} />
         </Link>
         <Link
           href={"https://velog.io/@westeastz/posts"}
-          className="flex flex-col items-center gap-2 p-4 rounded-lg bg-customColor-box transition-all duration-300 hover:scale-105"
+          className="flex flex-col items-center gap-2 rounded-lg bg-customColor-box p-4 transition-all duration-300 hover:scale-105"
         >
           <Notion width={36} height={36} fill="white" />
         </Link>

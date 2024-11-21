@@ -18,14 +18,14 @@ export default function Developer({
     <div>
       <Title title={"한마디 하는 곳"} />
 
-      <section className="flex gap-5 mt-5">
-        <section className="flex flex-col gap-5">
+      <section className="flex gap-5 p-4 max-md:flex-col">
+        <section className="flex flex-col gap-5 max-md:flex-row">
           <Introduce />
           <Links />
         </section>
 
-        <section className="flex flex-col gap-4 flex-grow container-style">
-          <div className="flex justify-between items-center">
+        <section className="container-style flex flex-grow flex-col gap-4">
+          <div className="flex items-center justify-between">
             <ContentsTitle title="Comment" Icon={CommentIcon} />
             <User />
           </div>

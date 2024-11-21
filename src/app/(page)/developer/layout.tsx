@@ -18,7 +18,7 @@ export default function DeveloperLayout({
 }) {
   return (
     <div className="w-full text-white">
-      <section className="m-auto flex h-full w-[80rem] flex-col gap-10">
+      <section className="m-auto flex h-full w-full max-w-[80rem] flex-col gap-10">
         {children}
       </section>
     </div>

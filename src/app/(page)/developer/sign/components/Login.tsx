@@ -57,7 +57,7 @@ export default function Login() {
   };
 
   return (
-    <div className="container-style m-auto flex h-[38rem] w-[32rem] flex-col gap-5">
+    <div className="container-style m-auto flex h-[38rem] w-full flex-col gap-5">
       <ContentsTitle title="로그인" Icon={Person} />
       <form
         onSubmit={handleSubmit(onSubmitSignin)}

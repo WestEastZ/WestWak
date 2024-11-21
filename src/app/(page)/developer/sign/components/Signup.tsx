@@ -39,11 +39,11 @@ export default function Signup() {
   };
 
   return (
-    <div className="w-[32rem] h-[38rem] m-auto flex flex-col gap-5 container-style">
+    <div className="container-style m-auto flex h-[38rem] w-full flex-col gap-5">
       <ContentsTitle title="회원가입" Icon={Person} />
       <form
         onSubmit={handleSubmit(onSubmitSignUp)}
-        className="w-full h-max flex flex-col items-center gap-5"
+        className="flex h-max w-full flex-col items-center gap-5"
       >
         <Input
           id="username"
@@ -88,19 +88,19 @@ export default function Signup() {
           }}
           error={errors.passwordConfirm}
         />
-        <section className="w-full flex flex-col gap-2">
+        <section className="flex w-full flex-col gap-2">
           <Button text="회원가입" type="submit" size="large" />
         </section>
       </form>
 
       {errors.root && (
-        <p className="text-red-500 text-sm mt-2">{errors.root.message}</p>
+        <p className="mt-2 text-sm text-red-500">{errors.root.message}</p>
       )}
       {isSuccess && (
-        <p className="text-green-500 text-sm mt-2">회원가입에 성공했습니다!</p>
+        <p className="mt-2 text-sm text-green-500">회원가입에 성공했습니다!</p>
       )}
 
-      <div className="w-full h-px bg-customColor-border"></div>
+      <div className="h-px w-full bg-customColor-border"></div>
     </div>
   );
 }
