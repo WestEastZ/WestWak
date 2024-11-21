@@ -55,9 +55,9 @@ export default function Camera({ data }: { data: string[] }) {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex w-full gap-4 max-md:flex-col max-md:px-4">
       {choseMethod ? (
-        <section className="container-style m-auto flex w-2/3 flex-col gap-4">
+        <section className="container-style m-auto flex w-2/3 flex-col gap-4 max-md:w-full">
           {methodFile ? (
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
@@ -89,17 +89,17 @@ export default function Camera({ data }: { data: string[] }) {
           )}
         </section>
       ) : (
-        <section className="container-style m-auto flex h-[490px] w-2/3 flex-col items-center justify-center gap-36 text-center">
+        <section className="container-style m-auto flex h-[490px] w-2/3 flex-col items-center justify-center gap-36 text-center max-md:w-full">
           <div className="flex w-full items-center justify-evenly">
             <button
               onClick={handleMetodCamera}
-              className="box-style rounded-3xl p-20"
+              className="box-style rounded-3xl p-20 max-md:p-10"
             >
               <CameraIcon width={120} height={120} />
             </button>
             <button
               onClick={handleMetodFile}
-              className="box-style rounded-3xl p-20"
+              className="box-style rounded-3xl p-20 max-md:p-10"
             >
               <UploadIcon width={120} height={120} />
             </button>

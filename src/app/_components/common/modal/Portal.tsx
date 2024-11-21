@@ -72,7 +72,7 @@ export default function Portal({
       {/* bottom modal */}
       {type === "bottom" && (
         <div
-          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-[40rem] w-[40rem] flex-col justify-between gap-5 rounded-t-2xl bg-customColor-container p-4 transition-transform duration-300 ease-out ${
+          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-max w-max flex-col justify-between gap-5 rounded-t-2xl bg-customColor-container p-4 transition-transform duration-300 ease-out ${
             isAnimating ? "translate-y-0" : "translate-y-full"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -90,7 +90,7 @@ export default function Portal({
       {/* middle modal */}
       {type === "middle" && (
         <div
-          className={`fixed left-1/2 top-1/2 z-[9999] m-auto flex h-[45rem] w-[45rem] -translate-x-1/2 -translate-y-1/2 transform flex-col justify-between gap-5 rounded-2xl bg-customColor-container p-4`}
+          className={`fixed left-1/2 top-1/2 z-[9999] m-auto flex h-[45rem] w-max -translate-x-1/2 -translate-y-1/2 transform flex-col justify-between gap-5 rounded-2xl bg-customColor-container p-4 max-md:w-4/5`}
           onClick={(e) => e.stopPropagation()}
         >
           {children}

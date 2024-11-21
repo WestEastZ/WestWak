@@ -2,25 +2,25 @@ import React from "react";
 
 export default function ModalWakFaceInfo() {
   return (
-    <div className="h-full flex flex-col gap-4 text-white">
-      <section className="flex flex-col flex-1 gap-2">
-        <span className="text-lg text-customColor-main font-bold">
+    <div className="flex h-full flex-col gap-4 text-white">
+      <section className="flex flex-1 flex-col gap-2">
+        <span className="text-lg font-bold text-customColor-main">
           사용 방법
         </span>
-        <ul className="box-style h-full flex flex-col justify-between p-4">
+        <ul className="box-style flex h-full flex-col justify-between p-4">
           <li>1. 사진을 찍거나 기존 사진을 업로드하세요.</li>
           <li>2. AI가 당신의 얼굴을 분석합니다.</li>
           <li>3. 가장 닮은 왁타버스 멤버를 확인하세요!</li>
         </ul>
       </section>
 
-      <div className="w-full h-px bg-customColor-border"></div>
+      <div className="h-px w-full bg-customColor-border"></div>
 
-      <section className="flex flex-col flex-1 gap-2">
-        <span className="text-lg text-customColor-main font-bold">
+      <section className="flex flex-1 flex-col gap-2">
+        <span className="text-lg font-bold text-customColor-main">
           자주 묻는 질문
         </span>
-        <ul className="box-style h-full flex flex-col justify-between gap-2 p-4">
+        <ul className="box-style flex h-full flex-col justify-between gap-2 p-4">
           <li>
             <span className="font-semibold">
               Q: 내 사진은 어떻게 처리되나요?
