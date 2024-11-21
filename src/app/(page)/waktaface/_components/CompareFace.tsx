@@ -9,7 +9,7 @@ export default async function CompareFace() {
   return (
     <div className="flex flex-col gap-4">
       <Camera data={data} />
-      <div className="container-style w-full">
+      <div className="container-style w-full max-md:hidden">
         <SwiperComponent slides={data} loop={true} />
       </div>
     </div>
