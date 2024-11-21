@@ -4,7 +4,7 @@ import Signup from "./components/Signup";
 
 export default function Sign() {
   return (
-    <div className="h-full flex mt-[5rem]">
+    <div className="mt-[5rem] flex h-full gap-4 px-4 max-md:flex-col max-md:gap-4">
       <Signup />
       <Signin />
     </div>
