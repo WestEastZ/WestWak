@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ModalWakFaceInfo() {
   return (
-    <div className="flex h-full flex-col gap-4 text-white">
+    <div className="flex h-full flex-col gap-4 overflow-y-auto text-white">
       <section className="flex flex-1 flex-col gap-2">
         <span className="text-lg font-bold text-customColor-main">
           사용 방법

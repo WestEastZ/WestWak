@@ -53,7 +53,8 @@ export default function MusicChoose() {
   }, [musicDatas, searchKeyword]);
 
   return (
-    <div className="flex h-full flex-col gap-5 text-white">
+    <div className="flex h-full flex-col gap-5 overflow-y-auto text-white">
+      {/* 검색 */}
       <section className="relative">
         <div className="absolute inset-y-1 left-2">
           <Search width={24} height={24} />
@@ -65,11 +66,13 @@ export default function MusicChoose() {
         />
       </section>
 
+      {/* 안내 문구 */}
       <section className="m-auto text-sm font-semibold text-customColor-text">
-        왁비디오는 음원사이트에 등록된 음원 정보만 제공합니다.
+        음원사이트에 등록된 음원 정보만 제공합니다.
       </section>
 
-      <section className="mb-14 h-full overflow-y-auto">
+      {/* 리스트 - 스크롤 가능 영역 */}
+      <section className="h-full">
         {filterMusic.length > 0 ? (
           filterMusic.map((music) => {
             const key = music.title as keyof typeof ALBUM_COVERS;
