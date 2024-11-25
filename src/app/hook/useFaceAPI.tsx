@@ -62,7 +62,6 @@ export default function useFaceAPI(data: string[]) {
 
       if (descriptor instanceof Float32Array) {
         const distance = await distanceImage(descriptor, cachedDescriptors);
-        console.log(distance);
 
         if (distance) {
           const sortDistacne = distance.sort((a, b) => {
