@@ -65,29 +65,31 @@ export function HomeScrollFirst({ isVisible }: HomeScrollFirstProps) {
 
         {/* 텍스트 */}
         <section className="flex flex-col gap-2 text-2xl font-bold text-customColor-main">
-          <span className="">왁타버스 콘텐츠를</span>
-          <span> 놓치고 싶지 않다면?</span>
+          <span className="whitespace-nowrap">왁타버스 콘텐츠를</span>
+          <span className="whitespace-nowrap"> 놓치고 싶지 않다면?</span>
         </section>
 
         {/* 로고 아이콘 */}
         <div className="animate-jump-up absolute -left-10 max-md:-left-[30%] max-md:-top-10">
-          <div className="-rotate-12">
-            <Youtube width={70} height={70} />
+          <div className="h-[70px] w-[70px] -rotate-12 max-md:h-[40px] max-md:w-[40px]">
+            <Youtube />
           </div>
         </div>
 
-        <div className="animate-jump-down absolute -top-10 left-[20%]">
-          <Melon width={70} height={70} />
+        <div className="animate-jump-down absolute -top-10 left-[20%] max-md:-top-14">
+          <div className="h-[70px] w-[70px] -rotate-12 max-md:h-[40px] max-md:w-[40px]">
+            <Melon />
+          </div>
         </div>
 
         <div className="animate-jump-up absolute -top-10 left-[60%]">
-          <div className="rotate-12">
-            <Soop width={70} height={70} />
+          <div className="h-[70px] w-[70px] rotate-12 max-md:h-[40px] max-md:w-[40px]">
+            <Soop />
           </div>
         </div>
 
         <div className="animate-jump-down absolute -right-10 z-[10] max-md:-right-[30%] max-md:-top-10">
-          <div className="h-[70px] w-[70px] rotate-12">
+          <div className="h-[70px] w-[70px] rotate-12 max-md:h-[40px] max-md:w-[40px]">
             <Image
               src={Naver}
               alt="Naver"

@@ -12,9 +12,9 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="relative">
+    <nav className="relative w-full">
       <section
-        className={`sticky z-[9999] flex w-full items-center justify-start p-4 transition duration-500 ease-in-out`}
+        className={`sticky top-0 z-[9999] flex w-full items-center justify-start p-4 transition duration-500 ease-in-out`}
       >
         {/* text */}
         <section className="m-auto flex w-full max-w-[80rem] items-center justify-between overflow-hidden text-3xl font-bold text-white">

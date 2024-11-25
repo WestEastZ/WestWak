@@ -50,7 +50,7 @@ export default function HomeScroll() {
       ref={sectionRef}
       className="relative h-[300vh] bg-customColor-dark_box"
     >
-      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen items-center justify-center border">
         <div className="relative h-1/2 w-1/2 p-0">
           <HomeScrollFirst isVisible={currentItem === 0} />
           <HomeScrollSecond isVisible={currentItem === 1} />
