@@ -1,7 +1,8 @@
 import "./global.css";
+import { Metadata } from "next";
+import type { Viewport } from "next";
 import Navigation from "./_components/layout/nav/navigation";
 import Footer from "./_components/layout/footer/footer";
-import { Metadata } from "next";
 import { openGraphDefault } from "./util/createMetaData";
 
 export const metadata: Metadata = {
@@ -22,6 +23,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -29,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="">
-      <body className="flex min-h-screen w-full flex-col">
+      <body className="flex min-h-screen flex-col">
         <div id="modal-portal"></div>
         <Navigation />
         <main className="flex-grow">{children}</main>

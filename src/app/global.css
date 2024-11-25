@@ -30,13 +30,14 @@
 html,
 body {
   width: 100%;
+  min-width: 320px;
   background-color: #1b1b1b;
   font-family: "SpoqaHanSansNeo";
 }
 
 body {
+  position: relative;
   margin: auto;
-  overflow-x: hidden;
 }
 
 :root {

@@ -48,17 +48,17 @@ export default function Portal({
   }, [isMounted]);
 
   // scroll
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
 
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
+  //   return () => {
+  //     document.body.style.overflow = "unset";
+  //   };
+  // }, [isOpen]);
 
   if (!isMounted || !portalElement) return null;
 
@@ -72,9 +72,10 @@ export default function Portal({
       {/* bottom modal */}
       {type === "bottom" && (
         <div
-          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-max w-max flex-col justify-between gap-5 rounded-t-2xl bg-customColor-container p-4 transition-transform duration-300 ease-out ${
+          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-max w-1/2 flex-col gap-4 rounded-t-2xl border border-customColor-border bg-customColor-container p-4 transition-transform duration-300 ease-out max-lg:w-4/5 ${
             isAnimating ? "translate-y-0" : "translate-y-full"
           }`}
+          style={{ maxHeight: "80vh" }}
           onClick={(e) => e.stopPropagation()}
         >
           {children}
@@ -90,7 +91,7 @@ export default function Portal({
       {/* middle modal */}
       {type === "middle" && (
         <div
-          className={`fixed left-1/2 top-1/2 z-[9999] m-auto flex h-[45rem] w-max -translate-x-1/2 -translate-y-1/2 transform flex-col justify-between gap-5 rounded-2xl bg-customColor-container p-4 max-md:w-4/5`}
+          className={`fixed left-1/2 top-1/2 z-[9999] m-auto flex h-2/3 w-1/2 -translate-x-1/2 -translate-y-1/2 transform flex-col justify-between gap-5 rounded-2xl border border-customColor-border bg-customColor-container p-4 max-md:w-4/5`}
           onClick={(e) => e.stopPropagation()}
         >
           {children}

@@ -58,7 +58,7 @@ export default function Footer() {
         </Link>
       </section>
       <section className="bg-customColor-background_black p-1 text-customColor-text">
-        <div className="m-auto w-[80rem] overflow-hidden text-sm font-medium">
+        <div className="m-auto w-full max-w-[80rem] overflow-hidden text-sm font-medium">
           COPYRIGHT ⓒ WAKVIDEO. ALL RIGHT RESERVED
         </div>
       </section>
