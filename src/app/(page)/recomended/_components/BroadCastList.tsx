@@ -24,7 +24,7 @@ export async function BroadCastList() {
     <div className="container-style flex flex-shrink flex-col gap-4">
       <ContentsTitle title="생방송" Icon={Afeeca} />
 
-      <section className="grid grid-cols-2 gap-2">
+      <section className="grid grid-cols-2 gap-2 max-md:grid-cols-4">
         {!response || !Array.isArray(response) ? (
           <BroadCastSkeletonUI />
         ) : (
@@ -53,23 +53,23 @@ export function BroadCast({
   return (
     <Link
       href={`https://ch.sooplive.co.kr/${broadCastInfo.id}`}
-      className={`flex items-center justify-between gap-8 rounded-lg border border-transparent bg-customColor-box p-3 transition-all duration-200 hover:scale-105 hover:border-customColor-main`}
+      className={`flex items-center justify-between gap-8 rounded-lg border border-transparent bg-customColor-box p-3 transition-all duration-200 hover:scale-105 hover:border-customColor-main max-md:justify-center`}
     >
       <div className="flex gap-3">
         <div
-          className={`relative overflow-hidden rounded-full border ${
+          className={`relative h-[22px] w-[22px] overflow-hidden rounded-full border max-md:h-10 max-md:w-10 ${
             broadCastInfo.isLive ? null : "grayscale"
           }`}
         >
           <Image
             src={broadCastInfo.broadCastThumb || defaultImage}
-            width={22}
-            height={22}
+            fill
+            priority
             alt="title"
           />
         </div>
         <span
-          className={` ${
+          className={`max-md:hidden ${
             broadCastInfo.isLive ? "text-white" : "text-customColor-text"
           }`}
         >
@@ -77,7 +77,7 @@ export function BroadCast({
         </span>
       </div>
       <span
-        className={`text-sm font-semibold ${
+        className={`text-sm font-semibold max-md:hidden ${
           broadCastInfo.isLive ? "text-red-600" : "text-customColor-text"
         }`}
       >

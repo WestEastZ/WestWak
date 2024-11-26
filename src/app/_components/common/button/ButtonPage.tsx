@@ -9,6 +9,7 @@ export default function ButtonPage({
   currentPage: number;
 }) {
   const isCurrentPage = page === currentPage;
+  console.log(isCurrentPage);
 
   return (
     <Link
@@ -16,8 +17,8 @@ export default function ButtonPage({
       scroll={false}
       className={`text-lg ${
         isCurrentPage
-          ? "text-bgColor-main"
-          : "text-white hover:text-customColor-main transition-all duration-200"
+          ? "text-customColor-main"
+          : "text-white transition-all duration-200 hover:scale-110 hover:text-customColor-main"
       }`}
     >
       {page}

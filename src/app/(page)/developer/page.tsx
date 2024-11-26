@@ -18,8 +18,8 @@ export default function Developer({
     <div>
       <Title title={"한마디 하는 곳"} />
 
-      <section className="flex gap-5 p-4 max-md:flex-col">
-        <section className="flex flex-col gap-5 max-md:flex-row">
+      <section className="flex gap-4 max-md:flex-col max-md:px-4">
+        <section className="flex flex-col gap-5">
           <Introduce />
           <Links />
         </section>

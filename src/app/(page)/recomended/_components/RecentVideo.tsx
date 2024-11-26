@@ -93,14 +93,19 @@ function VideoList({
     <div className="flex flex-col gap-4">
       <Link
         href={`https://www.youtube.com/${channelUrl}`}
-        className="ml-14 flex w-max items-center gap-4"
+        className="ml-14 flex w-max items-center gap-4 max-md:hidden"
       >
         <ProfileImage thumbnail={thumbnail} />
-        <span className="text-2xl">{`${channelTitle} > `}</span>
+        <span className="text-2xl">{`${channelTitle} >`}</span>
       </Link>
 
-      <section className="flex items-center gap-4">
-        <ButtonSlide swiperRef={swiperRef} direction="prev" />
+      <section className="flex items-center gap-2 max-md:flex-col">
+        {/* button */}
+        <div className="max-md:hidden">
+          <ButtonSlide swiperRef={swiperRef} direction="prev" />
+        </div>
+
+        {/* video */}
         <Swiper {...swiperOption} className="w-full">
           {videos?.map((video) => (
             <SwiperSlide key={video.id}>
@@ -108,7 +113,17 @@ function VideoList({
             </SwiperSlide>
           ))}
         </Swiper>
-        <ButtonSlide swiperRef={swiperRef} direction="next" />
+
+        {/* button */}
+        <div className="max-md:hidden">
+          <ButtonSlide swiperRef={swiperRef} direction="next" />
+        </div>
+
+        {/* moblie button */}
+        <div className="hidden w-full justify-evenly gap-4 max-md:flex">
+          <ButtonSlide swiperRef={swiperRef} direction="prev" />
+          <ButtonSlide swiperRef={swiperRef} direction="next" />
+        </div>
       </section>
     </div>
   );
@@ -117,7 +132,10 @@ function VideoList({
 // Video
 function Video({ video }: { video: VideoInfo }) {
   return (
-    <div key={video.id} className="item-center flex max-w-sm flex-col gap-2">
+    <div
+      key={video.id}
+      className="item-center flex max-w-sm flex-col justify-between gap-2"
+    >
       <section className="aspect-h-9 aspect-w-16 overflow-hidden rounded-xl">
         <iframe
           src={`https://www.youtube.com/embed/${video.id}`}
@@ -125,19 +143,20 @@ function Video({ video }: { video: VideoInfo }) {
         />
       </section>
 
-      <div className="px-4">
+      <div className="flex flex-col px-4">
         <section className="flex items-center justify-between">
           <span className="block max-w-full truncate">{video.title}</span>
         </section>
 
         <section className="flex items-center justify-between gap-2">
-          <span className="text-customColor-text">{video.publishedAt}</span>
-          <div className="flex gap-2 text-sm text-customColor-text">
-            <span>조회수 {video.viewCount}</span>
-
-            <span>좋아요 {video.likeCount}</span>
-
-            <span>댓글 {video.commentCount}</span>
+          <div className="flex w-full items-center justify-between gap-2 text-sm text-customColor-text">
+            <span className="w-fit whitespace-nowrap">
+              조회수 | {video.viewCount}
+            </span>
+            <span className="relative w-full pl-3 text-customColor-text">
+              <span className="absolute left-0 top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-customColor-text"></span>
+              {video.publishedAt}
+            </span>
           </div>
         </section>
       </div>

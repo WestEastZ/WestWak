@@ -89,17 +89,17 @@ export default function Camera({ data }: { data: string[] }) {
           )}
         </section>
       ) : (
-        <section className="container-style m-auto flex h-[490px] w-2/3 flex-col items-center justify-center gap-36 text-center max-md:w-full">
-          <div className="flex w-full items-center justify-evenly">
+        <section className="container-style m-auto flex h-[490px] w-2/3 flex-col items-center justify-center text-center max-md:w-full">
+          <div className="flex w-full items-center justify-evenly max-md:flex-col max-md:gap-12">
             <button
               onClick={handleMetodCamera}
-              className="box-style rounded-3xl p-20 max-md:p-10"
+              className="box-style rounded-3xl p-20 max-md:p-8"
             >
               <CameraIcon width={120} height={120} />
             </button>
             <button
               onClick={handleMetodFile}
-              className="box-style rounded-3xl p-20 max-md:p-10"
+              className="box-style rounded-3xl p-20 max-md:p-8"
             >
               <UploadIcon width={120} height={120} />
             </button>
@@ -125,10 +125,10 @@ export default function Camera({ data }: { data: string[] }) {
               왜 WaktaFace인가요?
             </span>
             <ul className="flex flex-col gap-2">
-              <li>1. 정확한 얼굴 인식 기술로 높은 정확도를 제공합니다</li>
-              <li>2. 친구들과 결과를 공유하며 즐거운 시간을 보내세요.</li>
-              <li>3. 좋아하는 멤버와의 유사성을 발견하는 특별한 경험!</li>
-              <li className="text-center text-sm text-customColor-text">
+              <li>1. 높은 정확도를 제공합니다!</li>
+              <li>2. 결과를 공유하며 즐거운 시간을 보내세요!</li>
+              <li>3. 유사성을 발견하는 특별한 경험!</li>
+              <li className="text-sm text-customColor-text">
                 얼굴 인식이 안될 경우가 생길 수 있습니다!
               </li>
             </ul>
