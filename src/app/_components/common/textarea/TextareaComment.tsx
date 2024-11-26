@@ -33,16 +33,16 @@ export default function TextareaComment({
     <div>
       {isUpdate ? (
         <form className="flex flex-col gap-2" onSubmit={handleOnsubmitUpdate}>
-          <section className="flex justify-center items-center gap-2">
+          <section className="flex items-center justify-center gap-2">
             <textarea
               ref={textareaRef}
               defaultValue={description}
-              className="resize-none w-full h-12 min-h-[3rem] pl-4 py-2 leading-6 text-white bg-inherit border-b-2 focus:border-bgColor-main outline-none overflow-hidden"
+              className="focus:border-bgColor-main h-12 min-h-[3rem] w-full resize-none overflow-hidden border-b-2 bg-inherit py-2 pl-4 leading-6 text-white outline-none"
               onChange={handleChangeComment}
             />
           </section>
 
-          <section className="flex justify-end items-center gap-2">
+          <section className="flex items-center justify-end gap-2">
             <CheckBoxLock
               onClick={handleCheckBoardStatus}
               status={status}
@@ -62,7 +62,7 @@ export default function TextareaComment({
           {board.status === "PRIVATE" ? (
             <div className="text-customColor-text">비밀 댓글입니다.</div>
           ) : (
-            <div>{description}</div>
+            <div className="break-all">{description}</div>
           )}
         </div>
       )}

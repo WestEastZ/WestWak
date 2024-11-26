@@ -15,7 +15,7 @@ export default function Button({
       const form = e.currentTarget.closest("form");
       if (form) {
         form.dispatchEvent(
-          new Event("submit", { cancelable: true, bubbles: true })
+          new Event("submit", { cancelable: true, bubbles: true }),
         );
       }
     }
@@ -28,7 +28,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={`${ButtonStyle[size]} button-style`}
+      className={`${ButtonStyle[size]} button-style max-md:w-full`}
       onClick={handler}
     >
       {text}

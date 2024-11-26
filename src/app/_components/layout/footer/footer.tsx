@@ -11,13 +11,13 @@ function LinkIcon({
   img: string;
 }) {
   return (
-    <Link href={url}>
+    <Link href={url} className="h-[28px] w-[28px]">
       <Image
         src={img}
         alt={alt}
         width={28}
         height={28}
-        className="transform duration-300 hover:scale-110"
+        className="h-full transform duration-300 hover:scale-110"
       />
     </Link>
   );
@@ -46,8 +46,8 @@ export default function Footer() {
           />
           <LinkIcon
             url={"https://bj.afreecatv.com/ecvhao"}
-            alt={"afreecatv"}
-            img={"/icon/afreeaca.png"}
+            alt={"soop"}
+            img={"/icon/soop.svg"}
           />
         </div>
         <Link

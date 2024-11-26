@@ -33,9 +33,9 @@ export default async function CommentList({
       <Comment boards={boards} />
 
       {/* button */}
-      <section className="flex w-1/4">
+      <section className="flex w-1/4 max-md:w-4/5">
         {pageGroup > 1 && <ButtonBack page={startPage - 5} />}
-        <div className="flex flex-grow justify-around">{pageButton}</div>
+        <div className={`flex flex-grow justify-around`}>{pageButton}</div>
         {pageGroup < lastPageGroup && <ButtonNext page={endPage + 1} />}
       </section>
     </div>

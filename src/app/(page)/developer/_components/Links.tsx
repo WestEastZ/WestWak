@@ -9,10 +9,10 @@ import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
 
 export default function Links() {
   return (
-    <div className="container-style flex flex-col gap-4 max-md:w-1/3">
+    <div className="container-style flex flex-grow flex-col gap-4">
       <ContentsTitle title="Link" Icon={Laptop} />
 
-      <section className="flex items-center justify-between max-md:h-full max-md:flex-col">
+      <section className="flex items-center justify-between max-md:h-full">
         <Link
           href={"https://github.com/WestEastZ"}
           className="flex flex-col items-center gap-2 rounded-lg bg-customColor-box p-4 transition-all duration-300 hover:scale-105"

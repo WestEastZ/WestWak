@@ -47,19 +47,6 @@ export default function Portal({
     }
   }, [isMounted]);
 
-  // scroll
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "unset";
-  //   }
-
-  //   return () => {
-  //     document.body.style.overflow = "unset";
-  //   };
-  // }, [isOpen]);
-
   if (!isMounted || !portalElement) return null;
 
   return createPortal(
