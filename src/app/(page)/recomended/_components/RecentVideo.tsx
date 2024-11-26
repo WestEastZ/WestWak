@@ -120,7 +120,7 @@ function VideoList({
         </div>
 
         {/* moblie button */}
-        <div className="hidden w-full justify-evenly gap-4 max-md:flex">
+        <div className="hidden h-full w-full justify-evenly gap-4 max-md:flex">
           <ButtonSlide swiperRef={swiperRef} direction="prev" />
           <ButtonSlide swiperRef={swiperRef} direction="next" />
         </div>
@@ -134,7 +134,7 @@ function Video({ video }: { video: VideoInfo }) {
   return (
     <div
       key={video.id}
-      className="item-center flex max-w-sm flex-col justify-between gap-2"
+      className="item-center flex flex-col justify-between gap-2"
     >
       <section className="aspect-h-9 aspect-w-16 overflow-hidden rounded-xl">
         <iframe
