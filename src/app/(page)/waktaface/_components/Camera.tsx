@@ -114,7 +114,9 @@ export default function Camera({ data }: { data: string[] }) {
             <span className="text-2xl font-bold text-customColor-main">
               나와 닮은 왁타버스 멤버는 누구?
             </span>
-            <span>인공지능으로 나와 닮은 왁타버스 멤버를 찾아보세요!</span>
+            <span className="whitespace-nowrap">
+              인공지능으로 나와 닮은 고정멤버를 찾아보세요!
+            </span>
             <span className="text-sm text-customColor-text">
               비교대상은 고정멤버, 고멤 아카데미입니다.
             </span>
