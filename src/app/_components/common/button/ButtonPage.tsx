@@ -9,7 +9,6 @@ export default function ButtonPage({
   currentPage: number;
 }) {
   const isCurrentPage = page === currentPage;
-  console.log(isCurrentPage);
 
   return (
     <Link

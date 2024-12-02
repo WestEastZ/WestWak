@@ -23,15 +23,21 @@ export default function ButtonSlide({
   return (
     <div
       onClick={handleClick}
-      className="group flex h-full cursor-pointer items-center justify-center p-1"
+      className="group flex h-full w-full cursor-pointer items-center justify-center p-1"
     >
-      <div className="flex h-[22px] w-[22px] cursor-pointer items-center justify-center">
-        {direction === "prev" ? (
-          <Prev className="transition-all duration-200 group-hover:fill-customColor-main" />
-        ) : (
-          <Next className="transition-all duration-200 group-hover:fill-customColor-main" />
-        )}
-      </div>
+      {direction === "prev" ? (
+        <Prev
+          width={22}
+          height={22}
+          className="transition-all duration-200 group-hover:fill-customColor-main"
+        />
+      ) : (
+        <Next
+          width={22}
+          height={22}
+          className="transition-all duration-200 group-hover:fill-customColor-main"
+        />
+      )}
     </div>
   );
 }

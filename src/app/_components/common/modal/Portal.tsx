@@ -59,10 +59,9 @@ export default function Portal({
       {/* bottom modal */}
       {type === "bottom" && (
         <div
-          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-max w-1/2 flex-col gap-4 rounded-t-2xl border border-customColor-border bg-customColor-container p-4 transition-transform duration-300 ease-out max-lg:w-4/5 ${
+          className={`fixed bottom-0 left-0 right-0 z-[9999] m-auto flex h-4/5 w-1/2 flex-col gap-4 rounded-t-2xl border border-customColor-border bg-customColor-container p-4 transition-transform duration-300 ease-out max-lg:w-4/5 ${
             isAnimating ? "translate-y-0" : "translate-y-full"
           }`}
-          style={{ maxHeight: "80vh" }}
           onClick={(e) => e.stopPropagation()}
         >
           {children}
