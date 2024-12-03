@@ -6,7 +6,7 @@ import Person from "../../../../../public/icon/person.svg";
 
 export default function Introduce() {
   return (
-    <section className="container-style flex w-full flex-grow flex-col gap-2 font-semibold">
+    <section className="container-style flex w-full flex-shrink-0 flex-col gap-2 font-semibold">
       <ContentsTitle title="Developer" Icon={Person} />
 
       <section className="item-center flex flex-col items-center justify-center gap-10">

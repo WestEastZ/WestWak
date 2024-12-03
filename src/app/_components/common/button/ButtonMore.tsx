@@ -11,15 +11,15 @@ export default function ButtonMore({
   setIsUpdate,
 }: ButtonMoreType) {
   return (
-    <div className="relative">
-      <div className="flex flex-col flex-shrink-0 transition-all duration-200 hover:bg-bgColor-main rounded-full">
+    <div className="relative flex items-center justify-center">
+      <div className="hover:bg-bgColor-main flex flex-shrink-0 flex-col rounded-full transition-all duration-200">
         <button type="button" className="" onClick={onToggle}>
           <More width={30} height={30} />
         </button>
       </div>
 
       {isModalOpen && (
-        <div className="absolute top-9">
+        <div className="absolute right-6 top-4">
           <ModalMore
             board={board}
             onToggle={onToggle}

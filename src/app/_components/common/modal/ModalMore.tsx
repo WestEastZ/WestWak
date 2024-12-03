@@ -5,6 +5,14 @@ import { deleteBoard } from "@/app/lip/board";
 import { useStore, useUserStore } from "@/app/stores/useStores";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useForm } from "react-hook-form";
+
+import Pencil from "../../../../../public/icon/pencil.svg";
+import Trash from "../../../../../public/icon/trash.svg";
+
+interface MoreFormType {
+  action: "delete" | "update" | "report" | null;
+}
 
 export default function ModalMore({
   board,
@@ -18,41 +26,73 @@ export default function ModalMore({
   onToggle: () => void;
 }) {
   const router = useRouter();
+  const { handleSubmit, setValue } = useForm<MoreFormType>({
+    defaultValues: {
+      action: null,
+    },
+  });
 
   const user = useStore(useUserStore, (state) => state.user);
-  const userId = board.userId;
+  const isOwner = user?.id === board.userId;
 
-  const handleUpdateComment = async () => {
-    setIsUpdate(!isUpdate);
-    onToggle();
+  const onSubmit = async (data: MoreFormType) => {
+    try {
+      switch (data.action) {
+        case "delete":
+          await deleteBoard({ boardId: board.id });
+          router.refresh();
+          break;
+
+        case "update":
+          setIsUpdate(!isUpdate);
+          break;
+
+        case "report":
+          alert("신고가 접수 되었습니다.");
+          break;
+      }
+
+      onToggle();
+    } catch (error) {
+      console.log("오류가 발생했습니다.", error);
+    }
   };
 
-  const handleDeleteComment = async () => {
-    await deleteBoard({ boardId: board.id });
-    router.refresh();
+  const handleAction = (action: MoreFormType["action"]) => {
+    setValue("action", action);
+    handleSubmit(onSubmit)();
   };
 
   return (
-    <div className="w-20 rounded-lg bg-[#353533] text-white">
-      {user?.id === userId ? (
-        <section className="flex flex-col justify-center items-center gap-1">
-          <div
-            className="w-full cursor-pointer pt-1 hover:bg-bgColor-main text-center transition-colors rounded-t-lg"
-            onClick={handleDeleteComment}
+    <div className="min-w-[6rem] overflow-hidden rounded-lg bg-[#353533] text-sm shadow-lg">
+      {isOwner ? (
+        <section className="flex flex-col">
+          <button
+            type="button"
+            className="flex w-full items-center gap-2 px-4 py-3 hover:bg-customColor-main"
+            onClick={() => handleAction("update")}
           >
-            삭제
-          </div>
-          <div
-            className="w-full cursor-pointer pb-1 hover:bg-bgColor-main text-center rounded-b-lg"
-            onClick={handleUpdateComment}
+            <Pencil width={20} height={20} />
+            <span>수정</span>
+          </button>
+
+          <button
+            type="button"
+            className="flex w-full items-center gap-2 px-4 py-3 hover:bg-customColor-main"
+            onClick={() => handleAction("delete")}
           >
-            수정
-          </div>
+            <Trash width={20} height={20} />
+            <span>삭제</span>
+          </button>
         </section>
       ) : (
-        <section className="flex flex-col justify-center items-center gap-2">
-          <div>신고</div>
-        </section>
+        <button
+          type="button"
+          onClick={() => handleAction("report")}
+          className="hover:bg-bgColor-main w-full cursor-pointer rounded-lg px-4 py-2 text-center transition-colors"
+        >
+          신고
+        </button>
       )}
     </div>
   );
