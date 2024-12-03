@@ -19,7 +19,7 @@ export default function Developer({
       <Title title={"한마디 하는 곳"} />
 
       <section className="flex gap-4 max-md:flex-col max-md:px-4">
-        <section className="flex flex-col gap-5">
+        <section className="flex flex-shrink-0 flex-col gap-5">
           <Introduce />
           <Links />
         </section>
