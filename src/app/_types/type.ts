@@ -35,15 +35,6 @@ export interface ButtonMoreType {
   setIsUpdate: (isUpdate: boolean) => void;
 }
 
-// Input
-// export interface InputPropsType {
-//   type: string;
-//   name: string;
-//   placeholder: string;
-//   value: string;
-//   onChange: React.ChangeEventHandler<HTMLInputElement>;
-// }
-
 // Board
 export interface BoardType {
   id: number;
