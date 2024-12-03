@@ -9,7 +9,7 @@ import ContentsTitle from "@/app/_components/common/header/ContentsTitle";
 
 export default function Links() {
   return (
-    <div className="container-style flex flex-grow flex-col gap-4">
+    <div className="container-style flex flex-shrink-0 flex-col gap-4">
       <ContentsTitle title="Link" Icon={Laptop} />
 
       <section className="flex items-center justify-between max-md:h-full">
