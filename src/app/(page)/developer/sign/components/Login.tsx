@@ -10,8 +10,7 @@ import { useRouter } from "next/navigation";
 
 import Person from "../../../../../../public/icon/person.svg";
 
-import React, { useState } from "react";
-import Link from "next/link";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { SignFormType } from "@/app/_types/input.type";
 
@@ -47,12 +46,13 @@ export default function Login() {
 
       router.replace("/developer?page=1");
       router.refresh();
-    } catch (error) {
-      if (error instanceof Error) {
-        setError("password", {
-          message: "이메일 혹은 비밀번호를 확인해주세요.",
-        });
-      }
+    } catch (error: any) {
+      const errorData = error.response?.data;
+
+      setError("root", {
+        type: "manual",
+        message: errorData.message,
+      });
     }
   };
 
@@ -71,6 +71,10 @@ export default function Login() {
           register={register}
           rules={{
             required: "사용장 이름을 입력하세요.",
+            minLength: {
+              value: 4,
+              message: "사용자 이름은 4자 이상이어야 합니다.",
+            },
           }}
           error={errors.username}
         />
@@ -94,6 +98,9 @@ export default function Login() {
           <Button text="로그인" type="submit" size="large" />
         </section>
       </form>
+      {errors.root && (
+        <span className="pl-2 text-sm text-red-500">{errors.root.message}</span>
+      )}
 
       <div className="h-px w-full bg-customColor-border"></div>
       <section className="flex flex-grow items-center justify-center">
@@ -102,38 +109,3 @@ export default function Login() {
     </div>
   );
 }
-
-// <form
-//   className="w-full h-full flex flex-col items-center gap-10 mt-10"
-//   onSubmit={onSubmitSignin}
-// >
-//   <section className="w-full flex flex-col gap-4">
-//     <Input
-//       type="text"
-//       name="username"
-//       placeholder="Username"
-//       value={username}
-//       onChange={handleSignInUsername}
-//     />
-//     <Input
-//       type="password"
-//       name="password"
-//       placeholder="Password"
-//       value={password}
-//       onChange={handleSignInPassword}
-//     />
-//   </section>
-
-//   <section className="w-full flex flex-col gap-2">
-//     <Button text="로그인" type="submit" size="large" />
-//     <Link
-//       href={"/developer/signup"}
-//       className="w-full h-12 flex items-center justify-center text-lg button-style rounded-3xl text-center"
-//     >
-//       <span>회원가입</span>
-//     </Link>
-//   </section>
-
-//   <div className="w-full h-px bg-customColor-border"></div>
-//   <section></section>
-// </form>;

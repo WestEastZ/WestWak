@@ -5,20 +5,26 @@ export const signin = async (data: SignFormType) => {
   const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin`;
   const { username, password } = data;
 
-  try {
-    const response = await fetch(apiURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-      credentials: "include",
-    });
+  const response = await fetch(apiURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password }),
+    credentials: "include",
+  });
+  const responseData = await response.json();
 
-    return response.json();
-  } catch (error) {
-    console.error(`Failed to Sign In:`, error);
+  if (!response.ok) {
+    throw {
+      response: {
+        data: responseData,
+        status: response.status,
+      },
+    };
   }
+
+  return responseData;
 };
 
 // 회원가입
@@ -26,18 +32,28 @@ export const signup = async (data: SignFormType) => {
   const apiURL = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`;
   const { username, password } = data;
 
-  try {
-    const response = await fetch(apiURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+  const response = await fetch(apiURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password }),
+    cache: "no-store",
+    credentials: "include",
+  });
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    throw {
+      response: {
+        data: responseData,
+        status: response.status,
       },
-      body: JSON.stringify({ username, password }),
-      cache: "no-store",
-      credentials: "include",
-    });
-    return response.json();
-  } catch (error) {}
+    };
+  }
+
+  return responseData;
 };
 
 // 로그아웃
