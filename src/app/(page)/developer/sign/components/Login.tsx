@@ -13,6 +13,7 @@ import Person from "../../../../../../public/icon/person.svg";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { SignFormType } from "@/app/_types/input.type";
+import { GithubLogin, GoogleLogin, KakaoLogin } from "./SocialLogin";
 
 interface UserState {
   user: UserType;
@@ -104,7 +105,9 @@ export default function Login() {
 
       <div className="h-px w-full bg-customColor-border"></div>
       <section className="flex flex-grow items-center justify-center">
-        소셜로그인
+        <KakaoLogin />
+        <GoogleLogin />
+        <GithubLogin />
       </section>
     </div>
   );

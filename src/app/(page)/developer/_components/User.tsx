@@ -10,19 +10,20 @@ export default async function User() {
     <div className="w-full">
       {userResponse.statusCode === 401 ? (
         <section className="flex flex-col gap-10">
-          <div className="font-bold text-lg">
+          <div className="text-lg font-bold">
             로그인 이후에 댓글 작성 가능합니다!
           </div>
           <Link
             href={"/developer/login"}
-            className="transition-all duration-300 hover:scale-105 hover:text-customColor-main hover:font-bold"
+            className="transition-all duration-300 hover:scale-105 hover:font-bold hover:text-customColor-main"
           >
             회원가입 | 로그인 하기
           </Link>
         </section>
       ) : (
-        <section className="flex justify-end items-center gap-3">
+        <section className="flex items-center justify-end gap-3">
           <div>{userResponse.username}</div>
+          <div>{userResponse.id}</div>
           <ButtonLogout text="Logout" type="button" size="small" />
         </section>
       )}
