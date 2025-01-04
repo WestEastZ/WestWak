@@ -16,6 +16,7 @@ export default function Signup() {
   const {
     register,
     watch,
+    reset,
     setError,
     handleSubmit,
     formState: { errors },
@@ -26,13 +27,22 @@ export default function Signup() {
   // submit sign up
   const onSubmitSignUp = async (data: SignFormType) => {
     try {
-      const response = await signup(data);
+      await signup(data);
+
+      reset({ username: "", password: "", passwordConfirm: "" });
       setIsSuccess(true);
-    } catch (error) {
-      if (error instanceof Error) {
+    } catch (error: any) {
+      const errorData = error.response?.data;
+
+      if (errorData.type === "username") {
+        setError("username", {
+          type: "manual",
+          message: errorData.message,
+        });
+      } else {
         setError("root", {
           type: "manual",
-          message: "이메일 혹은 비밀번호를 확인해주세요.",
+          message: "회원가입이 실패했습니다 다시 시도해주세요.",
         });
       }
     }
@@ -94,13 +104,16 @@ export default function Signup() {
       </form>
 
       {errors.root && (
-        <p className="mt-2 text-sm text-red-500">{errors.root.message}</p>
-      )}
-      {isSuccess && (
-        <p className="mt-2 text-sm text-green-500">회원가입에 성공했습니다!</p>
+        <span className="mt-2 text-sm text-red-500">{errors.root.message}</span>
       )}
 
       <div className="h-px w-full bg-customColor-border"></div>
+
+      {isSuccess && (
+        <span className="mt-2 text-sm text-customColor-main">
+          회원가입이 완료되었습니다.
+        </span>
+      )}
     </div>
   );
 }

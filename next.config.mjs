@@ -2,6 +2,7 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   webpack(config, { isServer }) {
     config.module.rules.push({
       test: /\.svg$/,
