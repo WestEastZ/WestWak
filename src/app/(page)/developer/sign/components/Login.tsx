@@ -103,11 +103,18 @@ export default function Login() {
         <span className="pl-2 text-sm text-red-500">{errors.root.message}</span>
       )}
 
-      <div className="h-px w-full bg-customColor-border"></div>
-      <section className="flex flex-grow items-center justify-center">
-        <KakaoLogin />
-        <GoogleLogin />
-        <GithubLogin />
+      {/* <div className="h-px w-full bg-customColor-border"></div> */}
+      <section className="flex h-full flex-col">
+        <div className="flex items-center justify-center gap-4">
+          <div className="h-px w-full bg-customColor-border"></div>
+          <div className="whitespace-nowrap text-center">소셜 계정 로그인</div>
+          <div className="h-px w-full bg-customColor-border"></div>
+        </div>
+        <div className="flex h-full w-full flex-col items-center text-sm font-semibold">
+          <KakaoLogin />
+          <GoogleLogin />
+          <GithubLogin />
+        </div>
       </section>
     </div>
   );
