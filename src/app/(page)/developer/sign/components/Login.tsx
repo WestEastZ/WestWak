@@ -58,11 +58,11 @@ export default function Login() {
   };
 
   return (
-    <div className="container-style m-auto flex h-[38rem] w-full flex-col gap-5">
+    <div className="container-style m-auto flex h-[40rem] w-full flex-col gap-5">
       <ContentsTitle title="로그인" Icon={Person} />
       <form
         onSubmit={handleSubmit(onSubmitSignin)}
-        className="flex h-max w-full flex-col items-center gap-5"
+        className="relative flex h-max w-full flex-col items-center gap-10"
       >
         <Input
           id="username"
@@ -95,22 +95,25 @@ export default function Login() {
           error={errors.password}
         />
 
-        <section className="flex w-full flex-col gap-3">
+        <section className="mb-4 flex w-full flex-col">
           <Button text="로그인" type="submit" size="large" />
         </section>
+
+        {errors.root && (
+          <span className="absolute -bottom-4 left-0 pl-2 text-sm text-red-500">
+            {errors.root.message}
+          </span>
+        )}
       </form>
-      {errors.root && (
-        <span className="pl-2 text-sm text-red-500">{errors.root.message}</span>
-      )}
 
       {/* <div className="h-px w-full bg-customColor-border"></div> */}
-      <section className="flex h-full flex-col">
+      <section className="flex h-96 flex-col">
         <div className="flex items-center justify-center gap-4">
           <div className="h-px w-full bg-customColor-border"></div>
           <div className="whitespace-nowrap text-center">소셜 계정 로그인</div>
           <div className="h-px w-full bg-customColor-border"></div>
         </div>
-        <div className="flex h-full w-full flex-col items-center text-sm font-semibold">
+        <div className="flex h-full w-full flex-col items-center justify-around text-sm font-bold">
           <KakaoLogin />
           <GoogleLogin />
           <GithubLogin />

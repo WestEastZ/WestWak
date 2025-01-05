@@ -19,10 +19,12 @@ export function KakaoLogin() {
   return (
     <button
       onClick={handleKakaoLogin}
-      className="m-auto flex h-12 w-full items-center justify-start gap-4 rounded-2xl bg-yellow-500 pl-52 text-black"
+      className="flex h-12 w-full items-center rounded-2xl bg-yellow-500 px-4 text-black"
     >
       <Image src={Kakao} alt="kakao" width={24} height={24} className="" />
-      <span>카카오 계정으로 계속하기</span>
+      <span className="flex-grow whitespace-nowrap">
+        카카오 계정으로 계속하기
+      </span>
     </button>
   );
 }
@@ -40,10 +42,12 @@ export function GoogleLogin() {
   return (
     <button
       onClick={handleGoogleLogin}
-      className="m-auto flex h-12 w-full items-center justify-start gap-4 rounded-2xl bg-white p-4 pl-52 text-black"
+      className="hover:scale-101 flex h-12 w-full items-center rounded-2xl bg-white px-4 text-black"
     >
-      <Image src={Google} alt="google" width={24} height={24} className="" />
-      <span>구글 계정으로 계속하기</span>
+      <Image src={Google} alt="google" width={24} height={24} />
+      <span className="flex-grow whitespace-nowrap">
+        구글 계정으로 계속하기
+      </span>
     </button>
   );
 }
@@ -61,10 +65,12 @@ export function GithubLogin() {
   return (
     <button
       onClick={handleGithubLogin}
-      className="m-auto flex h-12 w-full items-center justify-start gap-4 rounded-2xl bg-black p-4 pl-52"
+      className="flex h-12 w-full items-center rounded-2xl bg-black px-4"
     >
       <Image src={Github} alt="github" width={24} height={24} />
-      <span className="">깃허브 계정으로 계속하기</span>
+      <span className="flex-grow whitespace-nowrap">
+        깃허브 계정으로 계속하기
+      </span>
     </button>
   );
 }
