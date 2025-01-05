@@ -11,7 +11,7 @@ export default function Input({
   error,
 }: InputPropsType) {
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="relative flex w-full flex-col gap-2">
       <label htmlFor={`${id}`} className="pl-2">
         {placeholder}
       </label>
@@ -21,10 +21,12 @@ export default function Input({
         placeholder={placeholder}
         {...register(name, rules)}
         autoComplete="off"
-        className="w-full h-12 p-4 bg-inherit border-2 rounded-2xl border-customColor-border focus:border-customColor-main outline-none"
+        className="h-12 w-full rounded-2xl border-2 border-customColor-border bg-inherit p-4 outline-none focus:border-customColor-main"
       />
       {error && (
-        <span className="text-red-500 text-sm pl-2">{error.message}</span>
+        <span className="absolute -bottom-7 pl-2 text-sm text-red-500">
+          {error.message}
+        </span>
       )}
     </div>
   );

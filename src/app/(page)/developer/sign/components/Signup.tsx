@@ -49,11 +49,11 @@ export default function Signup() {
   };
 
   return (
-    <div className="container-style m-auto flex h-[38rem] w-full flex-col gap-5">
+    <div className="container-style m-auto flex h-[40rem] w-full flex-col gap-5">
       <ContentsTitle title="회원가입" Icon={Person} />
       <form
         onSubmit={handleSubmit(onSubmitSignUp)}
-        className="flex h-max w-full flex-col items-center gap-5"
+        className="flex h-max w-full flex-col items-center gap-10"
       >
         <Input
           id="username"
