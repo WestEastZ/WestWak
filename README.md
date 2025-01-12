@@ -6,7 +6,8 @@
 
 &#x20;Wakvideo는 NextJs, NestJs를 활용한 풀스택 프로젝트입니다.
 
-배포 URL : https://wakvideo.shop/ <br>
+[배포 URL](https://wakvideo.shop/) <br>
+[포트폴리오 URL](https://unmarred-piper-950.notion.site/Wakvideo-Youtube-site-41e1ac281b3f437f94e58335897a36c6?pvs=4)
 
 ```
 ✋ Westorcycle 테스트 계정
@@ -14,7 +15,7 @@ ID : test3000
 PW : test3000
 ```
 
-**📌 하단 개발자에게 한마디로 들어가시면 회원가입/로그인이 가능합니다.**
+**📌 하단(Footer) 개발자에게 한마디로 들어가시면 회원가입/로그인이 가능합니다.**
 
 ## 2. 🛠️ 서비스 아키텍처
 
@@ -40,6 +41,10 @@ PW : test3000
 ## 7. ♻️ 리팩토링 / 기능 추가
 
 1. 소셜 로그인 구현 해보기
+
+- 카카오, 구글, 깃허브 소셜 로그인 기능 구현
+- Provier 속성으로 소셜 플랫폼별 사용자 구분 및 통합 관리
+
 2. 계층적 에러 처리
 
 ## 8. 📦 파일 구조
